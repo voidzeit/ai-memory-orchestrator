@@ -17,6 +17,10 @@ build/
 # AMO runtime
 .ai/runtime/
 
+# Local agent/tool overrides
+opencode.local.json
+*.local.json
+
 # OS / IDE
 .DS_Store
 .idea/
