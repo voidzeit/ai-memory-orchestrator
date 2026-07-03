@@ -1,15 +1,21 @@
 from pathlib import Path
-from typing import Optional
+from typing import Callable, Optional
 
 import typer
 from rich.console import Console
 
+from amo.adapters.agents import export_agents_md
+from amo.adapters.claude import export_claude_md
+from amo.adapters.cline import export_cline_memory_bank
+from amo.adapters.cursor import export_cursor_rules
+from amo.adapters.opencode import export_opencode_instructions
 from amo.core.context import build_context_pack
 from amo.core.graph import build_graph
 from amo.core.init import init_repo
 from amo.core.postflight import apply_postflight
 from amo.core.scan import scan_repo
 from amo.core.server import serve
+from amo.core.status import get_status
 from amo.core.validate import validate_repo
 
 app = typer.Typer(help="AI Memory Orchestrator CLI")
@@ -18,6 +24,16 @@ obsidian_app = typer.Typer(help="Obsidian adapter commands")
 app.add_typer(graph_app, name="graph")
 app.add_typer(obsidian_app, name="obsidian")
 console = Console()
+
+EXPORTERS: dict[str, Callable[[Path], Path]] = {
+    "agents": export_agents_md,
+    "codex": export_agents_md,
+    "claude": export_claude_md,
+    "cursor": export_cursor_rules,
+    "cline": export_cline_memory_bank,
+    "opencode": export_opencode_instructions,
+}
+LAN_HOSTS = {"0.0.0.0", "::"}
 
 
 @app.command()
@@ -46,6 +62,17 @@ def context(
 
 
 @app.command()
+def preflight(
+    task: str = typer.Option(..., "--task", "-t", help="Task to prepare context for."),
+    profile: str = typer.Option("quick", "--profile", "-p"),
+    repo: Path = Path("."),
+) -> None:
+    """Alias for context generation before an AI coding session."""
+    pack = build_context_pack(repo=repo, task=task, profile=profile)
+    console.print(f"[green]Preflight context generated[/green]: {pack}")
+
+
+@app.command()
 def postflight(
     task: str = typer.Option(..., "--task", "-t"),
     summary: str = typer.Option(..., "--summary", "-s"),
@@ -67,20 +94,36 @@ def validate(repo: Path = Path("."), strict: bool = False) -> None:
 
 
 @app.command()
-def server(host: str = "127.0.0.1", port: int = 8787, token: bool = False, repo: Path = Path(".")) -> None:
+def status(repo: Path = Path(".")) -> None:
+    """Show repository memory status."""
+    result = get_status(repo)
+    color = "green" if result["status"] == "green" else "yellow"
+    console.print(f"[{color}]AMO status: {result['status']}[/{color}]")
+    for key, value in result["checks"].items():
+        console.print(f"- {key}: {value}")
+
+
+@app.command()
+def server(
+    host: str = "127.0.0.1",
+    port: int = 8787,
+    token: bool = False,
+    repo: Path = Path("."),
+) -> None:
     """Serve the local AMO web graph UI."""
+    if host in LAN_HOSTS and not token:
+        raise typer.BadParameter("LAN access requires --token. Set AMO_SERVER_TOKEN first.")
     serve(repo=repo, host=host, port=port, require_token=token)
 
 
 @app.command()
 def export(target: str = "agents", repo: Path = Path(".")) -> None:
     """Export AMO instructions to an agent adapter target."""
-    if target != "agents":
-        raise typer.BadParameter("Only target='agents' is implemented in v0.1 scaffold.")
-    from amo.adapters.agents import export_agents_md
-
-    path = export_agents_md(repo)
-    console.print(f"[green]Exported[/green]: {path}")
+    if target not in EXPORTERS:
+        valid = ", ".join(sorted(EXPORTERS))
+        raise typer.BadParameter(f"Unsupported target '{target}'. Valid targets: {valid}")
+    path = EXPORTERS[target](repo)
+    console.print(f"[green]Exported {target}[/green]: {path}")
 
 
 @graph_app.command("build")
