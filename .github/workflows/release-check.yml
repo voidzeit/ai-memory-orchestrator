@@ -22,6 +22,8 @@ jobs:
           ruff check .
           pytest
           amo scan
+          amo preflight --task "release readiness" --profile quick
+          amo handoff --task "release readiness" --summary "release validation"
           amo graph build
           amo graph export --format neo4j
           amo embeddings build

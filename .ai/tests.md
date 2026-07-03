@@ -5,6 +5,8 @@
 - ruff check .
 - pytest
 - amo scan
+- amo preflight --task "release readiness" --profile quick
+- amo handoff --task "release readiness" --summary "release validation"
 - amo graph build
 - amo graph export --format neo4j
 - amo embeddings build
@@ -21,7 +23,8 @@
 - tests/test_status.py
 - tests/test_graph_exports.py
 - tests/test_embeddings.py
+- tests/test_session_pack.py
 
 ## CI
 
-The repository includes a GitHub Actions workflow for linting and tests.
+The repository includes GitHub Actions workflows for linting, tests, and release checks.

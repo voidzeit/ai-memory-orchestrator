@@ -6,7 +6,7 @@ AMO is a Git-native memory layer for AI coding agents. It gives a repository can
 
 Every coding agent starts by guessing repository context. AMO lets the agent start with verified project memory instead.
 
-> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, Neo4j export, Obsidian export, and optional embeddings are evolving in public.
+> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, Neo4j export, Obsidian export, optional embeddings, and agent handoff workflows are evolving in public.
 
 ## Context rot
 
@@ -24,12 +24,24 @@ Verified context is intelligence.
 ```txt
 .ai/          = source of truth
 .ai/machine/  = derived indexes, graph, validation, optional embeddings
-.ai/packs/    = compiled context for agents
+.ai/packs/    = compiled context and handoff packs for agents
 .ai/runtime/  = disposable session/cache state
 AMO Web       = primary graph UI
 Neo4j         = optional graph analytics export
 Obsidian      = optional rich human graph view
 ```
+
+## Agent workflow
+
+```bash
+amo scan
+amo preflight --task "fix failing tests" --profile quick
+amo handoff --task "fix failing tests" --summary "current state and next step"
+amo postflight --task "fix failing tests" --summary "what changed"
+amo validate
+```
+
+Use `amo handoff` when a chat becomes long, noisy, repetitive, or loses the test plan. It writes a compact restart pack to `.ai/packs/handoff.md` so a new agent session can resume from repository memory instead of old chat history.
 
 ## Graph architecture
 
@@ -112,6 +124,7 @@ amo init
 amo scan
 amo context --task "..."
 amo preflight --task "..."
+amo handoff --task "..." --summary "..."
 amo postflight --task "..." --summary "..."
 amo validate
 amo status
@@ -150,12 +163,14 @@ Agent opens repo
   -> sees relevant files
   -> sees risks and tests
   -> expands only when needed
+  -> uses .ai/packs/handoff.md when the session degrades
 ```
 
 ## Docs
 
 - [Manifesto](docs/manifesto.md)
 - [Problem: context rot](docs/problem.md)
+- [Agent context discipline](docs/agent-context-discipline.md)
 - [Adoption guide](docs/adoption.md)
 - [Maturity model](docs/maturity-model.md)
 - [Schema contract](docs/schema-contract.md)
@@ -178,6 +193,8 @@ Agent opens repo
 ruff check .
 pytest
 amo scan
+amo preflight --task "release readiness" --profile quick
+amo handoff --task "release readiness" --summary "release validation"
 amo graph build
 amo graph export --format neo4j
 amo embeddings build

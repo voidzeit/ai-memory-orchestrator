@@ -1,12 +1,11 @@
 import json
 from pathlib import Path
 
+from amo.context.profiles import get_budget
 from amo.context.ranking import rank_units
 from amo.context.render import render_context_pack
 from amo.io import read_text_if_exists, write_text
 from amo.paths import ai_path, ensure_dirs
-
-PROFILE_BUDGETS = {"tiny": 1500, "quick": 3000, "debug": 10000, "architecture": 14000, "full": 24000}
 
 
 def build_context_pack(repo: Path, task: str, profile: str = "quick") -> Path:
@@ -25,7 +24,7 @@ def build_context_pack(repo: Path, task: str, profile: str = "quick") -> Path:
         "tasks": read_text_if_exists(ai_path(repo, "tasks.md")),
         "tests": read_text_if_exists(ai_path(repo, "tests.md")),
     }
-    budget = PROFILE_BUDGETS.get(profile, PROFILE_BUDGETS["quick"])
+    budget = get_budget(profile)
     selected = rank_units(units, task=task, budget=budget)
     content = render_context_pack(task=task, profile=profile, budget=budget, canonical=canonical, units=selected)
     output = ai_path(repo, "packs", f"{profile}.md")

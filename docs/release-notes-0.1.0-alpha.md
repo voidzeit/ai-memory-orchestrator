@@ -8,6 +8,7 @@ AMO 0.1.0-alpha is the first public foundation for a Git-native repository memor
 - CLI lifecycle commands
 - file scan and machine indexes
 - task-specific context packs
+- session handoff packs for long or degraded agent sessions
 - validation reports
 - graph schema and graph build
 - Neo4j export
@@ -32,6 +33,8 @@ AMO 0.1.0-alpha is the first public foundation for a Git-native repository memor
 ruff check .
 pytest
 amo scan
+amo preflight --task "release readiness" --profile quick
+amo handoff --task "release readiness" --summary "release validation"
 amo graph build
 amo graph export --format neo4j
 amo embeddings build
@@ -41,4 +44,4 @@ amo status
 
 ## Release intent
 
-This alpha is meant to establish the architecture, schema, and product direction before deeper integrations.
+This alpha establishes a repo-native context discipline: agents start from compiled context, restart from handoff packs when sessions degrade, and write durable knowledge back into reviewed `.ai/` memory.
