@@ -150,6 +150,9 @@ Agent opens repo
 
 - [Manifesto](docs/manifesto.md)
 - [Problem: context rot](docs/problem.md)
+- [Adoption guide](docs/adoption.md)
+- [Maturity model](docs/maturity-model.md)
+- [Schema contract](docs/schema-contract.md)
 - [Architecture](docs/architecture.md)
 - [Graph model](docs/graph-model.md)
 - [Neo4j export](docs/neo4j.md)
@@ -158,6 +161,7 @@ Agent opens repo
 - [Context engine](docs/context-engine.md)
 - [Benchmark plan](docs/benchmark.md)
 - [Comparison](docs/comparison.md)
+- [Release notes](docs/release-notes-0.1.0-alpha.md)
 - [Roadmap](docs/roadmap.md)
 
 ## Release readiness
