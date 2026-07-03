@@ -120,7 +120,6 @@ Agent opens repo
 - [Benchmark plan](docs/benchmark.md)
 - [Comparison](docs/comparison.md)
 - [Roadmap](docs/roadmap.md)
-- [Launch checklist](docs/launch.md)
 
 ## Release readiness
 
