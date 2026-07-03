@@ -8,21 +8,17 @@ def init_repo(repo: Path, template: str = "generic") -> str:
     repo = repo.resolve()
     ensure_dirs(repo)
 
-    template_root = Path(__file__).resolve().parents[2] / "templates" / template
-    if not template_root.exists():
-        template_root = Path(__file__).resolve().parents[2] / "templates" / "generic"
-    if not template_root.exists():
+    templates_root = Path(__file__).resolve().parents[2] / "templates"
+    generic_root = templates_root / "generic"
+    selected_root = templates_root / template
+
+    if not generic_root.exists():
         _write_embedded_default(repo)
     else:
-        for src in template_root.rglob("*"):
-            if src.is_dir():
-                continue
-            rel = src.relative_to(template_root)
-            dst = repo / rel
-            if dst.exists():
-                continue
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(src, dst)
+        _copy_template(generic_root, repo, overwrite=False)
+
+    if template != "generic" and selected_root.exists():
+        _copy_template(selected_root, repo, overwrite=True)
 
     gitignore = repo / ".gitignore"
     current = gitignore.read_text(encoding="utf-8") if gitignore.exists() else ""
@@ -30,9 +26,24 @@ def init_repo(repo: Path, template: str = "generic") -> str:
         gitignore.write_text(current.rstrip() + "\n.ai/runtime/\n", encoding="utf-8")
 
     if not (repo / ".amo.yaml").exists():
-        (repo / ".amo.yaml").write_text("version: 0.1\nmemory:\n  source_of_truth: .ai\n", encoding="utf-8")
+        (repo / ".amo.yaml").write_text(
+            "version: 0.1\nmemory:\n  source_of_truth: .ai\n",
+            encoding="utf-8",
+        )
 
     return str(repo / ".ai")
+
+
+def _copy_template(template_root: Path, repo: Path, overwrite: bool) -> None:
+    for src in template_root.rglob("*"):
+        if src.is_dir():
+            continue
+        rel = src.relative_to(template_root)
+        dst = repo / rel
+        if dst.exists() and not overwrite:
+            continue
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src, dst)
 
 
 def _write_embedded_default(repo: Path) -> None:
