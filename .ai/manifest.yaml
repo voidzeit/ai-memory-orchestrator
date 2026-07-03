@@ -1,0 +1,39 @@
+project:
+  name: ai-memory-orchestrator
+  description: Git-native memory compiler and context optimizer for AI coding agents.
+  type: python-cli
+  status: bootstrap
+commands:
+  install:
+    - pip install -e .[dev]
+  test:
+    - pytest
+  lint:
+    - ruff check .
+  run:
+    - amo --help
+source_of_truth:
+  memory_root: .ai
+  canonical:
+    - .ai/manifest.yaml
+    - .ai/state.md
+    - .ai/decisions.md
+    - .ai/tasks.md
+    - .ai/tests.md
+    - .ai/graph.md
+important_paths:
+  source:
+    - amo/
+  tests:
+    - tests/
+  docs:
+    - docs/
+  templates:
+    - templates/
+derived_paths:
+  machine:
+    - .ai/machine/
+  packs:
+    - .ai/packs/
+runtime_paths:
+  - .ai/runtime/

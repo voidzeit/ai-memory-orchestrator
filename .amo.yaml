@@ -1,0 +1,67 @@
+version: 0.1
+
+project:
+  name: ai-memory-orchestrator
+  type: python-cli
+  language: [python]
+  package_manager: pip
+  test_runner: pytest
+
+memory:
+  source_of_truth: .ai
+  canonical_files:
+    - .ai/manifest.yaml
+    - .ai/state.md
+    - .ai/decisions.md
+    - .ai/tasks.md
+    - .ai/tests.md
+    - .ai/graph.md
+
+runtime:
+  path: .ai/runtime
+  gitignored: true
+
+indexes:
+  path: .ai/machine
+  versioned: true
+  scan_excludes:
+    - .git
+    - node_modules
+    - dist
+    - build
+    - .venv
+    - __pycache__
+    - .pytest_cache
+    - .ai/runtime
+
+context:
+  default_profile: quick
+  no_full_files_by_default: true
+  require_expansion_pointers: true
+  budgets:
+    tiny: { max_tokens: 1500 }
+    quick: { max_tokens: 3000 }
+    debug: { max_tokens: 10000 }
+    architecture: { max_tokens: 14000 }
+    full: { max_tokens: 24000 }
+
+server:
+  host: 127.0.0.1
+  port: 8787
+  mode: read-only
+  allow_lan: false
+  auth:
+    enabled: true
+    token_env: AMO_SERVER_TOKEN
+
+obsidian:
+  enabled: false
+  mode: export-only
+  path: .obsidian/project-memory
+
+validators:
+  drift: { enabled: true }
+  artifact_hygiene: { enabled: true }
+  broken_references: { enabled: true }
+  stale_context: { enabled: true }
+  unsafe_instructions: { enabled: true }

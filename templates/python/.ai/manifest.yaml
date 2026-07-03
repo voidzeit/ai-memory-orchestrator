@@ -1,0 +1,11 @@
+project:
+  name: python-project
+  type: python
+  status: active
+commands:
+  install:
+    - pip install -e .[dev]
+  test:
+    - pytest
+  lint:
+    - ruff check .
