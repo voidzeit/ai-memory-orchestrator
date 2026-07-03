@@ -6,7 +6,16 @@ from amo.index.files import build_file_index
 from amo.io import write_json
 from amo.paths import ai_path, ensure_dirs
 
-DEFAULT_EXCLUDES = {".git", "node_modules", "dist", "build", ".venv", "__pycache__", ".pytest_cache", "runtime"}
+DEFAULT_EXCLUDES = {
+    ".git",
+    "node_modules",
+    "dist",
+    "build",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ai/runtime",
+}
 
 
 def scan_repo(repo: Path) -> dict[str, int]:
