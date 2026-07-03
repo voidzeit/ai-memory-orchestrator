@@ -11,6 +11,7 @@ from amo.adapters.cursor import export_cursor_rules
 from amo.adapters.opencode import export_opencode_instructions
 from amo.core.context import build_context_pack
 from amo.core.graph import build_graph, export_graph
+from amo.core.handoff import build_handoff
 from amo.core.init import init_repo
 from amo.core.postflight import apply_postflight
 from amo.core.scan import scan_repo
@@ -70,9 +71,20 @@ def preflight(
     profile: str = typer.Option("quick", "--profile", "-p"),
     repo: Path = Path("."),
 ) -> None:
-    """Alias for context generation before an AI coding session."""
+    """Generate context before an AI coding session."""
     pack = build_context_pack(repo=repo, task=task, profile=profile)
     console.print(f"[green]Preflight context generated[/green]: {pack}")
+
+
+@app.command()
+def handoff(
+    task: str = typer.Option(..., "--task", "-t"),
+    summary: str = typer.Option("", "--summary", "-s"),
+    repo: Path = Path("."),
+) -> None:
+    """Create a compact restart pack for long or degraded agent sessions."""
+    path = build_handoff(repo=repo, task=task, summary=summary)
+    console.print(f"[green]Session handoff generated[/green]: {path}")
 
 
 @app.command()
