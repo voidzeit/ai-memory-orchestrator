@@ -2,11 +2,11 @@
 
 **The cure for context rot in AI coding agents.**
 
-AMO is a Git-native memory layer for AI coding agents. It gives a repository canonical memory, machine indexes, a project graph, validators, and task-specific context packs.
+AMO is a Git-native memory layer for AI coding agents. It gives a repository canonical memory, machine indexes, a project graph, validators, task-specific context packs, optional embeddings, and exports for agent tools.
 
 Every coding agent starts by guessing repository context. AMO lets the agent start with verified project memory instead.
 
-> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, and advanced adapters are evolving in public.
+> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, Neo4j export, Obsidian export, and optional embeddings are evolving in public.
 
 ## Context rot
 
@@ -23,12 +23,31 @@ Verified context is intelligence.
 
 ```txt
 .ai/          = source of truth
-.ai/machine/  = derived indexes
+.ai/machine/  = derived indexes, graph, validation, optional embeddings
 .ai/packs/    = compiled context for agents
 .ai/runtime/  = disposable session/cache state
 AMO Web       = primary graph UI
-Obsidian      = optional human graph adapter
+Neo4j         = optional graph analytics export
+Obsidian      = optional rich human graph view
 ```
+
+## Graph architecture
+
+AMO's graph is portable JSON first:
+
+```txt
+.ai/machine/graph.json
+```
+
+From that graph, AMO can export:
+
+```bash
+amo graph export --format json
+amo graph export --format neo4j
+amo graph export --format obsidian
+```
+
+Neo4j is useful for advanced graph analytics. Obsidian is useful for human navigation. Neither replaces `.ai/` as source of truth.
 
 ## Try it in 60 seconds
 
@@ -36,6 +55,7 @@ Obsidian      = optional human graph adapter
 amo init
 amo scan
 amo preflight --task "fix failing tests"
+amo graph build
 amo validate
 ```
 
@@ -49,9 +69,21 @@ AMO creates a repository memory scaffold and a task-focused context pack:
 .ai/tests.md
 .ai/graph.md
 .ai/machine/context_units.json
+.ai/machine/graph.json
 .ai/packs/quick.md
 AGENTS.md
 ```
+
+## Optional embeddings
+
+AMO can build a local deterministic embedding index without external APIs:
+
+```bash
+amo embeddings build
+amo embeddings search "auth tests"
+```
+
+Embeddings are derived artifacts. They improve search and ranking but never replace canonical memory.
 
 ## Install from source
 
@@ -78,6 +110,9 @@ amo postflight --task "..." --summary "..."
 amo validate
 amo status
 amo graph build
+amo graph export --format neo4j
+amo embeddings build
+amo embeddings search "..."
 amo server --host 127.0.0.1 --port 8787
 amo export --target agents
 amo export --target claude
@@ -116,6 +151,10 @@ Agent opens repo
 - [Manifesto](docs/manifesto.md)
 - [Problem: context rot](docs/problem.md)
 - [Architecture](docs/architecture.md)
+- [Graph model](docs/graph-model.md)
+- [Neo4j export](docs/neo4j.md)
+- [AMO and Obsidian](docs/obsidian-vs-amo.md)
+- [Embeddings strategy](docs/embeddings.md)
 - [Context engine](docs/context-engine.md)
 - [Benchmark plan](docs/benchmark.md)
 - [Comparison](docs/comparison.md)
@@ -128,6 +167,8 @@ ruff check .
 pytest
 amo scan
 amo graph build
+amo graph export --format neo4j
+amo embeddings build
 amo validate --strict
 amo status
 ```
