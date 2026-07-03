@@ -11,12 +11,12 @@ from amo.io import read_text_if_exists, write_text
 from amo.paths import ai_path, ensure_dirs
 
 
-def build_context_pack(repo: Path, task: str, profile: str = "quick") -> Path:
+def build_context_pack(repo: Path, task: str, profile: str = "") -> Path:
     repo = repo.resolve()
     ensure_dirs(repo)
     config = load_config(repo)
 
-    if profile == "quick":
+    if not profile:
         profile = get_config_value(config, "context.default_profile", "quick")
 
     units_path = ai_path(repo, "machine", "context_units.json")
