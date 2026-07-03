@@ -62,3 +62,16 @@ Status: accepted
 Date: 2026-07-03
 
 Embeddings improve search and ranking, but they are derived artifacts and never replace canonical memory.
+
+## DEC-0007 — Long chats should compact into handoff packs
+
+Status: accepted  
+Date: 2026-07-03
+
+AMO treats chat history as volatile runtime context, not project truth. Long or degraded agent sessions should produce `.ai/packs/handoff.md` and restart from repository memory.
+
+Consequences:
+
+- `amo handoff` is part of the release workflow.
+- Context packs include degradation signals.
+- Agents should prefer handoff packs over old chat transcripts.
