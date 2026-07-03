@@ -13,22 +13,25 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 - Runtime/cache lives in `.ai/runtime/` and is gitignored.
 - AMO Web is the primary graph viewer.
 - Obsidian is an optional adapter.
+- The repository is being hardened for public `0.1.0-alpha` release.
 
-## Implemented in bootstrap
+## Implemented
 
 - CLI scaffold.
-- Init, scan, context, postflight, validate, graph, server commands.
-- Generic templates.
+- Init, scan, context, preflight, postflight, validate, status, graph, server, export, and Obsidian sync commands.
+- Generic templates with specialized Python/Node overlays.
 - Basic validators.
-- AGENTS.md adapter.
-- Obsidian adapter.
+- AGENTS.md, Claude, Cursor, Cline, and OpenCode adapter exports.
+- Obsidian export adapter.
 - FastAPI server scaffold.
 - GitHub Actions CI.
 - OpenCode workflow scaffold.
+- Release docs: README, changelog, contributing guide, security policy, and roadmap.
 
 ## Known gaps
 
 - Interactive web graph UI is still minimal.
 - Context ranking is heuristic.
 - Graph edges are basic.
-- Adapter implementations beyond AGENTS.md and Obsidian are placeholders/future work.
+- MCP integration is documented but not implemented.
+- Repository visibility must still be changed in GitHub settings if public release is desired.
