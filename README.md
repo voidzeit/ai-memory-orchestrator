@@ -1,29 +1,25 @@
 # AI Memory Orchestrator
 
-**Durable repo memory. Minimal tokens. Maximum context signal.**
+**The cure for context rot in AI coding agents.**
 
-AI Memory Orchestrator, or **AMO**, is a Git-native memory compiler for AI coding agents. It gives any repository a durable, validated, agent-readable memory layer.
+AMO is a Git-native memory layer for AI coding agents. It gives a repository canonical memory, machine indexes, a project graph, validators, and task-specific context packs.
 
-AMO creates a canonical `.ai/` memory system, generates token-optimized context packs, builds machine indexes and project graphs, validates drift and artifact hygiene, serves a local web graph viewer, and optionally syncs to Obsidian.
+Every coding agent starts by guessing repository context. AMO lets the agent start with verified project memory instead.
 
-> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable; graph intelligence and advanced adapters are still evolving.
+> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, and advanced adapters are evolving in public.
 
-## Why AMO?
+## Context rot
 
-AI coding agents read too much, forget fast, duplicate context, and often cannot tell what is actually true inside a repository.
+**Context rot** is stale, duplicated, incomplete, or contradictory repository knowledge that causes AI coding agents to choose the wrong files, miss decisions, waste tokens, or repeat past mistakes.
 
-AMO fixes that with:
+AMO exists because bigger context windows are not enough.
 
-- canonical repo memory in `.ai/`
-- compact machine indexes in `.ai/machine/`
-- task-specific context packs in `.ai/packs/`
-- preflight/postflight lifecycle
-- drift and artifact hygiene validation
-- local web graph viewer
-- optional Obsidian sync
-- adapters for `AGENTS.md`, Claude Code, Cursor, Cline, Codex, and OpenCode
+```txt
+More context is not intelligence.
+Verified context is intelligence.
+```
 
-## Core idea
+## What AMO creates
 
 ```txt
 .ai/          = source of truth
@@ -34,9 +30,30 @@ AMO Web       = primary graph UI
 Obsidian      = optional human graph adapter
 ```
 
-## Install
+## Try it in 60 seconds
 
-From source:
+```bash
+amo init
+amo scan
+amo preflight --task "fix failing tests"
+amo validate
+```
+
+AMO creates a repository memory scaffold and a task-focused context pack:
+
+```txt
+.ai/manifest.yaml
+.ai/state.md
+.ai/decisions.md
+.ai/tasks.md
+.ai/tests.md
+.ai/graph.md
+.ai/machine/context_units.json
+.ai/packs/quick.md
+AGENTS.md
+```
+
+## Install from source
 
 ```bash
 git clone https://github.com/voidzeit/ai-memory-orchestrator.git
@@ -48,30 +65,6 @@ Future package install:
 
 ```bash
 pip install ai-memory-orchestrator
-```
-
-## Quickstart
-
-```bash
-cd your-repo
-amo init
-amo scan
-amo preflight --task "fix failing tests"
-amo validate
-```
-
-Serve the local graph viewer:
-
-```bash
-amo graph build
-amo server --host 127.0.0.1 --port 8787
-```
-
-LAN access requires a token:
-
-```bash
-export AMO_SERVER_TOKEN="change-me"
-amo server --host 0.0.0.0 --port 8787 --token
 ```
 
 ## Main commands
@@ -94,27 +87,41 @@ amo export --target opencode
 amo obsidian sync
 ```
 
-## Context compiler
+## Why this matters
 
-AMO does not feed the whole repo to an agent. It compiles the smallest sufficient context for the task:
+Before AMO:
 
 ```txt
-repo + .ai memory + task
-        ↓
-context units
-        ↓
-ranking utility/token
-        ↓
-compression
-        ↓
-expansion map
-        ↓
-context pack
+Agent opens repo
+  -> scans random files
+  -> misses decisions
+  -> reads stale docs
+  -> burns tokens
+  -> edits the wrong module
 ```
 
-## Release readiness
+After AMO:
 
-Before publishing a release:
+```txt
+Agent opens repo
+  -> reads .ai/packs/quick.md
+  -> sees current truth
+  -> sees relevant files
+  -> sees risks and tests
+  -> expands only when needed
+```
+
+## Docs
+
+- [Manifesto](docs/manifesto.md)
+- [Problem: context rot](docs/problem.md)
+- [Architecture](docs/architecture.md)
+- [Context engine](docs/context-engine.md)
+- [Benchmark plan](docs/benchmark.md)
+- [Comparison](docs/comparison.md)
+- [Roadmap](docs/roadmap.md)
+
+## Release readiness
 
 ```bash
 ruff check .
