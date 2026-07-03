@@ -1,0 +1,11 @@
+project:
+  name: node-project
+  type: node
+  status: active
+commands:
+  install:
+    - npm install
+  test:
+    - npm test
+  run:
+    - npm run dev
