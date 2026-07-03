@@ -6,6 +6,8 @@
 - pytest
 - amo scan
 - amo graph build
+- amo graph export --format neo4j
+- amo embeddings build
 - amo validate --strict
 - amo status
 
@@ -17,6 +19,8 @@
 - tests/test_validate.py
 - tests/test_adapters.py
 - tests/test_status.py
+- tests/test_graph_exports.py
+- tests/test_embeddings.py
 
 ## CI
 
