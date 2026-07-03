@@ -39,6 +39,12 @@ AMO's graph is portable JSON first:
 .ai/machine/graph.json
 ```
 
+The graph is validated by:
+
+```txt
+schemas/amo-graph.schema.json
+```
+
 From that graph, AMO can export:
 
 ```bash
@@ -47,7 +53,7 @@ amo graph export --format neo4j
 amo graph export --format obsidian
 ```
 
-Neo4j is useful for advanced graph analytics. Obsidian is useful for human navigation. Neither replaces `.ai/` as source of truth.
+Neo4j is useful for advanced graph analytics. Obsidian is useful for human navigation through notes, properties, tags, aliases, and wikilinks. Neither replaces `.ai/` as source of truth.
 
 ## Try it in 60 seconds
 
@@ -155,6 +161,8 @@ Agent opens repo
 - [Schema contract](docs/schema-contract.md)
 - [Architecture](docs/architecture.md)
 - [Graph model](docs/graph-model.md)
+- [Graph interoperability](docs/graph-interoperability.md)
+- [Obsidian graph export](docs/obsidian-graph-export.md)
 - [Neo4j export](docs/neo4j.md)
 - [AMO and Obsidian](docs/obsidian-vs-amo.md)
 - [Embeddings strategy](docs/embeddings.md)
