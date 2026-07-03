@@ -1,4 +1,4 @@
-version: 0.1
+version: 1
 
 project:
   name: ai-memory-orchestrator
@@ -24,35 +24,29 @@ runtime:
 indexes:
   path: .ai/machine
   versioned: true
-  scan_excludes:
-    - .git
-    - node_modules
-    - dist
-    - build
-    - .venv
-    - __pycache__
-    - .pytest_cache
-    - .ai/runtime
 
 context:
   default_profile: quick
-  no_full_files_by_default: true
-  require_expansion_pointers: true
-  budgets:
-    tiny: { max_tokens: 1500 }
+  profiles:
+    micro: { max_tokens: 1200 }
     quick: { max_tokens: 3000 }
-    debug: { max_tokens: 10000 }
-    architecture: { max_tokens: 14000 }
-    full: { max_tokens: 24000 }
+    debug: { max_tokens: 8000 }
+    architecture: { max_tokens: 12000 }
+    handoff: { max_tokens: 2500 }
+    full: { max_tokens: 20000 }
+
+scan:
+  excludes:
+    - .git
+    - .venv
+    - node_modules
+    - dist
+    - build
+    - .ai/runtime
 
 server:
   host: 127.0.0.1
   port: 8787
-  mode: read-only
-  allow_lan: false
-  auth:
-    enabled: true
-    token_env: AMO_SERVER_TOKEN
 
 obsidian:
   enabled: false

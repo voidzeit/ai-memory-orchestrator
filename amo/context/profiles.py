@@ -1,4 +1,8 @@
-CONTEXT_PROFILES = {
+from __future__ import annotations
+
+from typing import Any
+
+CONTEXT_PROFILES: dict[str, dict[str, Any]] = {
     "micro": {
         "max_tokens": 1200,
         "purpose": "Small clarification or focused edit.",
@@ -52,9 +56,22 @@ PRIORITY_ORDER = [
 ]
 
 
-def get_profile(name: str) -> dict[str, object]:
-    return CONTEXT_PROFILES.get(name, CONTEXT_PROFILES["quick"])
+def get_context_profiles(config: dict[str, Any] | None = None) -> dict[str, dict[str, Any]]:
+    profiles = {name: dict(profile) for name, profile in CONTEXT_PROFILES.items()}
+    if config:
+        configured = config.get("context", {}).get("profiles", {})
+        for name, overrides in configured.items():
+            if name in profiles:
+                profiles[name].update(overrides)
+            elif isinstance(overrides, dict) and "max_tokens" in overrides:
+                profiles[name] = dict(overrides)
+    return profiles
 
 
-def get_budget(name: str) -> int:
-    return int(get_profile(name)["max_tokens"])
+def get_profile(name: str, config: dict[str, Any] | None = None) -> dict[str, Any]:
+    profiles = get_context_profiles(config)
+    return profiles.get(name, profiles["quick"])
+
+
+def get_budget(name: str, config: dict[str, Any] | None = None) -> int:
+    return int(get_profile(name, config=config)["max_tokens"])

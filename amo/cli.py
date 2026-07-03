@@ -9,6 +9,7 @@ from amo.adapters.claude import export_claude_md
 from amo.adapters.cline import export_cline_memory_bank
 from amo.adapters.cursor import export_cursor_rules
 from amo.adapters.opencode import export_opencode_instructions
+from amo.config import get_config_value, load_config
 from amo.core.context import build_context_pack
 from amo.core.graph import build_graph, export_graph
 from amo.core.handoff import build_handoff
@@ -122,12 +123,17 @@ def status(repo: Path = Path(".")) -> None:
 
 @app.command()
 def server(
-    host: str = "127.0.0.1",
-    port: int = 8787,
+    host: Optional[str] = typer.Option(None, "--host"),
+    port: Optional[int] = typer.Option(None, "--port"),
     token: bool = False,
     repo: Path = Path("."),
 ) -> None:
     """Serve the local AMO web graph UI."""
+    config = load_config(repo)
+    if host is None:
+        host = get_config_value(config, "server.host", "127.0.0.1")
+    if port is None:
+        port = get_config_value(config, "server.port", 8787)
     if host in LAN_HOSTS and not token:
         raise typer.BadParameter("LAN access requires --token. Set AMO_SERVER_TOKEN first.")
     serve(repo=repo, host=host, port=port, require_token=token)
