@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -36,26 +37,26 @@ DEFAULT_CONFIG: dict[str, Any] = {
 
 
 def deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
-    result = base.copy()
+    result = deepcopy(base)
     for key, value in override.items():
         if key in result and isinstance(result[key], dict) and isinstance(value, dict):
             result[key] = deep_merge(result[key], value)
         else:
-            result[key] = value
+            result[key] = deepcopy(value)
     return result
 
 
 def load_config(repo: Path) -> dict[str, Any]:
     config_path = repo / ".amo.yaml"
     if not config_path.exists():
-        return DEFAULT_CONFIG.copy()
+        return deepcopy(DEFAULT_CONFIG)
     try:
         with config_path.open("r", encoding="utf-8") as file:
             user_config = yaml.safe_load(file)
     except yaml.YAMLError as exc:
         raise ValueError(f"Invalid YAML in {config_path}: {exc}") from exc
     if not isinstance(user_config, dict):
-        return DEFAULT_CONFIG.copy()
+        return deepcopy(DEFAULT_CONFIG)
     return deep_merge(DEFAULT_CONFIG, user_config)
 
 
