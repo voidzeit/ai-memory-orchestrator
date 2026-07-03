@@ -50,6 +50,7 @@ packages = ["amo"]
 [tool.hatch.build.targets.wheel.force-include]
 "templates" = "templates"
 "docs" = "docs"
+"schemas" = "schemas"
 
 [tool.ruff]
 line-length = 100
