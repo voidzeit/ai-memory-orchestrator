@@ -166,11 +166,23 @@ Agent opens repo
   -> uses .ai/packs/handoff.md when the session degrades
 ```
 
+## 10/10 release path
+
+AMO tracks release confidence with a dedicated scorecard:
+
+```txt
+docs/10-10-scorecard.md
+```
+
+A 10/10 release must be understandable in 30 seconds, installable in 60 seconds, validated in CI, measurable by benchmark, safe enough for teams, useful with real agents, and portable across graph systems.
+
 ## Docs
 
 - [Manifesto](docs/manifesto.md)
 - [Problem: context rot](docs/problem.md)
 - [Agent context discipline](docs/agent-context-discipline.md)
+- [10/10 scorecard](docs/10-10-scorecard.md)
+- [Release hardening](docs/release-hardening.md)
 - [Adoption guide](docs/adoption.md)
 - [Maturity model](docs/maturity-model.md)
 - [Schema contract](docs/schema-contract.md)
