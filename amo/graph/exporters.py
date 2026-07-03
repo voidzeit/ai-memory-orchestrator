@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from amo.graph.obsidian_rich import export_rich_obsidian_graph
 from amo.graph.schema import ProjectGraph, normalize_for_cypher
 from amo.io import write_text
 
@@ -43,29 +44,4 @@ def export_graph_cypher(graph: ProjectGraph, output: Path) -> Path:
 
 
 def export_obsidian_graph_notes(graph: ProjectGraph, output_dir: Path) -> Path:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    index_lines = ["# AMO Graph", "", "Generated from `.ai/machine/graph.json`.", ""]
-    for node in graph["nodes"]:
-        safe_name = node["id"].replace(":", "-").replace("/", "-")
-        note = output_dir / f"{safe_name}.md"
-        backlinks = [edge for edge in graph["edges"] if edge["source"] == node["id"] or edge["target"] == node["id"]]
-        body = [
-            "---",
-            f"amo_id: {node['id']}",
-            f"amo_type: {node['type']}",
-            "---",
-            "",
-            f"# {node.get('label', node['id'])}",
-            "",
-            f"Type: `{node['type']}`",
-            f"Path: `{node.get('path', '')}`",
-            "",
-            "## Relationships",
-            "",
-        ]
-        for edge in backlinks:
-            body.append(f"- `{edge['source']}` -[{edge['type']}]-> `{edge['target']}`")
-        note.write_text("\n".join(body) + "\n", encoding="utf-8")
-        index_lines.append(f"- [[{safe_name}]]")
-    (output_dir / "index.md").write_text("\n".join(index_lines) + "\n", encoding="utf-8")
-    return output_dir
+    return export_rich_obsidian_graph(graph, output_dir)
