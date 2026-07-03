@@ -41,3 +41,24 @@ Consequences:
 - CHANGELOG documents known limitations.
 - Security and contribution docs are included before public visibility.
 - Advanced graph UI and MCP remain roadmap items.
+
+## DEC-0005 — Graph JSON is canonical; Neo4j and Obsidian are exports
+
+Status: accepted  
+Date: 2026-07-03
+
+AMO stores the portable graph contract in `.ai/machine/graph.json`.
+
+Consequences:
+
+- Neo4j is an optional analytics export.
+- Obsidian is an optional rich human view.
+- AMO Web reads the same graph JSON.
+- `.ai/` remains the source of truth.
+
+## DEC-0006 — Embeddings are optional derived intelligence
+
+Status: accepted  
+Date: 2026-07-03
+
+Embeddings improve search and ranking, but they are derived artifacts and never replace canonical memory.
