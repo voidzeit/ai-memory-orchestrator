@@ -10,19 +10,22 @@ from amo.adapters.cline import export_cline_memory_bank
 from amo.adapters.cursor import export_cursor_rules
 from amo.adapters.opencode import export_opencode_instructions
 from amo.core.context import build_context_pack
-from amo.core.graph import build_graph
+from amo.core.graph import build_graph, export_graph
 from amo.core.init import init_repo
 from amo.core.postflight import apply_postflight
 from amo.core.scan import scan_repo
 from amo.core.server import serve
 from amo.core.status import get_status
 from amo.core.validate import validate_repo
+from amo.embeddings.index import build_embedding_index, search_embedding_index
 
 app = typer.Typer(help="AI Memory Orchestrator CLI")
 graph_app = typer.Typer(help="Graph commands")
 obsidian_app = typer.Typer(help="Obsidian adapter commands")
+embeddings_app = typer.Typer(help="Embedding index commands")
 app.add_typer(graph_app, name="graph")
 app.add_typer(obsidian_app, name="obsidian")
+app.add_typer(embeddings_app, name="embeddings")
 console = Console()
 
 EXPORTERS: dict[str, Callable[[Path], Path]] = {
@@ -133,6 +136,36 @@ def graph_build(repo: Path = Path(".")) -> None:
     """Build project graph indexes."""
     result = build_graph(repo)
     console.print(f"[green]Graph built[/green]: {result}")
+
+
+@graph_app.command("export")
+def graph_export(
+    export_format: str = typer.Option("json", "--format", "-f"),
+    output: Optional[Path] = typer.Option(None, "--output", "-o"),
+    repo: Path = Path("."),
+) -> None:
+    """Export the AMO graph as json, neo4j, or obsidian notes."""
+    result = export_graph(repo=repo, export_format=export_format, output=output)
+    console.print(f"[green]Graph exported[/green]: {result}")
+
+
+@embeddings_app.command("build")
+def embeddings_build(repo: Path = Path("."), dimensions: int = 128) -> None:
+    """Build optional local embedding index from context units."""
+    result = build_embedding_index(repo=repo, dimensions=dimensions)
+    console.print(f"[green]Embedding index built[/green]: {result}")
+
+
+@embeddings_app.command("search")
+def embeddings_search(
+    query: str = typer.Argument(...),
+    repo: Path = Path("."),
+    top_k: int = typer.Option(5, "--top-k", "-k"),
+) -> None:
+    """Search optional local embedding index."""
+    results = search_embedding_index(repo=repo, query=query, top_k=top_k)
+    for item in results:
+        console.print(f"{item['score']:.3f}  {item['title']}  -> {item['expand']}")
 
 
 @obsidian_app.command("sync")
