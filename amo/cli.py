@@ -58,7 +58,7 @@ def scan(repo: Path = Path(".")) -> None:
 @app.command()
 def context(
     task: str = typer.Option(..., "--task", "-t", help="Task to compile context for."),
-    profile: str = typer.Option("quick", "--profile", "-p"),
+    profile: str = typer.Option("", "--profile", "-p"),
     repo: Path = Path("."),
 ) -> None:
     """Compile token-optimized context for a task."""
@@ -69,7 +69,7 @@ def context(
 @app.command()
 def preflight(
     task: str = typer.Option(..., "--task", "-t", help="Task to prepare context for."),
-    profile: str = typer.Option("quick", "--profile", "-p"),
+    profile: str = typer.Option("", "--profile", "-p"),
     repo: Path = Path("."),
 ) -> None:
     """Generate context before an AI coding session."""
