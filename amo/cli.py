@@ -91,6 +91,8 @@ def validate(repo: Path = Path("."), strict: bool = False) -> None:
     console.print(f"[{color}]AMO status: {result['status']}[/{color}]")
     for warning in result["warnings"]:
         console.print(f"[yellow]- {warning}[/yellow]")
+    if result["status"] == "red":
+        raise typer.Exit(code=1)
 
 
 @app.command()
