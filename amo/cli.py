@@ -10,7 +10,7 @@ from amo.adapters.cline import export_cline_memory_bank
 from amo.adapters.cursor import export_cursor_rules
 from amo.adapters.opencode import export_opencode_instructions
 from amo.core.context import build_context_pack
-from amo.core.graph import build_graph
+from amo.core.graph import build_graph, export_graph
 from amo.core.init import init_repo
 from amo.core.postflight import apply_postflight
 from amo.core.scan import scan_repo
@@ -133,6 +133,17 @@ def graph_build(repo: Path = Path(".")) -> None:
     """Build project graph indexes."""
     result = build_graph(repo)
     console.print(f"[green]Graph built[/green]: {result}")
+
+
+@graph_app.command("export")
+def graph_export(
+    export_format: str = typer.Option("json", "--format", "-f"),
+    output: Optional[Path] = typer.Option(None, "--output", "-o"),
+    repo: Path = Path("."),
+) -> None:
+    """Export the AMO graph as json, neo4j, or obsidian notes."""
+    result = export_graph(repo=repo, export_format=export_format, output=output)
+    console.print(f"[green]Graph exported[/green]: {result}")
 
 
 @obsidian_app.command("sync")
