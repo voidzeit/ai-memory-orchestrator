@@ -43,6 +43,7 @@ class GraphNode(TypedDict, total=False):
     path: str
     source: str
     authority: float
+    level: str
     metadata: dict[str, object]
 
 
