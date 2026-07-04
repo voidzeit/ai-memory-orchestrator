@@ -11,6 +11,8 @@ from amo.adapters.cursor import export_cursor_rules
 from amo.adapters.opencode import export_opencode_instructions
 from amo.config import get_config_value, load_config
 from amo.core.context import build_context_pack
+from amo.core.benchmark import run_benchmark
+from amo.core.evolve import evolve_safe
 from amo.core.graph import build_graph, export_graph
 from amo.core.handoff import build_handoff
 from amo.core.init import init_repo
@@ -149,6 +151,23 @@ def export(target: str = "agents", repo: Path = Path(".")) -> None:
     console.print(f"[green]Exported {target}[/green]: {path}")
 
 
+@app.command()
+def benchmark(
+    fixture: Path = typer.Argument(...),
+    task: str = typer.Option(..., "--task", "-t"),
+) -> None:
+    """Measure deterministic context-pack efficiency for a repository fixture."""
+    result = run_benchmark(fixture, task)
+    console.print(f"[green]Benchmark complete[/green]: {result}")
+
+
+@app.command()
+def evolve(repo: Path = Path(".")) -> None:
+    """Record a deterministic, no-LLM memory-quality evolution cycle."""
+    result = evolve_safe(repo)
+    console.print(f"[green]Safe evolution cycle complete[/green]: {result}")
+
+
 @graph_app.command("build")
 def graph_build(repo: Path = Path(".")) -> None:
     """Build project graph indexes."""
@@ -162,7 +181,7 @@ def graph_export(
     output: Optional[Path] = typer.Option(None, "--output", "-o"),
     repo: Path = Path("."),
 ) -> None:
-    """Export the AMO graph as json, neo4j, or obsidian notes."""
+    """Export the graph as json, jsonld, graphml, gexf, neo4j, or obsidian notes."""
     result = export_graph(repo=repo, export_format=export_format, output=output)
     console.print(f"[green]Graph exported[/green]: {result}")
 

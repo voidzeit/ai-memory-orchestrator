@@ -1,5 +1,7 @@
 # Industry Graph Foundation
 
+See [Graph interoperability](graph-interoperability.md) for JSON-LD, GraphML, and GEXF export guidance.
+
 AMO must scale as a repository memory graph, not as a loose set of markdown summaries.
 
 The industrial target is a graph contract that is hierarchical, portable, queryable, explainable, and safe for teams.

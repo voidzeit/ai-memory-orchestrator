@@ -1,5 +1,16 @@
 # AMO Graph Ontology
 
+## Builder levels
+
+- L0: repository, directory, and file topology
+- L1: canonical memory and context packs
+- L2: modules, symbols, imports, and code dependencies
+- L3: tests, validators, risks, staleness, and conflicts
+- L4: workflows, adapters, and operational artifacts
+- L5: embeddings, benchmark evidence, and evolution cycles
+
+The current builder emits level metadata for implemented node classes. Consumers must tolerate nodes without `level` for backward compatibility.
+
 This document defines the semantic contract for AMO graph nodes and edges.
 
 ## Design goals
