@@ -1,0 +1,8 @@
+{
+  "cycle": 1,
+  "mode": "safe",
+  "llm": false,
+  "auto_fix": false,
+  "background_work": false,
+  "findings": []
+}

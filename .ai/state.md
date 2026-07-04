@@ -33,3 +33,8 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 - Context ranking is heuristic.
 - MCP integration is documented but not implemented.
 - Repository visibility must still be changed in GitHub settings if public release is desired.
+## Postflight — 2026-07-04T04:54:53.734060+00:00
+
+Task: make AMO the repo-native memory and graph operating layer
+
+Summary: Stabilized runtime validation and config, integrated foundation branches, added graph contract validation and levels, Python structure extraction, standard exports, collision-safe Obsidian notes, full agent profiles, deterministic benchmark, and safe evolve.

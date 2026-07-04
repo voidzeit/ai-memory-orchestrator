@@ -49,10 +49,10 @@ Expected context:
 - known risk
 ```
 
-## Future automation
+## Automation
 
 ```bash
-amo benchmark examples/messy-repo --task "fix failing auth tests"
+amo benchmark examples/agent-debug-session --task "fix failing tests"
 ```
 
-Public alpha includes the benchmark plan. Automation comes later.
+The command writes deterministic metrics to `.ai/machine/benchmark.json`. Precision, recall, test-command accuracy, and handoff quality are explicitly marked unscored when a fixture has no ground-truth annotations; AMO does not invent evidence.

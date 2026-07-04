@@ -1,29 +1,697 @@
 # Graph
 
-## Core flow
+Schema version: `0.2`
 
-init -> scan -> context -> agent work -> postflight -> validate -> graph/server/sync
+## Nodes
 
-## Canonical memory
+- `repository` — ai-memory-orchestrator (`repo:ai-memory-orchestrator`)
+- `memory` — .ai/manifest.yaml (`memory:manifest`)
+- `memory` — .ai/state.md (`memory:state`)
+- `memory` — .ai/decisions.md (`memory:decisions`)
+- `memory` — .ai/tasks.md (`memory:tasks`)
+- `memory` — .ai/tests.md (`memory:tests`)
+- `memory` — .ai/graph.md (`memory:graph`)
+- `file` — .ai/decisions.md (`file:.ai/decisions.md`)
+- `directory` — .ai (`dir:.ai`)
+- `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
+- `directory` — .ai/evolution (`dir:.ai/evolution`)
+- `file` — .ai/evolution/findings.md (`file:.ai/evolution/findings.md`)
+- `file` — .ai/evolution/metrics.json (`file:.ai/evolution/metrics.json`)
+- `file` — .ai/graph.md (`file:.ai/graph.md`)
+- `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
+- `directory` — .ai/machine (`dir:.ai/machine`)
+- `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
+- `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
+- `file` — .ai/machine/graph.export.json (`file:.ai/machine/graph.export.json`)
+- `file` — .ai/machine/graph.json (`file:.ai/machine/graph.json`)
+- `file` — .ai/machine/validation.json (`file:.ai/machine/validation.json`)
+- `file` — .ai/manifest.yaml (`file:.ai/manifest.yaml`)
+- `file` — .ai/packs/handoff.md (`file:.ai/packs/handoff.md`)
+- `directory` — .ai/packs (`dir:.ai/packs`)
+- `context_pack` — .ai/packs/handoff.md (`pack:.ai/packs/handoff.md`)
+- `file` — .ai/packs/quick.md (`file:.ai/packs/quick.md`)
+- `context_pack` — .ai/packs/quick.md (`pack:.ai/packs/quick.md`)
+- `file` — .ai/state.md (`file:.ai/state.md`)
+- `file` — .ai/tasks.md (`file:.ai/tasks.md`)
+- `file` — .ai/tests.md (`file:.ai/tests.md`)
+- `file` — .amo.yaml (`file:.amo.yaml`)
+- `file` — .github/ISSUE_TEMPLATE/bug.md (`file:.github/ISSUE_TEMPLATE/bug.md`)
+- `directory` — .github (`dir:.github`)
+- `directory` — .github/ISSUE_TEMPLATE (`dir:.github/ISSUE_TEMPLATE`)
+- `file` — .github/PULL_REQUEST_TEMPLATE.md (`file:.github/PULL_REQUEST_TEMPLATE.md`)
+- `file` — .github/dependabot.yml (`file:.github/dependabot.yml`)
+- `file` — .github/workflows/ci.yml (`file:.github/workflows/ci.yml`)
+- `directory` — .github/workflows (`dir:.github/workflows`)
+- `file` — .github/workflows/opencode.yml (`file:.github/workflows/opencode.yml`)
+- `file` — .github/workflows/release-check.yml (`file:.github/workflows/release-check.yml`)
+- `file` — .github/workflows/scorecard.yml (`file:.github/workflows/scorecard.yml`)
+- `file` — AGENTS.md (`file:AGENTS.md`)
+- `file` — CHANGELOG.md (`file:CHANGELOG.md`)
+- `file` — CONTRIBUTING.md (`file:CONTRIBUTING.md`)
+- `file` — LICENSE (`file:LICENSE`)
+- `file` — README.md (`file:README.md`)
+- `file` — SECURITY.md (`file:SECURITY.md`)
+- `file` — amo/__init__.py (`file:amo/__init__.py`)
+- `directory` — amo (`dir:amo`)
+- `file` — amo/adapters/__init__.py (`file:amo/adapters/__init__.py`)
+- `directory` — amo/adapters (`dir:amo/adapters`)
+- `file` — amo/adapters/agents.py (`file:amo/adapters/agents.py`)
+- `file` — amo/adapters/claude.py (`file:amo/adapters/claude.py`)
+- `file` — amo/adapters/cline.py (`file:amo/adapters/cline.py`)
+- `file` — amo/adapters/cursor.py (`file:amo/adapters/cursor.py`)
+- `file` — amo/adapters/obsidian.py (`file:amo/adapters/obsidian.py`)
+- `file` — amo/adapters/opencode.py (`file:amo/adapters/opencode.py`)
+- `file` — amo/adapters/profile.py (`file:amo/adapters/profile.py`)
+- `file` — amo/cli.py (`file:amo/cli.py`)
+- `file` — amo/config.py (`file:amo/config.py`)
+- `file` — amo/context/__init__.py (`file:amo/context/__init__.py`)
+- `directory` — amo/context (`dir:amo/context`)
+- `file` — amo/context/profiles.py (`file:amo/context/profiles.py`)
+- `file` — amo/context/ranking.py (`file:amo/context/ranking.py`)
+- `file` — amo/context/render.py (`file:amo/context/render.py`)
+- `file` — amo/core/__init__.py (`file:amo/core/__init__.py`)
+- `directory` — amo/core (`dir:amo/core`)
+- `file` — amo/core/benchmark.py (`file:amo/core/benchmark.py`)
+- `file` — amo/core/context.py (`file:amo/core/context.py`)
+- `file` — amo/core/evolve.py (`file:amo/core/evolve.py`)
+- `file` — amo/core/graph.py (`file:amo/core/graph.py`)
+- `file` — amo/core/handoff.py (`file:amo/core/handoff.py`)
+- `file` — amo/core/init.py (`file:amo/core/init.py`)
+- `file` — amo/core/postflight.py (`file:amo/core/postflight.py`)
+- `file` — amo/core/scan.py (`file:amo/core/scan.py`)
+- `file` — amo/core/server.py (`file:amo/core/server.py`)
+- `file` — amo/core/status.py (`file:amo/core/status.py`)
+- `file` — amo/core/validate.py (`file:amo/core/validate.py`)
+- `file` — amo/embeddings/__init__.py (`file:amo/embeddings/__init__.py`)
+- `directory` — amo/embeddings (`dir:amo/embeddings`)
+- `file` — amo/embeddings/index.py (`file:amo/embeddings/index.py`)
+- `file` — amo/graph/__init__.py (`file:amo/graph/__init__.py`)
+- `directory` — amo/graph (`dir:amo/graph`)
+- `file` — amo/graph/code_structure.py (`file:amo/graph/code_structure.py`)
+- `file` — amo/graph/exporters.py (`file:amo/graph/exporters.py`)
+- `file` — amo/graph/gexf.py (`file:amo/graph/gexf.py`)
+- `file` — amo/graph/graphml.py (`file:amo/graph/graphml.py`)
+- `file` — amo/graph/jsonld.py (`file:amo/graph/jsonld.py`)
+- `file` — amo/graph/obsidian_rich.py (`file:amo/graph/obsidian_rich.py`)
+- `file` — amo/graph/schema.py (`file:amo/graph/schema.py`)
+- `file` — amo/index/__init__.py (`file:amo/index/__init__.py`)
+- `directory` — amo/index (`dir:amo/index`)
+- `file` — amo/index/artifacts.py (`file:amo/index/artifacts.py`)
+- `file` — amo/index/context_units.py (`file:amo/index/context_units.py`)
+- `file` — amo/index/files.py (`file:amo/index/files.py`)
+- `file` — amo/io.py (`file:amo/io.py`)
+- `file` — amo/paths.py (`file:amo/paths.py`)
+- `file` — amo/validators/__init__.py (`file:amo/validators/__init__.py`)
+- `directory` — amo/validators (`dir:amo/validators`)
+- `file` — amo/validators/artifacts.py (`file:amo/validators/artifacts.py`)
+- `file` — amo/validators/graph.py (`file:amo/validators/graph.py`)
+- `file` — amo/validators/instructions.py (`file:amo/validators/instructions.py`)
+- `file` — amo/validators/references.py (`file:amo/validators/references.py`)
+- `file` — benchmarks/README.md (`file:benchmarks/README.md`)
+- `directory` — benchmarks (`dir:benchmarks`)
+- `file` — docs/10-10-scorecard.md (`file:docs/10-10-scorecard.md`)
+- `directory` — docs (`dir:docs`)
+- `file` — docs/adapters.md (`file:docs/adapters.md`)
+- `file` — docs/adoption.md (`file:docs/adoption.md`)
+- `file` — docs/agent-context-discipline.md (`file:docs/agent-context-discipline.md`)
+- `file` — docs/architecture.md (`file:docs/architecture.md`)
+- `file` — docs/benchmark.md (`file:docs/benchmark.md`)
+- `file` — docs/comparison.md (`file:docs/comparison.md`)
+- `file` — docs/context-engine.md (`file:docs/context-engine.md`)
+- `file` — docs/demo.md (`file:docs/demo.md`)
+- `file` — docs/embeddings.md (`file:docs/embeddings.md`)
+- `file` — docs/graph-interoperability.md (`file:docs/graph-interoperability.md`)
+- `file` — docs/graph-model.md (`file:docs/graph-model.md`)
+- `file` — docs/graph-ontology.md (`file:docs/graph-ontology.md`)
+- `file` — docs/industry-graph-foundation.md (`file:docs/industry-graph-foundation.md`)
+- `file` — docs/interop-status.md (`file:docs/interop-status.md`)
+- `file` — docs/manifesto.md (`file:docs/manifesto.md`)
+- `file` — docs/maturity-model.md (`file:docs/maturity-model.md`)
+- `file` — docs/mcp.md (`file:docs/mcp.md`)
+- `file` — docs/memory-model.md (`file:docs/memory-model.md`)
+- `file` — docs/neo4j.md (`file:docs/neo4j.md`)
+- `file` — docs/obsidian-graph-export.md (`file:docs/obsidian-graph-export.md`)
+- `file` — docs/obsidian-vs-amo.md (`file:docs/obsidian-vs-amo.md`)
+- `file` — docs/obsidian.md (`file:docs/obsidian.md`)
+- `file` — docs/problem.md (`file:docs/problem.md`)
+- `file` — docs/quickstart.md (`file:docs/quickstart.md`)
+- `file` — docs/release-hardening.md (`file:docs/release-hardening.md`)
+- `file` — docs/release-notes-0.1.0-alpha.md (`file:docs/release-notes-0.1.0-alpha.md`)
+- `file` — docs/roadmap.md (`file:docs/roadmap.md`)
+- `file` — docs/scaling-roadmap.md (`file:docs/scaling-roadmap.md`)
+- `file` — docs/schema-contract.md (`file:docs/schema-contract.md`)
+- `file` — docs/server.md (`file:docs/server.md`)
+- `file` — docs/validators.md (`file:docs/validators.md`)
+- `file` — examples/agent-debug-session/.ai/machine/artifacts.json (`file:examples/agent-debug-session/.ai/machine/artifacts.json`)
+- `directory` — examples (`dir:examples`)
+- `directory` — examples/agent-debug-session (`dir:examples/agent-debug-session`)
+- `directory` — examples/agent-debug-session/.ai (`dir:examples/agent-debug-session/.ai`)
+- `directory` — examples/agent-debug-session/.ai/machine (`dir:examples/agent-debug-session/.ai/machine`)
+- `file` — examples/agent-debug-session/.ai/machine/benchmark.json (`file:examples/agent-debug-session/.ai/machine/benchmark.json`)
+- `file` — examples/agent-debug-session/.ai/machine/context_units.json (`file:examples/agent-debug-session/.ai/machine/context_units.json`)
+- `file` — examples/agent-debug-session/.ai/machine/files.json (`file:examples/agent-debug-session/.ai/machine/files.json`)
+- `file` — examples/agent-debug-session/.ai/packs/quick.md (`file:examples/agent-debug-session/.ai/packs/quick.md`)
+- `directory` — examples/agent-debug-session/.ai/packs (`dir:examples/agent-debug-session/.ai/packs`)
+- `file` — examples/agent-debug-session/.ai/runtime/last_context.md (`file:examples/agent-debug-session/.ai/runtime/last_context.md`)
+- `directory` — examples/agent-debug-session/.ai/runtime (`dir:examples/agent-debug-session/.ai/runtime`)
+- `file` — examples/agent-debug-session/README.md (`file:examples/agent-debug-session/README.md`)
+- `file` — examples/obsidian-graph-vault/Graph/Nodes/file-a-b--a607eb07f4.md (`file:examples/obsidian-graph-vault/Graph/Nodes/file-a-b--a607eb07f4.md`)
+- `directory` — examples/obsidian-graph-vault (`dir:examples/obsidian-graph-vault`)
+- `directory` — examples/obsidian-graph-vault/Graph (`dir:examples/obsidian-graph-vault/Graph`)
+- `directory` — examples/obsidian-graph-vault/Graph/Nodes (`dir:examples/obsidian-graph-vault/Graph/Nodes`)
+- `file` — examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md (`file:examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md`)
+- `file` — examples/obsidian-graph-vault/Graph/index.md (`file:examples/obsidian-graph-vault/Graph/index.md`)
+- `file` — opencode.json (`file:opencode.json`)
+- `file` — pyproject.toml (`file:pyproject.toml`)
+- `file` — schemas/amo-graph.schema.json (`file:schemas/amo-graph.schema.json`)
+- `directory` — schemas (`dir:schemas`)
+- `file` — templates/generic/.ai/decisions.md (`file:templates/generic/.ai/decisions.md`)
+- `directory` — templates (`dir:templates`)
+- `directory` — templates/generic (`dir:templates/generic`)
+- `directory` — templates/generic/.ai (`dir:templates/generic/.ai`)
+- `file` — templates/generic/.ai/graph.md (`file:templates/generic/.ai/graph.md`)
+- `file` — templates/generic/.ai/manifest.yaml (`file:templates/generic/.ai/manifest.yaml`)
+- `file` — templates/generic/.ai/state.md (`file:templates/generic/.ai/state.md`)
+- `file` — templates/generic/.ai/tasks.md (`file:templates/generic/.ai/tasks.md`)
+- `file` — templates/generic/.ai/tests.md (`file:templates/generic/.ai/tests.md`)
+- `file` — templates/generic/AGENTS.md (`file:templates/generic/AGENTS.md`)
+- `file` — templates/node/.ai/manifest.yaml (`file:templates/node/.ai/manifest.yaml`)
+- `directory` — templates/node (`dir:templates/node`)
+- `directory` — templates/node/.ai (`dir:templates/node/.ai`)
+- `file` — templates/python/.ai/manifest.yaml (`file:templates/python/.ai/manifest.yaml`)
+- `directory` — templates/python (`dir:templates/python`)
+- `directory` — templates/python/.ai (`dir:templates/python/.ai`)
+- `file` — tests/test_adapters.py (`file:tests/test_adapters.py`)
+- `directory` — tests (`dir:tests`)
+- `test` — tests/test_adapters.py (`test:tests/test_adapters.py`)
+- `file` — tests/test_benchmark_evolve.py (`file:tests/test_benchmark_evolve.py`)
+- `test` — tests/test_benchmark_evolve.py (`test:tests/test_benchmark_evolve.py`)
+- `file` — tests/test_code_structure_graph.py (`file:tests/test_code_structure_graph.py`)
+- `test` — tests/test_code_structure_graph.py (`test:tests/test_code_structure_graph.py`)
+- `file` — tests/test_config.py (`file:tests/test_config.py`)
+- `test` — tests/test_config.py (`test:tests/test_config.py`)
+- `file` — tests/test_context.py (`file:tests/test_context.py`)
+- `test` — tests/test_context.py (`test:tests/test_context.py`)
+- `file` — tests/test_embeddings.py (`file:tests/test_embeddings.py`)
+- `test` — tests/test_embeddings.py (`test:tests/test_embeddings.py`)
+- `file` — tests/test_graph_exports.py (`file:tests/test_graph_exports.py`)
+- `test` — tests/test_graph_exports.py (`test:tests/test_graph_exports.py`)
+- `file` — tests/test_graph_validation.py (`file:tests/test_graph_validation.py`)
+- `test` — tests/test_graph_validation.py (`test:tests/test_graph_validation.py`)
+- `file` — tests/test_init.py (`file:tests/test_init.py`)
+- `test` — tests/test_init.py (`test:tests/test_init.py`)
+- `file` — tests/test_runtime_validation.py (`file:tests/test_runtime_validation.py`)
+- `test` — tests/test_runtime_validation.py (`test:tests/test_runtime_validation.py`)
+- `file` — tests/test_scan.py (`file:tests/test_scan.py`)
+- `test` — tests/test_scan.py (`test:tests/test_scan.py`)
+- `file` — tests/test_scan_config.py (`file:tests/test_scan_config.py`)
+- `test` — tests/test_scan_config.py (`test:tests/test_scan_config.py`)
+- `file` — tests/test_session_pack.py (`file:tests/test_session_pack.py`)
+- `test` — tests/test_session_pack.py (`test:tests/test_session_pack.py`)
+- `file` — tests/test_status.py (`file:tests/test_status.py`)
+- `test` — tests/test_status.py (`test:tests/test_status.py`)
+- `file` — tests/test_validate.py (`file:tests/test_validate.py`)
+- `test` — tests/test_validate.py (`test:tests/test_validate.py`)
+- `module` — amo (`module:amo`)
+- `module` — amo.adapters (`module:amo.adapters`)
+- `module` — amo.adapters.agents (`module:amo.adapters.agents`)
+- `module` — pathlib (`module:pathlib`)
+- `module` — amo.adapters.profile (`module:amo.adapters.profile`)
+- `module` — amo.io (`module:amo.io`)
+- `symbol` — export_agents_md (`symbol:amo.adapters.agents:export_agents_md`)
+- `module` — amo.adapters.claude (`module:amo.adapters.claude`)
+- `symbol` — export_claude_md (`symbol:amo.adapters.claude:export_claude_md`)
+- `module` — amo.adapters.cline (`module:amo.adapters.cline`)
+- `symbol` — export_cline_memory_bank (`symbol:amo.adapters.cline:export_cline_memory_bank`)
+- `module` — amo.adapters.cursor (`module:amo.adapters.cursor`)
+- `symbol` — export_cursor_rules (`symbol:amo.adapters.cursor:export_cursor_rules`)
+- `module` — amo.adapters.obsidian (`module:amo.adapters.obsidian`)
+- `module` — amo.paths (`module:amo.paths`)
+- `symbol` — sync_obsidian (`symbol:amo.adapters.obsidian:sync_obsidian`)
+- `module` — amo.adapters.opencode (`module:amo.adapters.opencode`)
+- `symbol` — export_opencode_instructions (`symbol:amo.adapters.opencode:export_opencode_instructions`)
+- `module` — amo.cli (`module:amo.cli`)
+- `module` — typing (`module:typing`)
+- `module` — typer (`module:typer`)
+- `module` — rich.console (`module:rich.console`)
+- `module` — amo.config (`module:amo.config`)
+- `module` — amo.core.context (`module:amo.core.context`)
+- `module` — amo.core.benchmark (`module:amo.core.benchmark`)
+- `module` — amo.core.evolve (`module:amo.core.evolve`)
+- `module` — amo.core.graph (`module:amo.core.graph`)
+- `module` — amo.core.handoff (`module:amo.core.handoff`)
+- `module` — amo.core.init (`module:amo.core.init`)
+- `module` — amo.core.postflight (`module:amo.core.postflight`)
+- `module` — amo.core.scan (`module:amo.core.scan`)
+- `module` — amo.core.server (`module:amo.core.server`)
+- `module` — amo.core.status (`module:amo.core.status`)
+- `module` — amo.core.validate (`module:amo.core.validate`)
+- `module` — amo.embeddings.index (`module:amo.embeddings.index`)
+- `symbol` — init (`symbol:amo.cli:init`)
+- `symbol` — scan (`symbol:amo.cli:scan`)
+- `symbol` — context (`symbol:amo.cli:context`)
+- `symbol` — preflight (`symbol:amo.cli:preflight`)
+- `symbol` — handoff (`symbol:amo.cli:handoff`)
+- `symbol` — postflight (`symbol:amo.cli:postflight`)
+- `symbol` — validate (`symbol:amo.cli:validate`)
+- `symbol` — status (`symbol:amo.cli:status`)
+- `symbol` — server (`symbol:amo.cli:server`)
+- `symbol` — export (`symbol:amo.cli:export`)
+- `symbol` — benchmark (`symbol:amo.cli:benchmark`)
+- `symbol` — evolve (`symbol:amo.cli:evolve`)
+- `symbol` — graph_build (`symbol:amo.cli:graph_build`)
+- `symbol` — graph_export (`symbol:amo.cli:graph_export`)
+- `symbol` — embeddings_build (`symbol:amo.cli:embeddings_build`)
+- `symbol` — embeddings_search (`symbol:amo.cli:embeddings_search`)
+- `symbol` — obsidian_sync (`symbol:amo.cli:obsidian_sync`)
+- `module` — copy (`module:copy`)
+- `module` — yaml (`module:yaml`)
+- `symbol` — deep_merge (`symbol:amo.config:deep_merge`)
+- `symbol` — load_config (`symbol:amo.config:load_config`)
+- `symbol` — get_config_value (`symbol:amo.config:get_config_value`)
+- `symbol` — write_yaml (`symbol:amo.config:write_yaml`)
+- `module` — amo.context (`module:amo.context`)
+- `module` — amo.context.profiles (`module:amo.context.profiles`)
+- `module` — __future__ (`module:__future__`)
+- `symbol` — get_context_profiles (`symbol:amo.context.profiles:get_context_profiles`)
+- `symbol` — get_profile (`symbol:amo.context.profiles:get_profile`)
+- `symbol` — get_budget (`symbol:amo.context.profiles:get_budget`)
+- `module` — amo.context.ranking (`module:amo.context.ranking`)
+- `symbol` — rank_units (`symbol:amo.context.ranking:rank_units`)
+- `module` — amo.context.render (`module:amo.context.render`)
+- `symbol` — render_context_pack (`symbol:amo.context.render:render_context_pack`)
+- `symbol` — _first_nonempty (`symbol:amo.context.render:_first_nonempty`)
+- `module` — amo.core (`module:amo.core`)
+- `module` — json (`module:json`)
+- `symbol` — run_benchmark (`symbol:amo.core.benchmark:run_benchmark`)
+- `symbol` — build_context_pack (`symbol:amo.core.context:build_context_pack`)
+- `symbol` — evolve_safe (`symbol:amo.core.evolve:evolve_safe`)
+- `module` — amo.graph.exporters (`module:amo.graph.exporters`)
+- `module` — amo.graph.code_structure (`module:amo.graph.code_structure`)
+- `module` — amo.graph.gexf (`module:amo.graph.gexf`)
+- `module` — amo.graph.graphml (`module:amo.graph.graphml`)
+- `module` — amo.graph.jsonld (`module:amo.graph.jsonld`)
+- `module` — amo.graph.schema (`module:amo.graph.schema`)
+- `symbol` — build_graph (`symbol:amo.core.graph:build_graph`)
+- `symbol` — build_project_graph (`symbol:amo.core.graph:build_project_graph`)
+- `symbol` — export_graph (`symbol:amo.core.graph:export_graph`)
+- `symbol` — render_graph_markdown (`symbol:amo.core.graph:render_graph_markdown`)
+- `symbol` — build_handoff (`symbol:amo.core.handoff:build_handoff`)
+- `symbol` — render_handoff (`symbol:amo.core.handoff:render_handoff`)
+- `symbol` — _first_lines (`symbol:amo.core.handoff:_first_lines`)
+- `module` — shutil (`module:shutil`)
+- `symbol` — init_repo (`symbol:amo.core.init:init_repo`)
+- `symbol` — _copy_template (`symbol:amo.core.init:_copy_template`)
+- `symbol` — _write_embedded_default (`symbol:amo.core.init:_write_embedded_default`)
+- `module` — datetime (`module:datetime`)
+- `symbol` — apply_postflight (`symbol:amo.core.postflight:apply_postflight`)
+- `module` — amo.index.artifacts (`module:amo.index.artifacts`)
+- `module` — amo.index.context_units (`module:amo.index.context_units`)
+- `module` — amo.index.files (`module:amo.index.files`)
+- `symbol` — normalize_excludes (`symbol:amo.core.scan:normalize_excludes`)
+- `symbol` — scan_repo (`symbol:amo.core.scan:scan_repo`)
+- `module` — os (`module:os`)
+- `module` — uvicorn (`module:uvicorn`)
+- `module` — fastapi (`module:fastapi`)
+- `module` — fastapi.responses (`module:fastapi.responses`)
+- `symbol` — create_app (`symbol:amo.core.server:create_app`)
+- `symbol` — serve (`symbol:amo.core.server:serve`)
+- `symbol` — get_status (`symbol:amo.core.status:get_status`)
+- `module` — amo.validators.artifacts (`module:amo.validators.artifacts`)
+- `module` — amo.validators.graph (`module:amo.validators.graph`)
+- `module` — amo.validators.instructions (`module:amo.validators.instructions`)
+- `module` — amo.validators.references (`module:amo.validators.references`)
+- `symbol` — validate_repo (`symbol:amo.core.validate:validate_repo`)
+- `module` — amo.embeddings (`module:amo.embeddings`)
+- `module` — hashlib (`module:hashlib`)
+- `module` — math (`module:math`)
+- `module` — re (`module:re`)
+- `symbol` — tokenize (`symbol:amo.embeddings.index:tokenize`)
+- `symbol` — vectorize (`symbol:amo.embeddings.index:vectorize`)
+- `symbol` — cosine (`symbol:amo.embeddings.index:cosine`)
+- `symbol` — build_embedding_index (`symbol:amo.embeddings.index:build_embedding_index`)
+- `symbol` — search_embedding_index (`symbol:amo.embeddings.index:search_embedding_index`)
+- `module` — amo.graph (`module:amo.graph`)
+- `module` — ast (`module:ast`)
+- `symbol` — extract_python_structure (`symbol:amo.graph.code_structure:extract_python_structure`)
+- `symbol` — _module_name (`symbol:amo.graph.code_structure:_module_name`)
+- `module` — amo.graph.obsidian_rich (`module:amo.graph.obsidian_rich`)
+- `symbol` — export_graph_json (`symbol:amo.graph.exporters:export_graph_json`)
+- `symbol` — export_graph_cypher (`symbol:amo.graph.exporters:export_graph_cypher`)
+- `symbol` — export_obsidian_graph_notes (`symbol:amo.graph.exporters:export_obsidian_graph_notes`)
+- `module` — xml.etree (`module:xml.etree`)
+- `symbol` — export_gexf (`symbol:amo.graph.gexf:export_gexf`)
+- `symbol` — export_graphml (`symbol:amo.graph.graphml:export_graphml`)
+- `symbol` — export_jsonld (`symbol:amo.graph.jsonld:export_jsonld`)
+- `symbol` — safe_note_name (`symbol:amo.graph.obsidian_rich:safe_note_name`)
+- `symbol` — export_rich_obsidian_graph (`symbol:amo.graph.obsidian_rich:export_rich_obsidian_graph`)
+- `symbol` — GraphNode (`symbol:amo.graph.schema:GraphNode`)
+- `symbol` — GraphEdge (`symbol:amo.graph.schema:GraphEdge`)
+- `symbol` — ProjectGraph (`symbol:amo.graph.schema:ProjectGraph`)
+- `symbol` — normalize_for_cypher (`symbol:amo.graph.schema:normalize_for_cypher`)
+- `module` — amo.index (`module:amo.index`)
+- `symbol` — build_artifact_index (`symbol:amo.index.artifacts:build_artifact_index`)
+- `symbol` — build_context_units (`symbol:amo.index.context_units:build_context_units`)
+- `symbol` — build_file_index (`symbol:amo.index.files:build_file_index`)
+- `symbol` — _is_excluded (`symbol:amo.index.files:_is_excluded`)
+- `symbol` — write_json (`symbol:amo.io:write_json`)
+- `symbol` — read_text_if_exists (`symbol:amo.io:read_text_if_exists`)
+- `symbol` — write_text (`symbol:amo.io:write_text`)
+- `symbol` — ai_path (`symbol:amo.paths:ai_path`)
+- `symbol` — ensure_dirs (`symbol:amo.paths:ensure_dirs`)
+- `module` — amo.validators (`module:amo.validators`)
+- `module` — subprocess (`module:subprocess`)
+- `symbol` — _run_git (`symbol:amo.validators.artifacts:_run_git`)
+- `symbol` — _is_git_repo (`symbol:amo.validators.artifacts:_is_git_repo`)
+- `symbol` — is_git_ignored (`symbol:amo.validators.artifacts:is_git_ignored`)
+- `symbol` — is_git_tracked (`symbol:amo.validators.artifacts:is_git_tracked`)
+- `symbol` — check_runtime_pollution (`symbol:amo.validators.artifacts:check_runtime_pollution`)
+- `symbol` — check_graph_contract (`symbol:amo.validators.graph:check_graph_contract`)
+- `symbol` — _require_fields (`symbol:amo.validators.graph:_require_fields`)
+- `symbol` — check_unsafe_instructions (`symbol:amo.validators.instructions:check_unsafe_instructions`)
+- `symbol` — check_missing_canonical_files (`symbol:amo.validators.references:check_missing_canonical_files`)
+- `module` — tests.test_adapters (`module:tests.test_adapters`)
+- `symbol` — test_agent_exporters_write_expected_files (`symbol:tests.test_adapters:test_agent_exporters_write_expected_files`)
+- `symbol` — test_adapters_include_lifecycle_and_runtime_policy (`symbol:tests.test_adapters:test_adapters_include_lifecycle_and_runtime_policy`)
+- `module` — tests.test_benchmark_evolve (`module:tests.test_benchmark_evolve`)
+- `symbol` — test_benchmark_writes_deterministic_metrics (`symbol:tests.test_benchmark_evolve:test_benchmark_writes_deterministic_metrics`)
+- `symbol` — test_evolve_is_safe_and_writes_expected_outputs (`symbol:tests.test_benchmark_evolve:test_evolve_is_safe_and_writes_expected_outputs`)
+- `module` — tests.test_code_structure_graph (`module:tests.test_code_structure_graph`)
+- `symbol` — test_python_modules_symbols_and_imports_are_added (`symbol:tests.test_code_structure_graph:test_python_modules_symbols_and_imports_are_added`)
+- `symbol` — test_python_parse_failure_does_not_break_graph_build (`symbol:tests.test_code_structure_graph:test_python_parse_failure_does_not_break_graph_build`)
+- `module` — tests.test_config (`module:tests.test_config`)
+- `symbol` — test_load_config_returns_defaults_when_file_missing (`symbol:tests.test_config:test_load_config_returns_defaults_when_file_missing`)
+- `symbol` — test_deep_merge_preserves_nested_defaults (`symbol:tests.test_config:test_deep_merge_preserves_nested_defaults`)
+- `symbol` — test_deep_merge_adds_new_keys (`symbol:tests.test_config:test_deep_merge_adds_new_keys`)
+- `symbol` — test_deep_merge_replaces_non_dict_with_dict (`symbol:tests.test_config:test_deep_merge_replaces_non_dict_with_dict`)
+- `symbol` — test_config_overrides_profile_budget (`symbol:tests.test_config:test_config_overrides_profile_budget`)
+- `symbol` — test_get_budget_uses_configured_budget (`symbol:tests.test_config:test_get_budget_uses_configured_budget`)
+- `symbol` — test_get_budget_falls_back_to_default (`symbol:tests.test_config:test_get_budget_falls_back_to_default`)
+- `symbol` — test_get_budget_without_config_uses_builtin (`symbol:tests.test_config:test_get_budget_without_config_uses_builtin`)
+- `symbol` — test_get_budget_unknown_profile_falls_back_to_quick (`symbol:tests.test_config:test_get_budget_unknown_profile_falls_back_to_quick`)
+- `symbol` — test_scan_excludes_include_configured_excludes (`symbol:tests.test_config:test_scan_excludes_include_configured_excludes`)
+- `symbol` — test_get_config_value_dot_notation (`symbol:tests.test_config:test_get_config_value_dot_notation`)
+- `symbol` — test_get_config_value_missing_path (`symbol:tests.test_config:test_get_config_value_missing_path`)
+- `symbol` — test_get_config_value_missing_top_key (`symbol:tests.test_config:test_get_config_value_missing_top_key`)
+- `symbol` — test_unknown_config_keys_are_tolerated (`symbol:tests.test_config:test_unknown_config_keys_are_tolerated`)
+- `symbol` — test_context_pack_uses_configured_profile_budget (`symbol:tests.test_config:test_context_pack_uses_configured_profile_budget`)
+- `symbol` — test_context_pack_preserves_builtin_fields_when_config_only_overrides_tokens (`symbol:tests.test_config:test_context_pack_preserves_builtin_fields_when_config_only_overrides_tokens`)
+- `symbol` — test_invalid_yaml_fails_clearly (`symbol:tests.test_config:test_invalid_yaml_fails_clearly`)
+- `module` — tests.test_context (`module:tests.test_context`)
+- `symbol` — test_context_pack_is_generated (`symbol:tests.test_context:test_context_pack_is_generated`)
+- `module` — tests.test_embeddings (`module:tests.test_embeddings`)
+- `symbol` — test_vectorize_is_deterministic (`symbol:tests.test_embeddings:test_vectorize_is_deterministic`)
+- `symbol` — test_embedding_index_build_and_search (`symbol:tests.test_embeddings:test_embedding_index_build_and_search`)
+- `module` — tests.test_graph_exports (`module:tests.test_graph_exports`)
+- `symbol` — test_graph_build_has_schema_version (`symbol:tests.test_graph_exports:test_graph_build_has_schema_version`)
+- `symbol` — test_graph_build_assigns_l0_and_l1_levels (`symbol:tests.test_graph_exports:test_graph_build_assigns_l0_and_l1_levels`)
+- `symbol` — test_graph_export_neo4j (`symbol:tests.test_graph_exports:test_graph_export_neo4j`)
+- `symbol` — test_graph_export_obsidian (`symbol:tests.test_graph_exports:test_graph_export_obsidian`)
+- `symbol` — test_standard_graph_exports (`symbol:tests.test_graph_exports:test_standard_graph_exports`)
+- `symbol` — test_obsidian_note_names_are_collision_safe (`symbol:tests.test_graph_exports:test_obsidian_note_names_are_collision_safe`)
+- `module` — tests.test_graph_validation (`module:tests.test_graph_validation`)
+- `symbol` — _write_graph (`symbol:tests.test_graph_validation:_write_graph`)
+- `symbol` — test_valid_graph_passes (`symbol:tests.test_graph_validation:test_valid_graph_passes`)
+- `symbol` — test_missing_node_id_fails (`symbol:tests.test_graph_validation:test_missing_node_id_fails`)
+- `symbol` — test_edge_with_missing_target_fails (`symbol:tests.test_graph_validation:test_edge_with_missing_target_fails`)
+- `symbol` — test_duplicate_node_id_fails (`symbol:tests.test_graph_validation:test_duplicate_node_id_fails`)
+- `module` — tests.test_init (`module:tests.test_init`)
+- `symbol` — test_init_repo_creates_ai_memory (`symbol:tests.test_init:test_init_repo_creates_ai_memory`)
+- `symbol` — test_python_template_inherits_generic_memory (`symbol:tests.test_init:test_python_template_inherits_generic_memory`)
+- `module` — tests.test_runtime_validation (`module:tests.test_runtime_validation`)
+- `symbol` — _git_repo (`symbol:tests.test_runtime_validation:_git_repo`)
+- `symbol` — test_strict_validation_passes_after_build_context_pack (`symbol:tests.test_runtime_validation:test_strict_validation_passes_after_build_context_pack`)
+- `symbol` — test_strict_validation_passes_after_build_handoff (`symbol:tests.test_runtime_validation:test_strict_validation_passes_after_build_handoff`)
+- `symbol` — test_known_runtime_files_are_allowed (`symbol:tests.test_runtime_validation:test_known_runtime_files_are_allowed`)
+- `symbol` — test_unknown_runtime_file_is_reported (`symbol:tests.test_runtime_validation:test_unknown_runtime_file_is_reported`)
+- `symbol` — test_tracked_runtime_file_is_reported (`symbol:tests.test_runtime_validation:test_tracked_runtime_file_is_reported`)
+- `symbol` — test_missing_runtime_directory_is_ok (`symbol:tests.test_runtime_validation:test_missing_runtime_directory_is_ok`)
+- `symbol` — test_runtime_artifact_in_derived_output_is_reported (`symbol:tests.test_runtime_validation:test_runtime_artifact_in_derived_output_is_reported`)
+- `module` — tests.test_scan (`module:tests.test_scan`)
+- `symbol` — test_scan_writes_indexes (`symbol:tests.test_scan:test_scan_writes_indexes`)
+- `symbol` — test_scan_does_not_exclude_project_runtime_folder (`symbol:tests.test_scan:test_scan_does_not_exclude_project_runtime_folder`)
+- `symbol` — test_scan_excludes_amo_runtime_folder (`symbol:tests.test_scan:test_scan_excludes_amo_runtime_folder`)
+- `module` — tests.test_scan_config (`module:tests.test_scan_config`)
+- `symbol` — test_normalize_excludes_handles_string (`symbol:tests.test_scan_config:test_normalize_excludes_handles_string`)
+- `symbol` — test_normalize_excludes_handles_list (`symbol:tests.test_scan_config:test_normalize_excludes_handles_list`)
+- `symbol` — test_normalize_excludes_rejects_invalid_type (`symbol:tests.test_scan_config:test_normalize_excludes_rejects_invalid_type`)
+- `module` — tests.test_session_pack (`module:tests.test_session_pack`)
+- `symbol` — test_session_pack_is_written (`symbol:tests.test_session_pack:test_session_pack_is_written`)
+- `module` — tests.test_status (`module:tests.test_status`)
+- `symbol` — test_status_reports_memory_checks (`symbol:tests.test_status:test_status_reports_memory_checks`)
+- `module` — tests.test_validate (`module:tests.test_validate`)
+- `symbol` — test_validate_returns_status (`symbol:tests.test_validate:test_validate_returns_status`)
 
-- .ai/manifest.yaml
-- .ai/state.md
-- .ai/decisions.md
-- .ai/tasks.md
-- .ai/tests.md
-- .ai/graph.md
+## Edges
 
-## Main source areas
-
-- amo/core/
-- amo/index/
-- amo/context/
-- amo/validators/
-- amo/adapters/
-
-## Main generated indexes
-
-- .ai/machine/files.json
-- .ai/machine/context_units.json
-- .ai/machine/graph.json
-- .ai/machine/validation.json
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:manifest`
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:state`
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:decisions`
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:tasks`
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:tests`
+- `repo:ai-memory-orchestrator` -[contains]-> `memory:graph`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/decisions.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:.ai`
+- `dir:.ai` -[contains]-> `file:.ai/decisions.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0001.json`
+- `dir:.ai` -[contains]-> `dir:.ai/evolution`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0001.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/findings.md`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/findings.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/metrics.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/metrics.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/graph.md`
+- `dir:.ai` -[contains]-> `file:.ai/graph.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/artifacts.json`
+- `dir:.ai` -[contains]-> `dir:.ai/machine`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_units.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/files.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/files.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.export.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.export.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/validation.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/validation.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/manifest.yaml`
+- `dir:.ai` -[contains]-> `file:.ai/manifest.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/packs/handoff.md`
+- `dir:.ai` -[contains]-> `dir:.ai/packs`
+- `dir:.ai/packs` -[contains]-> `file:.ai/packs/handoff.md`
+- `pack:.ai/packs/handoff.md` -[derived_from]-> `file:.ai/packs/handoff.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/packs/quick.md`
+- `dir:.ai/packs` -[contains]-> `file:.ai/packs/quick.md`
+- `pack:.ai/packs/quick.md` -[derived_from]-> `file:.ai/packs/quick.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/state.md`
+- `dir:.ai` -[contains]-> `file:.ai/state.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tasks.md`
+- `dir:.ai` -[contains]-> `file:.ai/tasks.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tests.md`
+- `dir:.ai` -[contains]-> `file:.ai/tests.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.amo.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/ISSUE_TEMPLATE/bug.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:.github`
+- `dir:.github` -[contains]-> `dir:.github/ISSUE_TEMPLATE`
+- `dir:.github/ISSUE_TEMPLATE` -[contains]-> `file:.github/ISSUE_TEMPLATE/bug.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/PULL_REQUEST_TEMPLATE.md`
+- `dir:.github` -[contains]-> `file:.github/PULL_REQUEST_TEMPLATE.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/dependabot.yml`
+- `dir:.github` -[contains]-> `file:.github/dependabot.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/ci.yml`
+- `dir:.github` -[contains]-> `dir:.github/workflows`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/ci.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/opencode.yml`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/opencode.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/release-check.yml`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/release-check.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/scorecard.yml`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/scorecard.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:AGENTS.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:CHANGELOG.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:CONTRIBUTING.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:LICENSE`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:README.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:SECURITY.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:amo`
+- `dir:amo` -[contains]-> `file:amo/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/adapters`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/agents.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/agents.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/claude.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/claude.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/cline.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/cline.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/cursor.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/cursor.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/obsidian.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/obsidian.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/opencode.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/opencode.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/adapters/profile.py`
+- `dir:amo/adapters` -[contains]-> `file:amo/adapters/profile.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/cli.py`
+- `dir:amo` -[contains]-> `file:amo/cli.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/config.py`
+- `dir:amo` -[contains]-> `file:amo/config.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/context`
+- `dir:amo/context` -[contains]-> `file:amo/context/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/profiles.py`
+- `dir:amo/context` -[contains]-> `file:amo/context/profiles.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/ranking.py`
+- `dir:amo/context` -[contains]-> `file:amo/context/ranking.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/render.py`
+- `dir:amo/context` -[contains]-> `file:amo/context/render.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/core`
+- `dir:amo/core` -[contains]-> `file:amo/core/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/benchmark.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/benchmark.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/context.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/context.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/evolve.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/evolve.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/graph.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/graph.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/handoff.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/handoff.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/init.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/init.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/postflight.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/postflight.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/scan.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/scan.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/server.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/server.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/status.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/status.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/validate.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/validate.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/embeddings/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/embeddings`
+- `dir:amo/embeddings` -[contains]-> `file:amo/embeddings/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/embeddings/index.py`
+- `dir:amo/embeddings` -[contains]-> `file:amo/embeddings/index.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/graph`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/code_structure.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/code_structure.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/exporters.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/exporters.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/gexf.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/gexf.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/graphml.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/graphml.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/jsonld.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/jsonld.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/obsidian_rich.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/obsidian_rich.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/schema.py`
+- `dir:amo/graph` -[contains]-> `file:amo/graph/schema.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/index/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/index`
+- `dir:amo/index` -[contains]-> `file:amo/index/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/index/artifacts.py`
+- `dir:amo/index` -[contains]-> `file:amo/index/artifacts.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/index/context_units.py`
+- `dir:amo/index` -[contains]-> `file:amo/index/context_units.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/index/files.py`
+- `dir:amo/index` -[contains]-> `file:amo/index/files.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/io.py`
+- `dir:amo` -[contains]-> `file:amo/io.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/paths.py`
+- `dir:amo` -[contains]-> `file:amo/paths.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/validators`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/artifacts.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/artifacts.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/graph.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/graph.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/instructions.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/instructions.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/references.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/references.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:benchmarks/README.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:benchmarks`
+- `dir:benchmarks` -[contains]-> `file:benchmarks/README.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/10-10-scorecard.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:docs`
+- `dir:docs` -[contains]-> `file:docs/10-10-scorecard.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adapters.md`
+- `dir:docs` -[contains]-> `file:docs/adapters.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adoption.md`
+- `dir:docs` -[contains]-> `file:docs/adoption.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/agent-context-discipline.md`
+- `dir:docs` -[contains]-> `file:docs/agent-context-discipline.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/architecture.md`
+- `dir:docs` -[contains]-> `file:docs/architecture.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/benchmark.md`
+- `dir:docs` -[contains]-> `file:docs/benchmark.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/comparison.md`
+- `dir:docs` -[contains]-> `file:docs/comparison.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/context-engine.md`
+- `dir:docs` -[contains]-> `file:docs/context-engine.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/demo.md`
+- `dir:docs` -[contains]-> `file:docs/demo.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/embeddings.md`
+- `dir:docs` -[contains]-> `file:docs/embeddings.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-interoperability.md`
+- `dir:docs` -[contains]-> `file:docs/graph-interoperability.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-model.md`
+- `dir:docs` -[contains]-> `file:docs/graph-model.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-ontology.md`
+- `dir:docs` -[contains]-> `file:docs/graph-ontology.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/industry-graph-foundation.md`
+- `dir:docs` -[contains]-> `file:docs/industry-graph-foundation.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/interop-status.md`
+- `dir:docs` -[contains]-> `file:docs/interop-status.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/manifesto.md`
+- `dir:docs` -[contains]-> `file:docs/manifesto.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/maturity-model.md`
+- `dir:docs` -[contains]-> `file:docs/maturity-model.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/mcp.md`
+- `dir:docs` -[contains]-> `file:docs/mcp.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/memory-model.md`
+- `dir:docs` -[contains]-> `file:docs/memory-model.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/neo4j.md`
+- `dir:docs` -[contains]-> `file:docs/neo4j.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-graph-export.md`
+- `dir:docs` -[contains]-> `file:docs/obsidian-graph-export.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-vs-amo.md`
+- `dir:docs` -[contains]-> `file:docs/obsidian-vs-amo.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian.md`
+- `dir:docs` -[contains]-> `file:docs/obsidian.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/problem.md`
+- `dir:docs` -[contains]-> `file:docs/problem.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/quickstart.md`
+- `dir:docs` -[contains]-> `file:docs/quickstart.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/release-hardening.md`
+- `dir:docs` -[contains]-> `file:docs/release-hardening.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/release-notes-0.1.0-alpha.md`
+- `dir:docs` -[contains]-> `file:docs/release-notes-0.1.0-alpha.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/roadmap.md`
+- `dir:docs` -[contains]-> `file:docs/roadmap.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/scaling-roadmap.md`
+- `dir:docs` -[contains]-> `file:docs/scaling-roadmap.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/schema-contract.md`
+- `dir:docs` -[contains]-> `file:docs/schema-contract.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/server.md`
+- `dir:docs` -[contains]-> `file:docs/server.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/validators.md`
+- `dir:docs` -[contains]-> `file:docs/validators.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:examples/agent-debug-session/.ai/machine/artifacts.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:examples`
+- `dir:examples` -[contains]-> `dir:examples/agent-debug-session`
+- `dir:examples/agent-debug-session` -[contains]-> `dir:examples/agent-debug-session/.ai`
+- `dir:examples/agent-debug-session/.ai` -[contains]-> `dir:examples/agent-debug-session/.ai/machine`
+- `dir:examples/agent-debug-session/.ai/machine` -[contains]-> `file:examples/agent-debug-session/.ai/machine/artifacts.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:examples/agent-debug-session/.ai/machine/benchmark.json`
+- `dir:examples/agent-debug-session/.ai/machine` -[contains]-> `file:examples/agent-debug-session/.ai/machine/benchmark.json`
+- ... 896 more edges

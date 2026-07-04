@@ -1,0 +1,12 @@
+{
+  "task": "fix failing tests",
+  "files_indexed": 1,
+  "metrics": {
+    "token_reduction": 0.0,
+    "file_selection_precision": null,
+    "file_selection_recall": null,
+    "test_command_accuracy": "not_scored_without_fixture_truth",
+    "handoff_quality": "not_scored_without_fixture_truth",
+    "selected_files": 1
+  }
+}
