@@ -6,6 +6,7 @@ from pathlib import Path
 
 ALLOWED_RUNTIME_FILES = {
     ".ai/runtime/last_context.md",
+    ".ai/runtime/last_postflight.md",
     ".ai/runtime/session_handoff.md",
 }
 RUNTIME_ARTIFACT_NAMES = {Path(path).name for path in ALLOWED_RUNTIME_FILES}
