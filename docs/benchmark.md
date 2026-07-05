@@ -56,3 +56,24 @@ amo benchmark examples/agent-debug-session --task "fix failing tests"
 ```
 
 The command writes deterministic metrics to `.ai/machine/benchmark.json`. Precision, recall, test-command accuracy, and handoff quality are explicitly marked unscored when a fixture has no ground-truth annotations; AMO does not invent evidence.
+
+## Ground truth
+
+A fixture opts into scored metrics by providing `truth.json` at its root:
+
+```json
+{
+  "task": "fix failing auth tests",
+  "relevant_files": ["app/auth.py", "tests/test_auth.py"],
+  "expected_tests": ["pytest tests/test_auth.py"],
+  "expected_context_sections": ["Current Truth", "Relevant Context Units", "Postflight"],
+  "must_not_include": [".ai/runtime/last_context.md"]
+}
+```
+
+With truth present, `amo benchmark` computes `file_selection_precision`,
+`file_selection_recall`, `test_command_accuracy` (fraction of expected commands present in
+the pack), `context_section_coverage`, and `must_not_include_violations`. Note that
+precision counts every file whose path appears in the pack — memory and index files
+included — so small fixtures report low precision until context parameters are tuned.
+`handoff_quality` remains unscored; it needs a handoff-specific rubric.
