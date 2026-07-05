@@ -5,6 +5,7 @@ from pathlib import Path
 
 from amo.core.context import build_context_pack
 from amo.core.scan import scan_repo
+from amo.evidence.ledger import record_evidence
 from amo.io import write_json
 
 
@@ -36,4 +37,13 @@ def run_benchmark(
     }
     output = repo / ".ai" / "machine" / "benchmark.json"
     write_json(output, result)
+    record_evidence(
+        repo,
+        kind="benchmark",
+        source="amo benchmark",
+        result=f"token_reduction={result['metrics']['token_reduction']}",
+        authority=0.9,
+        artifacts=(".ai/machine/benchmark.json",),
+        limitations=("precision/recall unscored without fixture ground truth",),
+    )
     return output

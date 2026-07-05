@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from amo.evidence.ledger import record_evidence
 from amo.io import read_text_if_exists, write_text
 from amo.paths import ai_path, ensure_dirs
 
@@ -25,6 +26,15 @@ def build_handoff(repo: Path, task: str, summary: str = "") -> Path:
     output = ai_path(repo, "packs", "handoff.md")
     write_text(output, content)
     write_text(ai_path(repo, "runtime", "session_handoff.md"), content)
+    record_evidence(
+        repo,
+        kind="handoff",
+        source="amo handoff",
+        result=f"task={task}",
+        authority=0.6,
+        artifacts=(".ai/packs/handoff.md",),
+        limitations=("session summary is agent-declared synthetic evidence",),
+    )
     return output
 
 

@@ -7,6 +7,7 @@ from amo.graph.gexf import export_gexf
 from amo.graph.graphml import export_graphml
 from amo.graph.jsonld import export_jsonld
 from amo.graph.schema import ProjectGraph
+from amo.evidence.ledger import record_evidence
 from amo.io import write_json, write_text
 from amo.paths import ai_path
 
@@ -19,6 +20,15 @@ def build_graph(repo: Path) -> Path:
     output = ai_path(repo, "machine", "graph.json")
     write_json(output, graph)
     write_text(ai_path(repo, "graph.md"), render_graph_markdown(graph))
+    record_evidence(
+        repo,
+        kind="graph_build",
+        source="amo graph build",
+        result=f"{len(graph['nodes'])} nodes, {len(graph['edges'])} edges",
+        authority=0.8,
+        artifacts=(".ai/machine/graph.json", ".ai/graph.md"),
+        limitations=("derived from machine indexes; stale until rebuilt after source changes",),
+    )
     return output
 
 
