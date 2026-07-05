@@ -30,8 +30,9 @@ jobs:
           path: dist/
 
   publish:
-    # Publishes only on real releases; workflow_dispatch stops after build+check.
-    if: github.event_name == 'release'
+    # Prereleases (including v0.1.0-alpha) are source-install only. Stable releases
+    # may publish through trusted publishing after the environment is configured.
+    if: github.event_name == 'release' && github.event.release.prerelease == false
     needs: build
     runs-on: ubuntu-latest
     environment: pypi
