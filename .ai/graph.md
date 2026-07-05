@@ -27,10 +27,13 @@ Schema version: `0.2`
 - `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
 - `directory` — .ai/machine (`dir:.ai/machine`)
 - `file` — .ai/machine/benchmark.json (`file:.ai/machine/benchmark.json`)
+- `file` — .ai/machine/context_explain.json (`file:.ai/machine/context_explain.json`)
 - `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
 - `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
 - `file` — .ai/machine/graph.export.json (`file:.ai/machine/graph.export.json`)
 - `file` — .ai/machine/graph.json (`file:.ai/machine/graph.json`)
+- `file` — .ai/machine/run_history/20260705T081351-test-postflight.json (`file:.ai/machine/run_history/20260705T081351-test-postflight.json`)
+- `directory` — .ai/machine/run_history (`dir:.ai/machine/run_history`)
 - `file` — .ai/machine/validation.json (`file:.ai/machine/validation.json`)
 - `file` — .ai/manifest.yaml (`file:.ai/manifest.yaml`)
 - `file` — .ai/packs/handoff.md (`file:.ai/packs/handoff.md`)
@@ -38,6 +41,9 @@ Schema version: `0.2`
 - `context_pack` — .ai/packs/handoff.md (`pack:.ai/packs/handoff.md`)
 - `file` — .ai/packs/quick.md (`file:.ai/packs/quick.md`)
 - `context_pack` — .ai/packs/quick.md (`pack:.ai/packs/quick.md`)
+- `file` — .ai/runs/2026-07-05/081351-test-postflight.md (`file:.ai/runs/2026-07-05/081351-test-postflight.md`)
+- `directory` — .ai/runs (`dir:.ai/runs`)
+- `directory` — .ai/runs/2026-07-05 (`dir:.ai/runs/2026-07-05`)
 - `file` — .ai/state.md (`file:.ai/state.md`)
 - `file` — .ai/tasks.md (`file:.ai/tasks.md`)
 - `file` — .ai/tests.md (`file:.ai/tests.md`)
@@ -53,15 +59,19 @@ Schema version: `0.2`
 - `file` — .github/dependabot.yml (`file:.github/dependabot.yml`)
 - `file` — .github/workflows/ci.yml (`file:.github/workflows/ci.yml`)
 - `directory` — .github/workflows (`dir:.github/workflows`)
+- `file` — .github/workflows/codeql.yml (`file:.github/workflows/codeql.yml`)
 - `file` — .github/workflows/opencode.yml (`file:.github/workflows/opencode.yml`)
+- `file` — .github/workflows/publish.yml (`file:.github/workflows/publish.yml`)
 - `file` — .github/workflows/release-check.yml (`file:.github/workflows/release-check.yml`)
 - `file` — .github/workflows/scorecard.yml (`file:.github/workflows/scorecard.yml`)
 - `file` — AGENTS.md (`file:AGENTS.md`)
 - `file` — CHANGELOG.md (`file:CHANGELOG.md`)
+- `file` — CODE_OF_CONDUCT.md (`file:CODE_OF_CONDUCT.md`)
 - `file` — CONTRIBUTING.md (`file:CONTRIBUTING.md`)
 - `file` — LICENSE (`file:LICENSE`)
 - `file` — README.md (`file:README.md`)
 - `file` — SECURITY.md (`file:SECURITY.md`)
+- `file` — SUPPORT.md (`file:SUPPORT.md`)
 - `file` — amo/__init__.py (`file:amo/__init__.py`)
 - `directory` — amo (`dir:amo`)
 - `file` — amo/adapters/__init__.py (`file:amo/adapters/__init__.py`)
@@ -119,6 +129,11 @@ Schema version: `0.2`
 - `file` — amo/index/context_units.py (`file:amo/index/context_units.py`)
 - `file` — amo/index/files.py (`file:amo/index/files.py`)
 - `file` — amo/io.py (`file:amo/io.py`)
+- `file` — amo/mcp/__init__.py (`file:amo/mcp/__init__.py`)
+- `directory` — amo/mcp (`dir:amo/mcp`)
+- `file` — amo/mcp/resources.py (`file:amo/mcp/resources.py`)
+- `file` — amo/mcp/server.py (`file:amo/mcp/server.py`)
+- `file` — amo/mcp/tools.py (`file:amo/mcp/tools.py`)
 - `file` — amo/optimizer/__init__.py (`file:amo/optimizer/__init__.py`)
 - `directory` — amo/optimizer (`dir:amo/optimizer`)
 - `file` — amo/optimizer/loop.py (`file:amo/optimizer/loop.py`)
@@ -131,6 +146,17 @@ Schema version: `0.2`
 - `file` — amo/optimizer/sweep.py (`file:amo/optimizer/sweep.py`)
 - `file` — amo/optimizer/trials.py (`file:amo/optimizer/trials.py`)
 - `file` — amo/paths.py (`file:amo/paths.py`)
+- `file` — amo/runtime/__init__.py (`file:amo/runtime/__init__.py`)
+- `directory` — amo/runtime (`dir:amo/runtime`)
+- `file` — amo/runtime/backups.py (`file:amo/runtime/backups.py`)
+- `file` — amo/runtime/lock.py (`file:amo/runtime/lock.py`)
+- `file` — amo/runtime/run_history.py (`file:amo/runtime/run_history.py`)
+- `file` — amo/server/__init__.py (`file:amo/server/__init__.py`)
+- `directory` — amo/server (`dir:amo/server`)
+- `file` — amo/server/app.py (`file:amo/server/app.py`)
+- `file` — amo/server/organism.py (`file:amo/server/organism.py`)
+- `file` — amo/server/static/app.js (`file:amo/server/static/app.js`)
+- `directory` — amo/server/static (`dir:amo/server/static`)
 - `file` — amo/validators/__init__.py (`file:amo/validators/__init__.py`)
 - `directory` — amo/validators (`dir:amo/validators`)
 - `file` — amo/validators/artifacts.py (`file:amo/validators/artifacts.py`)
@@ -151,6 +177,7 @@ Schema version: `0.2`
 - `file` — docs/demo.md (`file:docs/demo.md`)
 - `file` — docs/embeddings.md (`file:docs/embeddings.md`)
 - `file` — docs/evidence-ledger.md (`file:docs/evidence-ledger.md`)
+- `file` — docs/federation.md (`file:docs/federation.md`)
 - `file` — docs/graph-interoperability.md (`file:docs/graph-interoperability.md`)
 - `file` — docs/graph-model.md (`file:docs/graph-model.md`)
 - `file` — docs/graph-ontology.md (`file:docs/graph-ontology.md`)
@@ -158,6 +185,7 @@ Schema version: `0.2`
 - `file` — docs/interop-status.md (`file:docs/interop-status.md`)
 - `file` — docs/manifesto.md (`file:docs/manifesto.md`)
 - `file` — docs/maturity-model.md (`file:docs/maturity-model.md`)
+- `file` — docs/mcp-server.md (`file:docs/mcp-server.md`)
 - `file` — docs/mcp.md (`file:docs/mcp.md`)
 - `file` — docs/memory-model.md (`file:docs/memory-model.md`)
 - `file` — docs/neo4j.md (`file:docs/neo4j.md`)
@@ -170,7 +198,9 @@ Schema version: `0.2`
 - `file` — docs/recursive-optimization.md (`file:docs/recursive-optimization.md`)
 - `file` — docs/release-hardening.md (`file:docs/release-hardening.md`)
 - `file` — docs/release-notes-0.1.0-alpha.md (`file:docs/release-notes-0.1.0-alpha.md`)
+- `file` — docs/release-process.md (`file:docs/release-process.md`)
 - `file` — docs/roadmap.md (`file:docs/roadmap.md`)
+- `file` — docs/run-history.md (`file:docs/run-history.md`)
 - `file` — docs/scaling-roadmap.md (`file:docs/scaling-roadmap.md`)
 - `file` — docs/schema-contract.md (`file:docs/schema-contract.md`)
 - `file` — docs/server.md (`file:docs/server.md`)
@@ -179,10 +209,13 @@ Schema version: `0.2`
 - `directory` — examples (`dir:examples`)
 - `directory` — examples/agent-debug-session (`dir:examples/agent-debug-session`)
 - `directory` — examples/agent-debug-session/.ai (`dir:examples/agent-debug-session/.ai`)
+- `file` — examples/agent-debug-session/.ai/evidence/README.md (`file:examples/agent-debug-session/.ai/evidence/README.md`)
+- `directory` — examples/agent-debug-session/.ai/evidence (`dir:examples/agent-debug-session/.ai/evidence`)
 - `file` — examples/agent-debug-session/.ai/graph.md (`file:examples/agent-debug-session/.ai/graph.md`)
 - `file` — examples/agent-debug-session/.ai/machine/artifacts.json (`file:examples/agent-debug-session/.ai/machine/artifacts.json`)
 - `directory` — examples/agent-debug-session/.ai/machine (`dir:examples/agent-debug-session/.ai/machine`)
 - `file` — examples/agent-debug-session/.ai/machine/benchmark.json (`file:examples/agent-debug-session/.ai/machine/benchmark.json`)
+- `file` — examples/agent-debug-session/.ai/machine/context_explain.json (`file:examples/agent-debug-session/.ai/machine/context_explain.json`)
 - `file` — examples/agent-debug-session/.ai/machine/context_units.json (`file:examples/agent-debug-session/.ai/machine/context_units.json`)
 - `file` — examples/agent-debug-session/.ai/machine/files.json (`file:examples/agent-debug-session/.ai/machine/files.json`)
 - `file` — examples/agent-debug-session/.ai/manifest.yaml (`file:examples/agent-debug-session/.ai/manifest.yaml`)
@@ -255,16 +288,22 @@ Schema version: `0.2`
 - `test` — tests/test_graph_validation.py (`test:tests/test_graph_validation.py`)
 - `file` — tests/test_init.py (`file:tests/test_init.py`)
 - `test` — tests/test_init.py (`test:tests/test_init.py`)
+- `file` — tests/test_mcp.py (`file:tests/test_mcp.py`)
+- `test` — tests/test_mcp.py (`test:tests/test_mcp.py`)
 - `file` — tests/test_optimizer.py (`file:tests/test_optimizer.py`)
 - `test` — tests/test_optimizer.py (`test:tests/test_optimizer.py`)
 - `file` — tests/test_optimizer_params.py (`file:tests/test_optimizer_params.py`)
 - `test` — tests/test_optimizer_params.py (`test:tests/test_optimizer_params.py`)
+- `file` — tests/test_postflight_run_history.py (`file:tests/test_postflight_run_history.py`)
+- `test` — tests/test_postflight_run_history.py (`test:tests/test_postflight_run_history.py`)
 - `file` — tests/test_runtime_validation.py (`file:tests/test_runtime_validation.py`)
 - `test` — tests/test_runtime_validation.py (`test:tests/test_runtime_validation.py`)
 - `file` — tests/test_scan.py (`file:tests/test_scan.py`)
 - `test` — tests/test_scan.py (`test:tests/test_scan.py`)
 - `file` — tests/test_scan_config.py (`file:tests/test_scan_config.py`)
 - `test` — tests/test_scan_config.py (`test:tests/test_scan_config.py`)
+- `file` — tests/test_server_ui.py (`file:tests/test_server_ui.py`)
+- `test` — tests/test_server_ui.py (`test:tests/test_server_ui.py`)
 - `file` — tests/test_session_pack.py (`file:tests/test_session_pack.py`)
 - `test` — tests/test_session_pack.py (`test:tests/test_session_pack.py`)
 - `file` — tests/test_status.py (`file:tests/test_status.py`)
@@ -328,6 +367,7 @@ Schema version: `0.2`
 - `symbol` — optimize_params_sweep (`symbol:amo.cli:optimize_params_sweep`)
 - `symbol` — optimize_params_best (`symbol:amo.cli:optimize_params_best`)
 - `symbol` — optimize_params_apply_safe (`symbol:amo.cli:optimize_params_apply_safe`)
+- `symbol` — mcp_serve (`symbol:amo.cli:mcp_serve`)
 - `symbol` — graph_build (`symbol:amo.cli:graph_build`)
 - `symbol` — graph_export (`symbol:amo.cli:graph_export`)
 - `symbol` — embeddings_build (`symbol:amo.cli:embeddings_build`)
@@ -402,17 +442,17 @@ Schema version: `0.2`
 - `symbol` — _nested_param (`symbol:amo.core.optimize_params:_nested_param`)
 - `symbol` — apply_safe_params (`symbol:amo.core.optimize_params:apply_safe_params`)
 - `module` — datetime (`module:datetime`)
+- `module` — amo.runtime.backups (`module:amo.runtime.backups`)
+- `module` — amo.runtime.lock (`module:amo.runtime.lock`)
+- `module` — amo.runtime.run_history (`module:amo.runtime.run_history`)
 - `symbol` — apply_postflight (`symbol:amo.core.postflight:apply_postflight`)
 - `module` — amo.index.artifacts (`module:amo.index.artifacts`)
 - `module` — amo.index.context_units (`module:amo.index.context_units`)
 - `module` — amo.index.files (`module:amo.index.files`)
 - `symbol` — normalize_excludes (`symbol:amo.core.scan:normalize_excludes`)
 - `symbol` — scan_repo (`symbol:amo.core.scan:scan_repo`)
-- `module` — os (`module:os`)
 - `module` — uvicorn (`module:uvicorn`)
-- `module` — fastapi (`module:fastapi`)
-- `module` — fastapi.responses (`module:fastapi.responses`)
-- `symbol` — create_app (`symbol:amo.core.server:create_app`)
+- `module` — amo.server.app (`module:amo.server.app`)
 - `symbol` — serve (`symbol:amo.core.server:serve`)
 - `symbol` — get_status (`symbol:amo.core.status:get_status`)
 - `module` — amo.validators.artifacts (`module:amo.validators.artifacts`)
@@ -463,6 +503,30 @@ Schema version: `0.2`
 - `symbol` — write_json (`symbol:amo.io:write_json`)
 - `symbol` — read_text_if_exists (`symbol:amo.io:read_text_if_exists`)
 - `symbol` — write_text (`symbol:amo.io:write_text`)
+- `module` — amo.mcp (`module:amo.mcp`)
+- `module` — amo.mcp.resources (`module:amo.mcp.resources`)
+- `module` — amo.mcp.server (`module:amo.mcp.server`)
+- `module` — amo.mcp.tools (`module:amo.mcp.tools`)
+- `symbol` — list_resources (`symbol:amo.mcp.resources:list_resources`)
+- `symbol` — read_resource (`symbol:amo.mcp.resources:read_resource`)
+- `module` — sys (`module:sys`)
+- `symbol` — handle_message (`symbol:amo.mcp.server:handle_message`)
+- `symbol` — _dispatch (`symbol:amo.mcp.server:_dispatch`)
+- `symbol` — _error (`symbol:amo.mcp.server:_error`)
+- `symbol` — serve_stdio (`symbol:amo.mcp.server:serve_stdio`)
+- `symbol` — ToolError (`symbol:amo.mcp.tools:ToolError`)
+- `symbol` — _string (`symbol:amo.mcp.tools:_string`)
+- `symbol` — _tool_scan (`symbol:amo.mcp.tools:_tool_scan`)
+- `symbol` — _tool_graph_build (`symbol:amo.mcp.tools:_tool_graph_build`)
+- `symbol` — _tool_context (`symbol:amo.mcp.tools:_tool_context`)
+- `symbol` — _tool_validate (`symbol:amo.mcp.tools:_tool_validate`)
+- `symbol` — _tool_benchmark (`symbol:amo.mcp.tools:_tool_benchmark`)
+- `symbol` — _tool_optimize_suggest (`symbol:amo.mcp.tools:_tool_optimize_suggest`)
+- `symbol` — _tool_handoff (`symbol:amo.mcp.tools:_tool_handoff`)
+- `symbol` — _tool_postflight (`symbol:amo.mcp.tools:_tool_postflight`)
+- `symbol` — _tool_search_graph (`symbol:amo.mcp.tools:_tool_search_graph`)
+- `symbol` — list_tools (`symbol:amo.mcp.tools:list_tools`)
+- `symbol` — call_tool (`symbol:amo.mcp.tools:call_tool`)
 - `module` — amo.optimizer (`module:amo.optimizer`)
 - `module` — amo.optimizer.params (`module:amo.optimizer.params`)
 - `symbol` — run_suggest (`symbol:amo.optimizer.loop:run_suggest`)
@@ -495,6 +559,32 @@ Schema version: `0.2`
 - `symbol` — select_best (`symbol:amo.optimizer.trials:select_best`)
 - `symbol` — ai_path (`symbol:amo.paths:ai_path`)
 - `symbol` — ensure_dirs (`symbol:amo.paths:ensure_dirs`)
+- `module` — amo.runtime (`module:amo.runtime`)
+- `symbol` — backup_canonical (`symbol:amo.runtime.backups:backup_canonical`)
+- `symbol` — _prune (`symbol:amo.runtime.backups:_prune`)
+- `module` — os (`module:os`)
+- `module` — time (`module:time`)
+- `module` — contextlib (`module:contextlib`)
+- `symbol` — LockHeldError (`symbol:amo.runtime.lock:LockHeldError`)
+- `symbol` — lock_path (`symbol:amo.runtime.lock:lock_path`)
+- `symbol` — acquire_lock (`symbol:amo.runtime.lock:acquire_lock`)
+- `symbol` — release_lock (`symbol:amo.runtime.lock:release_lock`)
+- `symbol` — _is_stale (`symbol:amo.runtime.lock:_is_stale`)
+- `symbol` — memory_lock (`symbol:amo.runtime.lock:memory_lock`)
+- `symbol` — slugify (`symbol:amo.runtime.run_history:slugify`)
+- `symbol` — write_run_history (`symbol:amo.runtime.run_history:write_run_history`)
+- `module` — amo.server (`module:amo.server`)
+- `module` — amo.server.organism (`module:amo.server.organism`)
+- `module` — fastapi (`module:fastapi`)
+- `module` — fastapi.responses (`module:fastapi.responses`)
+- `module` — fastapi.staticfiles (`module:fastapi.staticfiles`)
+- `module` — pydantic (`module:pydantic`)
+- `symbol` — ContextRequest (`symbol:amo.server.app:ContextRequest`)
+- `symbol` — HandoffRequest (`symbol:amo.server.app:HandoffRequest`)
+- `symbol` — PostflightRequest (`symbol:amo.server.app:PostflightRequest`)
+- `symbol` — create_app (`symbol:amo.server.app:create_app`)
+- `symbol` — _read_json (`symbol:amo.server.organism:_read_json`)
+- `symbol` — organism_snapshot (`symbol:amo.server.organism:organism_snapshot`)
 - `module` — amo.validators (`module:amo.validators`)
 - `module` — subprocess (`module:subprocess`)
 - `symbol` — _run_git (`symbol:amo.validators.artifacts:_run_git`)
@@ -589,6 +679,22 @@ Schema version: `0.2`
 - `module` — tests.test_init (`module:tests.test_init`)
 - `symbol` — test_init_repo_creates_ai_memory (`symbol:tests.test_init:test_init_repo_creates_ai_memory`)
 - `symbol` — test_python_template_inherits_generic_memory (`symbol:tests.test_init:test_python_template_inherits_generic_memory`)
+- `module` — tests.test_mcp (`module:tests.test_mcp`)
+- `module` — io (`module:io`)
+- `symbol` — _repo (`symbol:tests.test_mcp:_repo`)
+- `symbol` — test_resources_list_covers_contract (`symbol:tests.test_mcp:test_resources_list_covers_contract`)
+- `symbol` — test_read_resource_returns_canonical_memory (`symbol:tests.test_mcp:test_read_resource_returns_canonical_memory`)
+- `symbol` — test_read_unknown_resource_raises (`symbol:tests.test_mcp:test_read_unknown_resource_raises`)
+- `symbol` — test_tools_list_covers_contract (`symbol:tests.test_mcp:test_tools_list_covers_contract`)
+- `symbol` — test_postflight_tool_requires_confirm (`symbol:tests.test_mcp:test_postflight_tool_requires_confirm`)
+- `symbol` — test_postflight_tool_requires_summary (`symbol:tests.test_mcp:test_postflight_tool_requires_summary`)
+- `symbol` — test_confirmed_postflight_applies (`symbol:tests.test_mcp:test_confirmed_postflight_applies`)
+- `symbol` — test_search_graph_finds_nodes (`symbol:tests.test_mcp:test_search_graph_finds_nodes`)
+- `symbol` — test_tool_invocations_recorded_in_ledger (`symbol:tests.test_mcp:test_tool_invocations_recorded_in_ledger`)
+- `symbol` — test_initialize_handshake (`symbol:tests.test_mcp:test_initialize_handshake`)
+- `symbol` — test_notifications_get_no_reply (`symbol:tests.test_mcp:test_notifications_get_no_reply`)
+- `symbol` — test_unknown_method_returns_error (`symbol:tests.test_mcp:test_unknown_method_returns_error`)
+- `symbol` — test_stdio_roundtrip (`symbol:tests.test_mcp:test_stdio_roundtrip`)
 - `module` — tests.test_optimizer (`module:tests.test_optimizer`)
 - `symbol` — _prepared_repo (`symbol:tests.test_optimizer:_prepared_repo`)
 - `symbol` — test_suggest_writes_cycle_findings_and_metrics (`symbol:tests.test_optimizer:test_suggest_writes_cycle_findings_and_metrics`)
@@ -607,6 +713,17 @@ Schema version: `0.2`
 - `symbol` — test_best_params_selection_prefers_score_then_earliest_trial (`symbol:tests.test_optimizer_params:test_best_params_selection_prefers_score_then_earliest_trial`)
 - `symbol` — test_ranking_uses_configured_context_max_units (`symbol:tests.test_optimizer_params:test_ranking_uses_configured_context_max_units`)
 - `symbol` — test_ranking_preserves_default_limit_without_params (`symbol:tests.test_optimizer_params:test_ranking_preserves_default_limit_without_params`)
+- `module` — tests.test_postflight_run_history (`module:tests.test_postflight_run_history`)
+- `symbol` — _repo (`symbol:tests.test_postflight_run_history:_repo`)
+- `symbol` — test_postflight_writes_run_note_and_mirror (`symbol:tests.test_postflight_run_history:test_postflight_writes_run_note_and_mirror`)
+- `symbol` — test_postflight_updates_state_and_tasks (`symbol:tests.test_postflight_run_history:test_postflight_updates_state_and_tasks`)
+- `symbol` — test_decision_appended_only_when_provided (`symbol:tests.test_postflight_run_history:test_decision_appended_only_when_provided`)
+- `symbol` — test_validation_appended_to_tests_when_provided (`symbol:tests.test_postflight_run_history:test_validation_appended_to_tests_when_provided`)
+- `symbol` — test_backup_created_before_mutation (`symbol:tests.test_postflight_run_history:test_backup_created_before_mutation`)
+- `symbol` — test_lock_released_after_postflight (`symbol:tests.test_postflight_run_history:test_lock_released_after_postflight`)
+- `symbol` — test_held_lock_blocks_postflight (`symbol:tests.test_postflight_run_history:test_held_lock_blocks_postflight`)
+- `symbol` — test_stale_lock_is_replaced (`symbol:tests.test_postflight_run_history:test_stale_lock_is_replaced`)
+- `symbol` — test_slugify_is_filesystem_safe (`symbol:tests.test_postflight_run_history:test_slugify_is_filesystem_safe`)
 - `module` — tests.test_runtime_validation (`module:tests.test_runtime_validation`)
 - `symbol` — _git_repo (`symbol:tests.test_runtime_validation:_git_repo`)
 - `symbol` — test_strict_validation_passes_after_build_context_pack (`symbol:tests.test_runtime_validation:test_strict_validation_passes_after_build_context_pack`)
@@ -624,6 +741,18 @@ Schema version: `0.2`
 - `symbol` — test_normalize_excludes_handles_string (`symbol:tests.test_scan_config:test_normalize_excludes_handles_string`)
 - `symbol` — test_normalize_excludes_handles_list (`symbol:tests.test_scan_config:test_normalize_excludes_handles_list`)
 - `symbol` — test_normalize_excludes_rejects_invalid_type (`symbol:tests.test_scan_config:test_normalize_excludes_rejects_invalid_type`)
+- `module` — tests.test_server_ui (`module:tests.test_server_ui`)
+- `module` — fastapi.testclient (`module:fastapi.testclient`)
+- `symbol` — client (`symbol:tests.test_server_ui:client`)
+- `symbol` — test_index_serves_organism_ui (`symbol:tests.test_server_ui:test_index_serves_organism_ui`)
+- `symbol` — test_organism_snapshot_endpoint (`symbol:tests.test_server_ui:test_organism_snapshot_endpoint`)
+- `symbol` — test_validation_endpoint (`symbol:tests.test_server_ui:test_validation_endpoint`)
+- `symbol` — test_benchmark_missing_returns_404 (`symbol:tests.test_server_ui:test_benchmark_missing_returns_404`)
+- `symbol` — test_context_flow_returns_pack_and_explanation (`symbol:tests.test_server_ui:test_context_flow_returns_pack_and_explanation`)
+- `symbol` — test_postflight_requires_confirm (`symbol:tests.test_server_ui:test_postflight_requires_confirm`)
+- `symbol` — test_confirmed_postflight_applies (`symbol:tests.test_server_ui:test_confirmed_postflight_applies`)
+- `symbol` — test_ledger_endpoint_lists_entries (`symbol:tests.test_server_ui:test_ledger_endpoint_lists_entries`)
+- `symbol` — test_token_gate_when_required (`symbol:tests.test_server_ui:test_token_gate_when_required`)
 - `module` — tests.test_session_pack (`module:tests.test_session_pack`)
 - `symbol` — test_session_pack_is_written (`symbol:tests.test_session_pack:test_session_pack_is_written`)
 - `module` — tests.test_status (`module:tests.test_status`)
@@ -667,6 +796,8 @@ Schema version: `0.2`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/benchmark.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_explain.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_explain.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_units.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/files.json`
@@ -675,6 +806,9 @@ Schema version: `0.2`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.export.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
+- `dir:.ai/machine` -[contains]-> `dir:.ai/machine/run_history`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/validation.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/validation.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/manifest.yaml`
@@ -686,6 +820,10 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/packs/quick.md`
 - `dir:.ai/packs` -[contains]-> `file:.ai/packs/quick.md`
 - `pack:.ai/packs/quick.md` -[derived_from]-> `file:.ai/packs/quick.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/081351-test-postflight.md`
+- `dir:.ai` -[contains]-> `dir:.ai/runs`
+- `dir:.ai/runs` -[contains]-> `dir:.ai/runs/2026-07-05`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/081351-test-postflight.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/state.md`
 - `dir:.ai` -[contains]-> `file:.ai/state.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tasks.md`
@@ -710,18 +848,24 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/ci.yml`
 - `dir:.github` -[contains]-> `dir:.github/workflows`
 - `dir:.github/workflows` -[contains]-> `file:.github/workflows/ci.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/codeql.yml`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/codeql.yml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/opencode.yml`
 - `dir:.github/workflows` -[contains]-> `file:.github/workflows/opencode.yml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/publish.yml`
+- `dir:.github/workflows` -[contains]-> `file:.github/workflows/publish.yml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/release-check.yml`
 - `dir:.github/workflows` -[contains]-> `file:.github/workflows/release-check.yml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.github/workflows/scorecard.yml`
 - `dir:.github/workflows` -[contains]-> `file:.github/workflows/scorecard.yml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:AGENTS.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:CHANGELOG.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:CODE_OF_CONDUCT.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:CONTRIBUTING.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:LICENSE`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:README.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:SECURITY.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:SUPPORT.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/__init__.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `dir:amo`
 - `dir:amo` -[contains]-> `file:amo/__init__.py`
@@ -828,6 +972,15 @@ Schema version: `0.2`
 - `dir:amo/index` -[contains]-> `file:amo/index/files.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/io.py`
 - `dir:amo` -[contains]-> `file:amo/io.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/mcp`
+- `dir:amo/mcp` -[contains]-> `file:amo/mcp/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/resources.py`
+- `dir:amo/mcp` -[contains]-> `file:amo/mcp/resources.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/server.py`
+- `dir:amo/mcp` -[contains]-> `file:amo/mcp/server.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/tools.py`
+- `dir:amo/mcp` -[contains]-> `file:amo/mcp/tools.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/__init__.py`
 - `dir:amo` -[contains]-> `dir:amo/optimizer`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/__init__.py`
@@ -851,36 +1004,12 @@ Schema version: `0.2`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/trials.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/paths.py`
 - `dir:amo` -[contains]-> `file:amo/paths.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/__init__.py`
-- `dir:amo` -[contains]-> `dir:amo/validators`
-- `dir:amo/validators` -[contains]-> `file:amo/validators/__init__.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/artifacts.py`
-- `dir:amo/validators` -[contains]-> `file:amo/validators/artifacts.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/graph.py`
-- `dir:amo/validators` -[contains]-> `file:amo/validators/graph.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/instructions.py`
-- `dir:amo/validators` -[contains]-> `file:amo/validators/instructions.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/references.py`
-- `dir:amo/validators` -[contains]-> `file:amo/validators/references.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:benchmarks/README.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `dir:benchmarks`
-- `dir:benchmarks` -[contains]-> `file:benchmarks/README.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/10-10-scorecard.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `dir:docs`
-- `dir:docs` -[contains]-> `file:docs/10-10-scorecard.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adapters.md`
-- `dir:docs` -[contains]-> `file:docs/adapters.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adoption.md`
-- `dir:docs` -[contains]-> `file:docs/adoption.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/agent-context-discipline.md`
-- `dir:docs` -[contains]-> `file:docs/agent-context-discipline.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/architecture.md`
-- `dir:docs` -[contains]-> `file:docs/architecture.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/benchmark.md`
-- `dir:docs` -[contains]-> `file:docs/benchmark.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/comparison.md`
-- `dir:docs` -[contains]-> `file:docs/comparison.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/context-engine.md`
-- `dir:docs` -[contains]-> `file:docs/context-engine.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/demo.md`
-- ... 1440 more edges
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/runtime`
+- `dir:amo/runtime` -[contains]-> `file:amo/runtime/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/backups.py`
+- `dir:amo/runtime` -[contains]-> `file:amo/runtime/backups.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/lock.py`
+- `dir:amo/runtime` -[contains]-> `file:amo/runtime/lock.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/run_history.py`
+- ... 1799 more edges
