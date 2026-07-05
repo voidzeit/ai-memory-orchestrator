@@ -32,10 +32,13 @@ def rank_units(
         signature = (str(unit.get("title", "")), str(unit.get("summary", "")))
         duplicate = signature in signatures
         signatures.add(signature)
+        graph_proximity = proximity.get(path, 0.0)
+        if relevance == 0 and graph_proximity == 0:
+            continue
         score = (
             relevance * float(settings["context.relevance_weight"])
             + authority * float(settings["context.authority_weight"])
-            + proximity.get(path, 0.0) * float(settings["context.graph_weight"])
+            + graph_proximity * float(settings["context.graph_weight"])
             - (float(settings["context.duplicate_penalty"]) if duplicate else 0.0)
         )
         roi = score / max(tokens, 1) ** float(settings["context.token_cost_weight"])

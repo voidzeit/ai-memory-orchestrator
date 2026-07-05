@@ -1,3 +1,140 @@
 # Graph
 
-Regenerate with `amo graph build` inside this example.
+Schema version: `0.2`
+
+## Nodes
+
+- `repository` — agent-debug-session (`repo:agent-debug-session`)
+- `memory` — .ai/manifest.yaml (`memory:manifest`)
+- `memory` — .ai/state.md (`memory:state`)
+- `memory` — .ai/decisions.md (`memory:decisions`)
+- `memory` — .ai/tasks.md (`memory:tasks`)
+- `memory` — .ai/tests.md (`memory:tests`)
+- `memory` — .ai/graph.md (`memory:graph`)
+- `file` — .ai/decisions.md (`file:.ai/decisions.md`)
+- `directory` — .ai (`dir:.ai`)
+- `file` — .ai/evidence/README.md (`file:.ai/evidence/README.md`)
+- `directory` — .ai/evidence (`dir:.ai/evidence`)
+- `file` — .ai/graph.md (`file:.ai/graph.md`)
+- `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
+- `directory` — .ai/machine (`dir:.ai/machine`)
+- `file` — .ai/machine/benchmark.json (`file:.ai/machine/benchmark.json`)
+- `file` — .ai/machine/benchmark.md (`file:.ai/machine/benchmark.md`)
+- `file` — .ai/machine/context_explain.json (`file:.ai/machine/context_explain.json`)
+- `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
+- `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
+- `file` — .ai/machine/graph.json (`file:.ai/machine/graph.json`)
+- `file` — .ai/manifest.yaml (`file:.ai/manifest.yaml`)
+- `file` — .ai/packs/quick.md (`file:.ai/packs/quick.md`)
+- `directory` — .ai/packs (`dir:.ai/packs`)
+- `context_pack` — .ai/packs/quick.md (`pack:.ai/packs/quick.md`)
+- `file` — .ai/state.md (`file:.ai/state.md`)
+- `file` — .ai/tasks.md (`file:.ai/tasks.md`)
+- `file` — .ai/tests.md (`file:.ai/tests.md`)
+- `file` — README.md (`file:README.md`)
+- `file` — app/auth.py (`file:app/auth.py`)
+- `directory` — app (`dir:app`)
+- `file` — app/notifications.py (`file:app/notifications.py`)
+- `file` — app/payments.py (`file:app/payments.py`)
+- `file` — docs/changelog.md (`file:docs/changelog.md`)
+- `directory` — docs (`dir:docs`)
+- `file` — tests/test_auth.py (`file:tests/test_auth.py`)
+- `directory` — tests (`dir:tests`)
+- `test` — tests/test_auth.py (`test:tests/test_auth.py`)
+- `file` — truth.json (`file:truth.json`)
+- `module` — app.auth (`module:app.auth`)
+- `symbol` — authenticate (`symbol:app.auth:authenticate`)
+- `module` — app.notifications (`module:app.notifications`)
+- `symbol` — notify (`symbol:app.notifications:notify`)
+- `module` — app.payments (`module:app.payments`)
+- `symbol` — charge (`symbol:app.payments:charge`)
+- `module` — tests.test_auth (`module:tests.test_auth`)
+- `symbol` — test_rejects_unknown_user (`symbol:tests.test_auth:test_rejects_unknown_user`)
+- `symbol` — test_accepts_known_user (`symbol:tests.test_auth:test_accepts_known_user`)
+
+## Edges
+
+- `repo:agent-debug-session` -[contains]-> `memory:manifest`
+- `repo:agent-debug-session` -[contains]-> `memory:state`
+- `repo:agent-debug-session` -[contains]-> `memory:decisions`
+- `repo:agent-debug-session` -[contains]-> `memory:tasks`
+- `repo:agent-debug-session` -[contains]-> `memory:tests`
+- `repo:agent-debug-session` -[contains]-> `memory:graph`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/decisions.md`
+- `repo:agent-debug-session` -[contains]-> `dir:.ai`
+- `dir:.ai` -[contains]-> `file:.ai/decisions.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/evidence/README.md`
+- `dir:.ai` -[contains]-> `dir:.ai/evidence`
+- `dir:.ai/evidence` -[contains]-> `file:.ai/evidence/README.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/graph.md`
+- `dir:.ai` -[contains]-> `file:.ai/graph.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/artifacts.json`
+- `dir:.ai` -[contains]-> `dir:.ai/machine`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/benchmark.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/benchmark.md`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/context_explain.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_explain.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/context_units.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/files.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/files.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/machine/graph.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.json`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/manifest.yaml`
+- `dir:.ai` -[contains]-> `file:.ai/manifest.yaml`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/packs/quick.md`
+- `dir:.ai` -[contains]-> `dir:.ai/packs`
+- `dir:.ai/packs` -[contains]-> `file:.ai/packs/quick.md`
+- `pack:.ai/packs/quick.md` -[derived_from]-> `file:.ai/packs/quick.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/state.md`
+- `dir:.ai` -[contains]-> `file:.ai/state.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/tasks.md`
+- `dir:.ai` -[contains]-> `file:.ai/tasks.md`
+- `repo:agent-debug-session` -[contains]-> `file:.ai/tests.md`
+- `dir:.ai` -[contains]-> `file:.ai/tests.md`
+- `repo:agent-debug-session` -[contains]-> `file:README.md`
+- `repo:agent-debug-session` -[contains]-> `file:app/auth.py`
+- `repo:agent-debug-session` -[contains]-> `dir:app`
+- `dir:app` -[contains]-> `file:app/auth.py`
+- `repo:agent-debug-session` -[contains]-> `file:app/notifications.py`
+- `dir:app` -[contains]-> `file:app/notifications.py`
+- `repo:agent-debug-session` -[contains]-> `file:app/payments.py`
+- `dir:app` -[contains]-> `file:app/payments.py`
+- `repo:agent-debug-session` -[contains]-> `file:docs/changelog.md`
+- `repo:agent-debug-session` -[contains]-> `dir:docs`
+- `dir:docs` -[contains]-> `file:docs/changelog.md`
+- `repo:agent-debug-session` -[contains]-> `file:tests/test_auth.py`
+- `repo:agent-debug-session` -[contains]-> `dir:tests`
+- `dir:tests` -[contains]-> `file:tests/test_auth.py`
+- `test:tests/test_auth.py` -[documents]-> `file:tests/test_auth.py`
+- `file:tests/test_auth.py` -[tested_by]-> `test:tests/test_auth.py`
+- `repo:agent-debug-session` -[contains]-> `file:truth.json`
+- `file:app/auth.py` -[contains]-> `module:app.auth`
+- `module:app.auth` -[contains]-> `symbol:app.auth:authenticate`
+- `file:app/notifications.py` -[contains]-> `module:app.notifications`
+- `module:app.notifications` -[contains]-> `symbol:app.notifications:notify`
+- `file:app/payments.py` -[contains]-> `module:app.payments`
+- `module:app.payments` -[contains]-> `symbol:app.payments:charge`
+- `file:tests/test_auth.py` -[contains]-> `module:tests.test_auth`
+- `module:tests.test_auth` -[depends_on]-> `module:app.auth`
+- `file:tests/test_auth.py` -[references]-> `module:app.auth`
+- `module:tests.test_auth` -[contains]-> `symbol:tests.test_auth:test_rejects_unknown_user`
+- `module:tests.test_auth` -[contains]-> `symbol:tests.test_auth:test_accepts_known_user`
+- `memory:manifest` -[documents]-> `file:.ai/manifest.yaml`
+- `file:.ai/manifest.yaml` -[references]-> `file:.ai/decisions.md`
+- `file:.ai/manifest.yaml` -[references]-> `file:.ai/graph.md`
+- `file:.ai/manifest.yaml` -[references]-> `file:.ai/state.md`
+- `file:.ai/manifest.yaml` -[references]-> `file:.ai/tasks.md`
+- `file:.ai/manifest.yaml` -[references]-> `file:.ai/tests.md`
+- `file:.ai/manifest.yaml` -[references]-> `file:tests/test_auth.py`
+- `memory:state` -[documents]-> `file:.ai/state.md`
+- `file:.ai/state.md` -[references]-> `file:app/auth.py`
+- `memory:decisions` -[documents]-> `file:.ai/decisions.md`
+- `memory:tasks` -[documents]-> `file:.ai/tasks.md`
+- `file:.ai/tasks.md` -[references]-> `file:tests/test_auth.py`
+- `memory:tests` -[documents]-> `file:.ai/tests.md`
+- `file:.ai/tests.md` -[references]-> `file:tests/test_auth.py`
+- `memory:graph` -[documents]-> `file:.ai/graph.md`

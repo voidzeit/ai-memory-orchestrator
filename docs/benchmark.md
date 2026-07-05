@@ -74,6 +74,8 @@ A fixture opts into scored metrics by providing `truth.json` at its root:
 With truth present, `amo benchmark` computes `file_selection_precision`,
 `file_selection_recall`, `test_command_accuracy` (fraction of expected commands present in
 the pack), `context_section_coverage`, and `must_not_include_violations`. Note that
-precision counts every file whose path appears in the pack — memory and index files
-included — so small fixtures report low precision until context parameters are tuned.
+precision counts selected task files outside `.ai/`; canonical and derived `.ai/` files are
+excluded because canonical memory is rendered into every pack by contract. Unrelated source,
+test, and documentation files still count as false positives. The report records
+`evaluated_selected_files` so that this denominator is reviewable.
 `handoff_quality` remains unscored; it needs a handoff-specific rubric.

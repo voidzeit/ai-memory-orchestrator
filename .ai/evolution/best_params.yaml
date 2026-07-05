@@ -2,7 +2,7 @@ version: 1
 classification: evolutionary/derived
 source: amo optimize params sweep
 trial: 6
-score: 3.9843
+score: 3.986
 params:
   context.max_units: 7
   context.relevance_weight: 4.025229003856071

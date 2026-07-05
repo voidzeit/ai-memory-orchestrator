@@ -14,7 +14,7 @@ The remaining work is not more vision. The remaining work is confidence.
 |---|---|---|
 | Public narrative | Clear category and problem | Done |
 | README | First-screen value, quickstart, architecture, commands | Done |
-| Architecture | Stable source-of-truth model and schemas | Done; strict graph validation is tested and exercised in release-check |
+| Architecture | Stable source-of-truth model and schemas | Done; strict validation executes the checked-in JSON Schema artifact in release-check |
 | CLI | Lifecycle commands are coherent and tested | Done; command registration and release smoke paths are tested |
 | Context discipline | Profiles, budgets, handoff, degradation rules | Done |
 | Graph model | Validated graph contract, hierarchy, code structure, standard exports | Done |

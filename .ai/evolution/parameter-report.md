@@ -2,7 +2,7 @@
 
 Classification: **evolutionary/derived**
 
-Completed 10 deterministic trials. Trial 6 won with score `3.9843`.
+Completed 10 deterministic trials. Trial 6 won with score `3.986`.
 
 ## Why it won
 
@@ -10,7 +10,7 @@ Completed 10 deterministic trials. Trial 6 won with score `3.9843`.
 - `validation_confidence`: 1.0
 - `memory_durability`: 1.0
 - `interoperability`: 1.0
-- `token_cost`: 0.015700000000000047
+- `token_cost`: 0.014000000000000012
 - `stale_context`: 0.0
 - `graph_drift`: 0.0
 

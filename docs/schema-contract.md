@@ -31,6 +31,11 @@ These files are human-readable and versioned in Git.
 
 These files are derived. They can be regenerated.
 
+`amo validate --strict` loads `schemas/amo-graph.schema.json` and validates the
+generated `.ai/machine/graph.json` against that exact Draft 2020-12 artifact. The
+existing Python contract checks run as an additional layer for duplicate IDs and
+missing edge references. Schema failures include the failing JSON path.
+
 ## Context packs
 
 ```txt

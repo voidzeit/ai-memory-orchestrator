@@ -154,9 +154,27 @@ def build_project_graph(repo: Path) -> ProjectGraph:
     unique_nodes = {node["id"]: node for node in nodes}
     nodes = list(unique_nodes.values())
 
-    for node in nodes:
-        if node["type"] == "file":
-            edges.append({"source": "memory:state", "target": node["id"], "type": "documents"})
+    indexed_paths = {str(item["path"]) for item in files}
+    for memory_id, memory_path in memory_files:
+        if memory_path in indexed_paths:
+            edges.append(
+                {"source": memory_id, "target": f"file:{memory_path}", "type": "documents"}
+            )
+        content_path = repo / memory_path
+        if memory_path == ".ai/graph.md" or not content_path.is_file():
+            # graph.md is generated from this graph; using its exhaustive path
+            # listing as references creates a self-reinforcing all-to-all hub.
+            continue
+        content = content_path.read_text(encoding="utf-8", errors="replace")
+        for referenced_path in sorted(indexed_paths - {memory_path}):
+            if referenced_path in content:
+                edges.append(
+                    {
+                        "source": f"file:{memory_path}",
+                        "target": f"file:{referenced_path}",
+                        "type": "references",
+                    }
+                )
 
     return {"schema_version": SCHEMA_VERSION, "nodes": nodes, "edges": edges}
 
