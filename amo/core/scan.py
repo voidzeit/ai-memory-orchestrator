@@ -30,12 +30,12 @@ def normalize_excludes(value: Any) -> set[str]:
     return set()
 
 
-def scan_repo(repo: Path) -> dict[str, int]:
+def scan_repo(repo: Path, extra_excludes: set[str] | None = None) -> dict[str, int]:
     repo = repo.resolve()
     ensure_dirs(repo)
     config = load_config(repo)
     configured_excludes = normalize_excludes(get_config_value(config, "scan.excludes", []))
-    excludes = _DEFAULT_EXCLUDES | configured_excludes
+    excludes = _DEFAULT_EXCLUDES | configured_excludes | (extra_excludes or set())
     files = build_file_index(repo, excludes=excludes)
     artifacts = build_artifact_index(repo, files)
     units = build_context_units(repo, files)

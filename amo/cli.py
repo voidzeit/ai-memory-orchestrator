@@ -16,6 +16,12 @@ from amo.core.evolve import evolve_safe
 from amo.core.graph import build_graph, export_graph
 from amo.core.handoff import build_handoff
 from amo.core.init import init_repo
+from amo.core.optimize_params import (
+    apply_safe_params,
+    load_best_params,
+    suggest_params,
+    sweep_params,
+)
 from amo.core.postflight import apply_postflight
 from amo.core.scan import scan_repo
 from amo.core.server import serve
@@ -27,9 +33,13 @@ app = typer.Typer(help="AI Memory Orchestrator CLI")
 graph_app = typer.Typer(help="Graph commands")
 obsidian_app = typer.Typer(help="Obsidian adapter commands")
 embeddings_app = typer.Typer(help="Embedding index commands")
+optimize_app = typer.Typer(help="Staged optimization commands")
+optimize_params_app = typer.Typer(help="Deterministic parameter optimization commands")
 app.add_typer(graph_app, name="graph")
 app.add_typer(obsidian_app, name="obsidian")
 app.add_typer(embeddings_app, name="embeddings")
+app.add_typer(optimize_app, name="optimize")
+optimize_app.add_typer(optimize_params_app, name="params")
 console = Console()
 
 EXPORTERS: dict[str, Callable[[Path], Path]] = {
@@ -166,6 +176,81 @@ def evolve(repo: Path = Path(".")) -> None:
     """Record a deterministic, no-LLM memory-quality evolution cycle."""
     result = evolve_safe(repo)
     console.print(f"[green]Safe evolution cycle complete[/green]: {result}")
+
+
+@optimize_params_app.command("suggest")
+def optimize_params_suggest(repo: Path = Path(".")) -> None:
+    """Validate and list the declared parameter search space."""
+    try:
+        space = suggest_params(repo)
+    except (OSError, ValueError) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
+    for name, definition in space.parameters.items():
+        bounds = ""
+        if definition.type in {"int", "float"}:
+            bounds = f" [{definition.low}, {definition.high}]"
+        elif definition.type == "categorical":
+            bounds = f" {list(definition.choices)}"
+        console.print(
+            f"- {name}: {definition.type}{bounds}; default={definition.default}; "
+            f"safe_to_apply={definition.safe_to_apply}"
+        )
+    if space.disconnected:
+        console.print("[yellow]Declared but not yet connected:[/yellow]")
+        for name in space.disconnected:
+            console.print(f"- {name}")
+
+
+@optimize_params_app.command("sweep")
+def optimize_params_sweep(
+    trials: int = typer.Option(20, "--trials", min=1),
+    seed: int = typer.Option(42, "--seed", min=0),
+    repo: Path = Path("."),
+) -> None:
+    """Run a deterministic sweep without changing .amo.yaml."""
+    try:
+        best = sweep_params(repo, trials=trials, seed=seed)
+    except (OSError, ValueError) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
+    console.print(
+        f"[green]Completed {trials} trials[/green]; best trial={best.trial} "
+        f"score={best.objective_score}"
+    )
+
+
+@optimize_params_app.command("best")
+def optimize_params_best(repo: Path = Path(".")) -> None:
+    """Show the best known parameter configuration and evidence."""
+    try:
+        best = load_best_params(repo)
+    except (OSError, ValueError) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
+    console.print(f"Best trial: {best['trial']}  score: {best['score']}")
+    console.print("Why it won: highest normalized objective score; ties prefer the earliest trial.")
+    for name, value in best["params"].items():
+        console.print(f"- {name}: {value}")
+    console.print("Unscored metrics:")
+    for name in best.get("unscored", []):
+        console.print(f"- {name}")
+
+
+@optimize_params_app.command("apply-safe")
+def optimize_params_apply_safe(
+    confirm: bool = typer.Option(False, "--confirm"),
+    repo: Path = Path("."),
+) -> None:
+    """Apply only explicitly safe best parameters to .amo.yaml."""
+    try:
+        changed = apply_safe_params(repo, confirm=confirm)
+    except (OSError, ValueError) as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
+    console.print("[green]Applied safe parameters to .amo.yaml[/green]")
+    for name, value in changed.items():
+        console.print(f"- {name}: {value}")
 
 
 @graph_app.command("build")

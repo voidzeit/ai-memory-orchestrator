@@ -25,3 +25,8 @@
 Task: make AMO the repo-native memory and graph operating layer
 
 Summary: Stabilized runtime validation and config, integrated foundation branches, added graph contract validation and levels, Python structure extraction, standard exports, collision-safe Obsidian notes, full agent profiles, deterministic benchmark, and safe evolve.
+## Postflight — 2026-07-05T05:05:38.264353+00:00
+
+Task: implement staged deterministic optimizable parameters
+
+Summary: Added typed parameter search spaces, deterministic seeded sweeps, normalized evidence-aware objectives, evolutionary trial reports, safe-only promotion, and parameter-driven context ranking.

@@ -13,13 +13,16 @@ Schema version: `0.2`
 - `memory` — .ai/graph.md (`memory:graph`)
 - `file` — .ai/decisions.md (`file:.ai/decisions.md`)
 - `directory` — .ai (`dir:.ai`)
-- `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
+- `file` — .ai/evolution/best_params.yaml (`file:.ai/evolution/best_params.yaml`)
 - `directory` — .ai/evolution (`dir:.ai/evolution`)
+- `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
 - `file` — .ai/evolution/findings.md (`file:.ai/evolution/findings.md`)
 - `file` — .ai/evolution/metrics.json (`file:.ai/evolution/metrics.json`)
+- `file` — .ai/evolution/parameter-report.md (`file:.ai/evolution/parameter-report.md`)
 - `file` — .ai/graph.md (`file:.ai/graph.md`)
 - `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
 - `directory` — .ai/machine (`dir:.ai/machine`)
+- `file` — .ai/machine/benchmark.json (`file:.ai/machine/benchmark.json`)
 - `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
 - `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
 - `file` — .ai/machine/graph.export.json (`file:.ai/machine/graph.export.json`)
@@ -35,6 +38,10 @@ Schema version: `0.2`
 - `file` — .ai/tasks.md (`file:.ai/tasks.md`)
 - `file` — .ai/tests.md (`file:.ai/tests.md`)
 - `file` — .amo.yaml (`file:.amo.yaml`)
+- `file` — .amo/optimization/objective.yaml (`file:.amo/optimization/objective.yaml`)
+- `directory` — .amo (`dir:.amo`)
+- `directory` — .amo/optimization (`dir:.amo/optimization`)
+- `file` — .amo/optimization/search_space.yaml (`file:.amo/optimization/search_space.yaml`)
 - `file` — .github/ISSUE_TEMPLATE/bug.md (`file:.github/ISSUE_TEMPLATE/bug.md`)
 - `directory` — .github (`dir:.github`)
 - `directory` — .github/ISSUE_TEMPLATE (`dir:.github/ISSUE_TEMPLATE`)
@@ -77,6 +84,7 @@ Schema version: `0.2`
 - `file` — amo/core/graph.py (`file:amo/core/graph.py`)
 - `file` — amo/core/handoff.py (`file:amo/core/handoff.py`)
 - `file` — amo/core/init.py (`file:amo/core/init.py`)
+- `file` — amo/core/optimize_params.py (`file:amo/core/optimize_params.py`)
 - `file` — amo/core/postflight.py (`file:amo/core/postflight.py`)
 - `file` — amo/core/scan.py (`file:amo/core/scan.py`)
 - `file` — amo/core/server.py (`file:amo/core/server.py`)
@@ -100,6 +108,14 @@ Schema version: `0.2`
 - `file` — amo/index/context_units.py (`file:amo/index/context_units.py`)
 - `file` — amo/index/files.py (`file:amo/index/files.py`)
 - `file` — amo/io.py (`file:amo/io.py`)
+- `file` — amo/optimizer/__init__.py (`file:amo/optimizer/__init__.py`)
+- `directory` — amo/optimizer (`dir:amo/optimizer`)
+- `file` — amo/optimizer/objective.py (`file:amo/optimizer/objective.py`)
+- `file` — amo/optimizer/params.py (`file:amo/optimizer/params.py`)
+- `file` — amo/optimizer/report.py (`file:amo/optimizer/report.py`)
+- `file` — amo/optimizer/search_space.py (`file:amo/optimizer/search_space.py`)
+- `file` — amo/optimizer/sweep.py (`file:amo/optimizer/sweep.py`)
+- `file` — amo/optimizer/trials.py (`file:amo/optimizer/trials.py`)
 - `file` — amo/paths.py (`file:amo/paths.py`)
 - `file` — amo/validators/__init__.py (`file:amo/validators/__init__.py`)
 - `directory` — amo/validators (`dir:amo/validators`)
@@ -133,6 +149,7 @@ Schema version: `0.2`
 - `file` — docs/obsidian-graph-export.md (`file:docs/obsidian-graph-export.md`)
 - `file` — docs/obsidian-vs-amo.md (`file:docs/obsidian-vs-amo.md`)
 - `file` — docs/obsidian.md (`file:docs/obsidian.md`)
+- `file` — docs/optimizable-parameters.md (`file:docs/optimizable-parameters.md`)
 - `file` — docs/problem.md (`file:docs/problem.md`)
 - `file` — docs/quickstart.md (`file:docs/quickstart.md`)
 - `file` — docs/release-hardening.md (`file:docs/release-hardening.md`)
@@ -200,6 +217,8 @@ Schema version: `0.2`
 - `test` — tests/test_graph_validation.py (`test:tests/test_graph_validation.py`)
 - `file` — tests/test_init.py (`file:tests/test_init.py`)
 - `test` — tests/test_init.py (`test:tests/test_init.py`)
+- `file` — tests/test_optimizer_params.py (`file:tests/test_optimizer_params.py`)
+- `test` — tests/test_optimizer_params.py (`test:tests/test_optimizer_params.py`)
 - `file` — tests/test_runtime_validation.py (`file:tests/test_runtime_validation.py`)
 - `test` — tests/test_runtime_validation.py (`test:tests/test_runtime_validation.py`)
 - `file` — tests/test_scan.py (`file:tests/test_scan.py`)
@@ -241,6 +260,7 @@ Schema version: `0.2`
 - `module` — amo.core.graph (`module:amo.core.graph`)
 - `module` — amo.core.handoff (`module:amo.core.handoff`)
 - `module` — amo.core.init (`module:amo.core.init`)
+- `module` — amo.core.optimize_params (`module:amo.core.optimize_params`)
 - `module` — amo.core.postflight (`module:amo.core.postflight`)
 - `module` — amo.core.scan (`module:amo.core.scan`)
 - `module` — amo.core.server (`module:amo.core.server`)
@@ -259,6 +279,10 @@ Schema version: `0.2`
 - `symbol` — export (`symbol:amo.cli:export`)
 - `symbol` — benchmark (`symbol:amo.cli:benchmark`)
 - `symbol` — evolve (`symbol:amo.cli:evolve`)
+- `symbol` — optimize_params_suggest (`symbol:amo.cli:optimize_params_suggest`)
+- `symbol` — optimize_params_sweep (`symbol:amo.cli:optimize_params_sweep`)
+- `symbol` — optimize_params_best (`symbol:amo.cli:optimize_params_best`)
+- `symbol` — optimize_params_apply_safe (`symbol:amo.cli:optimize_params_apply_safe`)
 - `symbol` — graph_build (`symbol:amo.cli:graph_build`)
 - `symbol` — graph_export (`symbol:amo.cli:graph_export`)
 - `symbol` — embeddings_build (`symbol:amo.cli:embeddings_build`)
@@ -303,6 +327,17 @@ Schema version: `0.2`
 - `symbol` — init_repo (`symbol:amo.core.init:init_repo`)
 - `symbol` — _copy_template (`symbol:amo.core.init:_copy_template`)
 - `symbol` — _write_embedded_default (`symbol:amo.core.init:_write_embedded_default`)
+- `module` — amo.optimizer.report (`module:amo.optimizer.report`)
+- `module` — amo.optimizer.search_space (`module:amo.optimizer.search_space`)
+- `module` — amo.optimizer.sweep (`module:amo.optimizer.sweep`)
+- `module` — amo.optimizer.trials (`module:amo.optimizer.trials`)
+- `symbol` — optimization_root (`symbol:amo.core.optimize_params:optimization_root`)
+- `symbol` — load_project_search_space (`symbol:amo.core.optimize_params:load_project_search_space`)
+- `symbol` — suggest_params (`symbol:amo.core.optimize_params:suggest_params`)
+- `symbol` — sweep_params (`symbol:amo.core.optimize_params:sweep_params`)
+- `symbol` — load_best_params (`symbol:amo.core.optimize_params:load_best_params`)
+- `symbol` — _nested_param (`symbol:amo.core.optimize_params:_nested_param`)
+- `symbol` — apply_safe_params (`symbol:amo.core.optimize_params:apply_safe_params`)
 - `module` — datetime (`module:datetime`)
 - `symbol` — apply_postflight (`symbol:amo.core.postflight:apply_postflight`)
 - `module` — amo.index.artifacts (`module:amo.index.artifacts`)
@@ -357,6 +392,24 @@ Schema version: `0.2`
 - `symbol` — write_json (`symbol:amo.io:write_json`)
 - `symbol` — read_text_if_exists (`symbol:amo.io:read_text_if_exists`)
 - `symbol` — write_text (`symbol:amo.io:write_text`)
+- `module` — amo.optimizer (`module:amo.optimizer`)
+- `module` — amo.optimizer.params (`module:amo.optimizer.params`)
+- `module` — amo.optimizer.objective (`module:amo.optimizer.objective`)
+- `module` — dataclasses (`module:dataclasses`)
+- `symbol` — ObjectiveResult (`symbol:amo.optimizer.objective:ObjectiveResult`)
+- `symbol` — load_objective_weights (`symbol:amo.optimizer.objective:load_objective_weights`)
+- `symbol` — score_objective (`symbol:amo.optimizer.objective:score_objective`)
+- `symbol` — ParameterDefinition (`symbol:amo.optimizer.params:ParameterDefinition`)
+- `symbol` — render_parameter_report (`symbol:amo.optimizer.report:render_parameter_report`)
+- `module` — random (`module:random`)
+- `symbol` — SearchSpace (`symbol:amo.optimizer.search_space:SearchSpace`)
+- `symbol` — load_search_space (`symbol:amo.optimizer.search_space:load_search_space`)
+- `symbol` — _graph_metrics (`symbol:amo.optimizer.sweep:_graph_metrics`)
+- `symbol` — evaluate_params (`symbol:amo.optimizer.sweep:evaluate_params`)
+- `symbol` — run_sweep (`symbol:amo.optimizer.sweep:run_sweep`)
+- `symbol` — Trial (`symbol:amo.optimizer.trials:Trial`)
+- `symbol` — write_trials (`symbol:amo.optimizer.trials:write_trials`)
+- `symbol` — select_best (`symbol:amo.optimizer.trials:select_best`)
 - `symbol` — ai_path (`symbol:amo.paths:ai_path`)
 - `symbol` — ensure_dirs (`symbol:amo.paths:ensure_dirs`)
 - `module` — amo.validators (`module:amo.validators`)
@@ -418,6 +471,16 @@ Schema version: `0.2`
 - `module` — tests.test_init (`module:tests.test_init`)
 - `symbol` — test_init_repo_creates_ai_memory (`symbol:tests.test_init:test_init_repo_creates_ai_memory`)
 - `symbol` — test_python_template_inherits_generic_memory (`symbol:tests.test_init:test_python_template_inherits_generic_memory`)
+- `module` — tests.test_optimizer_params (`module:tests.test_optimizer_params`)
+- `module` — pytest (`module:pytest`)
+- `symbol` — _write_space (`symbol:tests.test_optimizer_params:_write_space`)
+- `symbol` — test_loading_search_space (`symbol:tests.test_optimizer_params:test_loading_search_space`)
+- `symbol` — test_invalid_parameter_bounds_are_reported (`symbol:tests.test_optimizer_params:test_invalid_parameter_bounds_are_reported`)
+- `symbol` — test_objective_scoring_marks_missing_ground_truth_unscored (`symbol:tests.test_optimizer_params:test_objective_scoring_marks_missing_ground_truth_unscored`)
+- `symbol` — test_trial_generation_is_deterministic_for_seed (`symbol:tests.test_optimizer_params:test_trial_generation_is_deterministic_for_seed`)
+- `symbol` — test_best_params_selection_prefers_score_then_earliest_trial (`symbol:tests.test_optimizer_params:test_best_params_selection_prefers_score_then_earliest_trial`)
+- `symbol` — test_ranking_uses_configured_context_max_units (`symbol:tests.test_optimizer_params:test_ranking_uses_configured_context_max_units`)
+- `symbol` — test_ranking_preserves_default_limit_without_params (`symbol:tests.test_optimizer_params:test_ranking_preserves_default_limit_without_params`)
 - `module` — tests.test_runtime_validation (`module:tests.test_runtime_validation`)
 - `symbol` — _git_repo (`symbol:tests.test_runtime_validation:_git_repo`)
 - `symbol` — test_strict_validation_passes_after_build_context_pack (`symbol:tests.test_runtime_validation:test_strict_validation_passes_after_build_context_pack`)
@@ -453,18 +516,24 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/decisions.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `dir:.ai`
 - `dir:.ai` -[contains]-> `file:.ai/decisions.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0001.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/best_params.yaml`
 - `dir:.ai` -[contains]-> `dir:.ai/evolution`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/best_params.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0001.json`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0001.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/findings.md`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/findings.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/metrics.json`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/metrics.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/parameter-report.md`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/parameter-report.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/graph.md`
 - `dir:.ai` -[contains]-> `file:.ai/graph.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/artifacts.json`
 - `dir:.ai` -[contains]-> `dir:.ai/machine`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/benchmark.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_units.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/files.json`
@@ -491,6 +560,12 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tests.md`
 - `dir:.ai` -[contains]-> `file:.ai/tests.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.amo.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.amo/optimization/objective.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:.amo`
+- `dir:.amo` -[contains]-> `dir:.amo/optimization`
+- `dir:.amo/optimization` -[contains]-> `file:.amo/optimization/objective.yaml`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.amo/optimization/search_space.yaml`
+- `dir:.amo/optimization` -[contains]-> `file:.amo/optimization/search_space.yaml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.github/ISSUE_TEMPLATE/bug.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `dir:.github`
 - `dir:.github` -[contains]-> `dir:.github/ISSUE_TEMPLATE`
@@ -562,6 +637,8 @@ Schema version: `0.2`
 - `dir:amo/core` -[contains]-> `file:amo/core/handoff.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/init.py`
 - `dir:amo/core` -[contains]-> `file:amo/core/init.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/optimize_params.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/optimize_params.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/postflight.py`
 - `dir:amo/core` -[contains]-> `file:amo/core/postflight.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/scan.py`
@@ -605,6 +682,21 @@ Schema version: `0.2`
 - `dir:amo/index` -[contains]-> `file:amo/index/files.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/io.py`
 - `dir:amo` -[contains]-> `file:amo/io.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/optimizer`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/objective.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/objective.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/params.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/params.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/report.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/report.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/search_space.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/search_space.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/sweep.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/sweep.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/trials.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/trials.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/paths.py`
 - `dir:amo` -[contains]-> `file:amo/paths.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/__init__.py`
@@ -665,33 +757,4 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-graph-export.md`
 - `dir:docs` -[contains]-> `file:docs/obsidian-graph-export.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-vs-amo.md`
-- `dir:docs` -[contains]-> `file:docs/obsidian-vs-amo.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian.md`
-- `dir:docs` -[contains]-> `file:docs/obsidian.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/problem.md`
-- `dir:docs` -[contains]-> `file:docs/problem.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/quickstart.md`
-- `dir:docs` -[contains]-> `file:docs/quickstart.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/release-hardening.md`
-- `dir:docs` -[contains]-> `file:docs/release-hardening.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/release-notes-0.1.0-alpha.md`
-- `dir:docs` -[contains]-> `file:docs/release-notes-0.1.0-alpha.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/roadmap.md`
-- `dir:docs` -[contains]-> `file:docs/roadmap.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/scaling-roadmap.md`
-- `dir:docs` -[contains]-> `file:docs/scaling-roadmap.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/schema-contract.md`
-- `dir:docs` -[contains]-> `file:docs/schema-contract.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/server.md`
-- `dir:docs` -[contains]-> `file:docs/server.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/validators.md`
-- `dir:docs` -[contains]-> `file:docs/validators.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:examples/agent-debug-session/.ai/machine/artifacts.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `dir:examples`
-- `dir:examples` -[contains]-> `dir:examples/agent-debug-session`
-- `dir:examples/agent-debug-session` -[contains]-> `dir:examples/agent-debug-session/.ai`
-- `dir:examples/agent-debug-session/.ai` -[contains]-> `dir:examples/agent-debug-session/.ai/machine`
-- `dir:examples/agent-debug-session/.ai/machine` -[contains]-> `file:examples/agent-debug-session/.ai/machine/artifacts.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:examples/agent-debug-session/.ai/machine/benchmark.json`
-- `dir:examples/agent-debug-session/.ai/machine` -[contains]-> `file:examples/agent-debug-session/.ai/machine/benchmark.json`
-- ... 896 more edges
+- ... 1097 more edges

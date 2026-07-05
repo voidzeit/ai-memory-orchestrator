@@ -5,13 +5,18 @@ from pathlib import Path
 
 from amo.config import get_config_value, load_config
 from amo.context.profiles import get_budget
-from amo.context.ranking import rank_units
+from amo.context.ranking import DEFAULT_RANKING_PARAMS, rank_units
 from amo.context.render import render_context_pack
 from amo.io import read_text_if_exists, write_text
 from amo.paths import ai_path, ensure_dirs
 
 
-def build_context_pack(repo: Path, task: str, profile: str = "") -> Path:
+def build_context_pack(
+    repo: Path,
+    task: str,
+    profile: str = "",
+    params: dict[str, object] | None = None,
+) -> Path:
     repo = repo.resolve()
     ensure_dirs(repo)
     config = load_config(repo)
@@ -33,7 +38,12 @@ def build_context_pack(repo: Path, task: str, profile: str = "") -> Path:
         "tests": read_text_if_exists(ai_path(repo, "tests.md")),
     }
     budget = get_budget(profile, config=config)
-    selected = rank_units(units, task=task, budget=budget)
+    ranking_params = {
+        key: get_config_value(config, key, default)
+        for key, default in DEFAULT_RANKING_PARAMS.items()
+    }
+    ranking_params.update(params or {})
+    selected = rank_units(units, task=task, budget=budget, params=ranking_params)
     content = render_context_pack(task=task, profile=profile, budget=budget, canonical=canonical, units=selected)
     output = ai_path(repo, "packs", f"{profile}.md")
     write_text(output, content)
