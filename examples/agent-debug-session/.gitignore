@@ -1,0 +1,4 @@
+.ai/machine/*
+!.ai/machine/benchmark.json
+.ai/packs/
+.ai/runtime/

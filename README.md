@@ -67,6 +67,8 @@ amo graph export --format obsidian
 
 Neo4j is useful for advanced graph analytics. Obsidian is useful for human navigation through notes, properties, tags, aliases, and wikilinks. Neither replaces `.ai/` as source of truth.
 
+AMO is designed to scale hierarchically from repository to directories, files, modules, symbols, tests, decisions, risks, workflows, artifacts, adapters, and context packs. See `docs/industry-graph-foundation.md`, `docs/graph-ontology.md`, and `docs/scaling-roadmap.md`.
+
 ## Try it in 60 seconds
 
 ```bash
@@ -181,6 +183,9 @@ A 10/10 release must be understandable in 30 seconds, installable in 60 seconds,
 - [Manifesto](docs/manifesto.md)
 - [Problem: context rot](docs/problem.md)
 - [Agent context discipline](docs/agent-context-discipline.md)
+- [Industry graph foundation](docs/industry-graph-foundation.md)
+- [Graph ontology](docs/graph-ontology.md)
+- [Scaling roadmap](docs/scaling-roadmap.md)
 - [10/10 scorecard](docs/10-10-scorecard.md)
 - [Release hardening](docs/release-hardening.md)
 - [Adoption guide](docs/adoption.md)

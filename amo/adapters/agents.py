@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from amo.adapters.profile import ADAPTER_PROFILE
 from amo.io import write_text
 
 AGENTS_TEMPLATE = """# Agent Instructions
@@ -22,7 +23,8 @@ Rules:
 - Make the smallest safe change.
 - Do not expose secrets.
 - Update memory via `amo postflight` when project state changes.
-"""
+
+""" + ADAPTER_PROFILE
 
 
 def export_agents_md(repo: Path) -> Path:

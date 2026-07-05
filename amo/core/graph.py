@@ -2,6 +2,10 @@ import json
 from pathlib import Path
 
 from amo.graph.exporters import export_graph_cypher, export_graph_json, export_obsidian_graph_notes
+from amo.graph.code_structure import extract_python_structure
+from amo.graph.gexf import export_gexf
+from amo.graph.graphml import export_graphml
+from amo.graph.jsonld import export_jsonld
 from amo.graph.schema import ProjectGraph
 from amo.io import write_json, write_text
 from amo.paths import ai_path
@@ -32,6 +36,7 @@ def build_project_graph(repo: Path) -> ProjectGraph:
             "path": ".",
             "source": "git",
             "authority": 1.0,
+            "level": "L0",
         }
     ]
     edges = []
@@ -53,6 +58,7 @@ def build_project_graph(repo: Path) -> ProjectGraph:
                 "path": path,
                 "source": ".ai",
                 "authority": 0.95,
+                "level": "L1",
             }
         )
         edges.append({"source": f"repo:{repo.name}", "target": node_id, "type": "contains"})
@@ -67,6 +73,7 @@ def build_project_graph(repo: Path) -> ProjectGraph:
             "path": file_path,
             "source": "scan",
             "authority": 0.8,
+            "level": "L0",
             "metadata": {"lines": item.get("lines"), "size": item.get("size"), "suffix": item.get("suffix")},
         }
         nodes.append(file_node)
@@ -88,6 +95,7 @@ def build_project_graph(repo: Path) -> ProjectGraph:
                         "path": current,
                         "source": "scan",
                         "authority": 0.8,
+                        "level": "L0",
                     }
                 )
                 edges.append({"source": parent_id, "target": dir_id, "type": "contains"})
@@ -105,6 +113,7 @@ def build_project_graph(repo: Path) -> ProjectGraph:
                     "path": file_path,
                     "source": "scan",
                     "authority": 0.85,
+                    "level": "L3",
                 }
             )
             edges.append({"source": test_id, "target": file_node["id"], "type": "documents"})
@@ -120,9 +129,20 @@ def build_project_graph(repo: Path) -> ProjectGraph:
                     "path": file_path,
                     "source": ".ai/packs",
                     "authority": 0.75,
+                    "level": "L1",
                 }
             )
             edges.append({"source": pack_id, "target": file_node["id"], "type": "derived_from"})
+
+    for item in files:
+        file_path = str(item["path"])
+        if file_path.endswith(".py"):
+            code_nodes, code_edges = extract_python_structure(repo, file_path)
+            nodes.extend(code_nodes)
+            edges.extend(code_edges)
+
+    unique_nodes = {node["id"]: node for node in nodes}
+    nodes = list(unique_nodes.values())
 
     for node in nodes:
         if node["type"] == "file":
@@ -141,6 +161,12 @@ def export_graph(repo: Path, export_format: str, output: Path | None = None) -> 
         return export_graph_json(graph, output or ai_path(repo, "machine", "graph.export.json"))
     if export_format == "neo4j":
         return export_graph_cypher(graph, output or ai_path(repo, "machine", "graph.cypher"))
+    if export_format == "jsonld":
+        return export_jsonld(graph, output or ai_path(repo, "machine", "graph.jsonld"))
+    if export_format == "graphml":
+        return export_graphml(graph, output or ai_path(repo, "machine", "graph.graphml"))
+    if export_format == "gexf":
+        return export_gexf(graph, output or ai_path(repo, "machine", "graph.gexf"))
     if export_format == "obsidian":
         return export_obsidian_graph_notes(graph, output or repo / ".obsidian" / "project-memory" / "Graph")
     raise ValueError(f"Unsupported graph export format: {export_format}")

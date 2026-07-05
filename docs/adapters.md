@@ -2,7 +2,7 @@
 
 Adapters export AMO memory into external tool formats.
 
-Initial targets:
+Supported targets:
 
 - `AGENTS.md`
 - Claude Code `CLAUDE.md`
@@ -10,7 +10,8 @@ Initial targets:
 - Cline Memory Bank
 - Codex-compatible instructions
 - OpenCode instructions
-- MCP resources/tools
 - Obsidian notes
 
 Adapters are not the source of truth. `.ai/` is the source of truth.
+
+Every coding-agent profile includes the repository authority order, preflight and expansion policy, degradation-triggered handoff, postflight, validation commands, and the disposable runtime policy. MCP remains future work and is not implemented by these adapters.

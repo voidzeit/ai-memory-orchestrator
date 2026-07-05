@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+import hashlib
+import re
 from pathlib import Path
 
 from amo.graph.schema import ProjectGraph
 
 
 def safe_note_name(value: str) -> str:
-    return value.replace(":", " - ").replace("/", " - ").replace("\\", " - ")[:150]
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-") or "node"
+    short_hash = hashlib.sha256(value.encode("utf-8")).hexdigest()[:10]
+    return f"{slug[:80]}--{short_hash}"
 
 
 def export_rich_obsidian_graph(graph: ProjectGraph, output_dir: Path) -> Path:
