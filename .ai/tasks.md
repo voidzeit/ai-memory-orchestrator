@@ -3,10 +3,10 @@
 ## Immediate
 
 - [ ] Review and merge the alpha-readiness reconciliation PR with green CI and Release Check.
-- [ ] Make the repository public.
-- [ ] Protect `main`, require PRs and `release-check`, and disable force pushes and branch deletion.
+- [x] Make the repository public.
+- [x] Protect `main`, require PRs, `test`, and `release-check`, and disable force pushes and branch deletion.
 - [ ] Obtain green CodeQL and OpenSSF Scorecard runs on `main`.
-- [ ] Configure or explicitly defer PyPI trusted publishing.
+- [x] Defer PyPI for `0.1.0-alpha`; document source-install-only distribution.
 - [ ] Create `v0.1.0-alpha` only after all release gates are green.
 
 ## Next product work
@@ -96,3 +96,11 @@ Summary: Added direct checked-in JSON Schema artifact validation with valid and 
 
 Outcome: completed
 Changed files: amo/validators/json_schema.py, amo/core/validate.py, amo/core/graph.py, amo/core/benchmark.py, amo/context/graph_neighborhood.py, amo/context/ranking.py, tests/test_schema_artifact.py, tests/test_benchmark_evolve.py, docs/schema-contract.md, docs/benchmark.md
+## Postflight — 2026-07-05T10:09:15.526111+00:00
+
+Task: public alpha GitHub gates
+
+Summary: Verified public visibility and protected main with PR, test, and release-check requirements; disabled force pushes and deletion; obtained green CodeQL on PR 35; fixed Scorecard workflow permission scope; explicitly deferred PyPI and documented source-install-only alpha distribution.
+
+Outcome: completed
+Changed files: .github/workflows/scorecard.yml, README.md, CHANGELOG.md, docs/release-notes-0.1.0-alpha.md, docs/release-process.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md

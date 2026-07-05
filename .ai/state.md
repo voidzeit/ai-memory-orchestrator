@@ -36,11 +36,11 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 
 ## Remaining gaps
 
-- Repository visibility is private and must be changed for the public alpha.
-- `main` is not protected; the current private plan returns HTTP 403 for branch-protection configuration.
-- CI and Release Check passed on `main` and PR #35. CodeQL cannot upload because code scanning is not enabled for the private repository; OpenSSF Scorecard fails with a GitHub integration-access error. Both need green runs after visibility/settings changes.
+- The repository is public.
+- `main` is protected: pull requests, `test`, and `release-check` are required; force pushes and branch deletion are disabled.
+- CI, Release Check, and CodeQL passed on PR #35. OpenSSF Scorecard exposed an invalid workflow-level write permission; the job-scoped fix is in PR #35 and still needs a green run on `main`.
 - The `v0.1.0-alpha` tag and GitHub release do not exist.
-- PyPI trusted-publisher configuration and publish timing are not verified.
+- PyPI is explicitly deferred for `0.1.0-alpha`; this alpha is source-install only.
 - External embedding providers and broader language extraction are future work.
 - Federation remains design-only until alpha release gates are green.
 ## Postflight — 2026-07-04T04:54:53.734060+00:00
@@ -109,3 +109,11 @@ Summary: Added direct checked-in JSON Schema artifact validation with valid and 
 
 Outcome: completed
 Changed files: amo/validators/json_schema.py, amo/core/validate.py, amo/core/graph.py, amo/core/benchmark.py, amo/context/graph_neighborhood.py, amo/context/ranking.py, tests/test_schema_artifact.py, tests/test_benchmark_evolve.py, docs/schema-contract.md, docs/benchmark.md
+## Postflight — 2026-07-05T10:09:15.526111+00:00
+
+Task: public alpha GitHub gates
+
+Summary: Verified public visibility and protected main with PR, test, and release-check requirements; disabled force pushes and deletion; obtained green CodeQL on PR 35; fixed Scorecard workflow permission scope; explicitly deferred PyPI and documented source-install-only alpha distribution.
+
+Outcome: completed
+Changed files: .github/workflows/scorecard.yml, README.md, CHANGELOG.md, docs/release-notes-0.1.0-alpha.md, docs/release-process.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md

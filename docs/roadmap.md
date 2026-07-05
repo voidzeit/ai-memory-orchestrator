@@ -6,7 +6,7 @@
 - verify the expanded release-check on the release PR and `main`
 - obtain green CodeQL and OpenSSF Scorecard runs
 - configure public visibility and branch protection
-- confirm or defer PyPI publishing
+- ship the alpha as source-install only; PyPI is deferred
 - create `v0.1.0-alpha`
 
 ## v0.2-code-intelligence

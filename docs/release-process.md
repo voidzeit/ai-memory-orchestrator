@@ -38,8 +38,9 @@ update PRs.
 2. Update `CHANGELOG.md` and the release notes under `docs/`.
 3. Confirm the PEP 440 package version (`0.1.0a1` for this alpha) in `pyproject.toml`.
 4. Tag: `git tag -a vX.Y.Z -m "vX.Y.Z"` and push the tag.
-5. Create a GitHub release from the tag; the `publish` workflow builds, runs
-   `twine check`, and publishes to PyPI via trusted publishing.
+5. Create a GitHub release from the tag. `0.1.0-alpha` is source-install only; do not
+   trigger PyPI publishing. A later release may use the trusted-publishing workflow
+   after its publisher configuration is verified.
    `workflow_dispatch` runs build and check only — it never publishes.
 
 ## Repository settings checklist
@@ -50,8 +51,7 @@ repository settings and are **not** guaranteed by anything in this tree:
 - [ ] `main` branch protected; PRs required; force pushes and deletion disabled
 - [ ] `release-check` required as a status check
 - [ ] CodeQL and OpenSSF Scorecard complete successfully on `main`
-- [ ] PyPI trusted publisher configured for the `publish` workflow
-      (`pypi` environment)
+- [x] PyPI decision documented: deferred for `0.1.0-alpha`; source install only
 - [ ] Repository is public for the alpha release
 - [ ] `v0.1.0-alpha` tag is created only after all checks are green
 

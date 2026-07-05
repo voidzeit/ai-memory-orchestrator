@@ -37,4 +37,4 @@ Initial public alpha preparation.
 - CodeQL and OpenSSF Scorecard need a successful run after public visibility and permissions are configured.
 - External embedding providers are not included.
 - Federation remains design-only.
-- PyPI publication requires trusted-publisher configuration and an explicit release decision.
+- This alpha is source-install only. PyPI publication is deferred until trusted publishing is configured and separately verified.

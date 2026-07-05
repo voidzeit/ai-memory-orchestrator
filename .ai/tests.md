@@ -65,3 +65,7 @@ PR #35 CI success; Release Check success; CodeQL failed during SARIF upload with
 ## Validation — 2026-07-05T10:05:51.670235+00:00
 
 ruff green; 131 tests passed; all release commands exited 0; strict validation green; benchmark precision 1.0 recall 1.0 violations 0; build and twine check passed
+
+## Validation — 2026-07-05T10:09:15.526111+00:00
+
+repository public; branch protection API verified; PR CI, Release Check, and CodeQL green; Scorecard permission fix pending main run

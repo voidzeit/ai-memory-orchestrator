@@ -29,7 +29,7 @@ AMO 0.1.0-alpha is the first public foundation for a Git-native repository memor
 - public repository visibility and protected-branch settings
 - green CodeQL and OpenSSF Scorecard runs on the public repository
 - the `v0.1.0-alpha` tag and GitHub release
-- PyPI trusted-publisher configuration and publish timing
+- PyPI distribution; this alpha is source-install only
 - external embedding providers
 - federation runtime (design only)
 
@@ -59,6 +59,11 @@ amo optimize params best
 amo validate --strict
 amo status
 ```
+
+## Installation and distribution
+
+Install this alpha from source. PyPI publishing is explicitly deferred until a trusted
+publisher is configured and verified; no local artifact will be uploaded manually.
 
 ## Release intent
 

@@ -34,7 +34,7 @@ The remaining work is not more vision. The remaining work is confidence.
 - **Implemented, needs CI confirmation:** expanded `release-check` command path and CodeQL `actions: read` permission.
 - **Manual GitHub setting:** make the repository public; protect `main`; require PRs and `release-check`; disable force pushes and branch deletion.
 - **Still open:** obtain green CodeQL and OpenSSF Scorecard runs after visibility/settings changes.
-- **Still open:** configure or explicitly defer the PyPI trusted publisher.
+- **Done:** PyPI is explicitly deferred; `0.1.0-alpha` is source-install only.
 - **Still open:** create `v0.1.0-alpha` only after every release gate is green.
 
 ## 10/10 principle
