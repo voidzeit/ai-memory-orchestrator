@@ -26,6 +26,11 @@ jobs:
           amo handoff --task "release readiness" --summary "release validation"
           amo graph build
           amo graph export --format neo4j
+          amo graph export --format jsonld
+          amo graph export --format graphml
+          amo graph export --format gexf
           amo embeddings build
+          amo benchmark examples/agent-debug-session --task "fix failing auth tests"
+          amo optimize suggest
           amo validate --strict
           amo status
