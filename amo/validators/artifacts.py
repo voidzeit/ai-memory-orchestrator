@@ -8,7 +8,9 @@ ALLOWED_RUNTIME_FILES = {
     ".ai/runtime/last_context.md",
     ".ai/runtime/last_postflight.md",
     ".ai/runtime/session_handoff.md",
+    ".ai/runtime/postflight.lock",
 }
+ALLOWED_RUNTIME_PREFIXES = (".ai/runtime/backups/",)
 RUNTIME_ARTIFACT_NAMES = {Path(path).name for path in ALLOWED_RUNTIME_FILES}
 
 
@@ -57,7 +59,7 @@ def check_runtime_pollution(repo: Path) -> list[str]:
         relative = path.relative_to(repo).as_posix()
         if git_repo and is_git_tracked(repo, relative):
             warnings.append(f"Runtime file is tracked by Git: `{relative}`.")
-        if relative not in ALLOWED_RUNTIME_FILES:
+        if relative not in ALLOWED_RUNTIME_FILES and not relative.startswith(ALLOWED_RUNTIME_PREFIXES):
             warnings.append(f"Unexpected runtime file: `{relative}`.")
 
     for directory in (repo / ".ai" / "machine", repo / ".ai" / "packs"):
