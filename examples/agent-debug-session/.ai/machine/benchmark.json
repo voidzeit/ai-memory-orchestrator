@@ -2,7 +2,7 @@
   "task": "fix failing auth tests",
   "files_indexed": 20,
   "metrics": {
-    "token_reduction": 0.8551,
+    "token_reduction": 0.8649,
     "file_selection_precision": 0.1053,
     "file_selection_recall": 1.0,
     "test_command_accuracy": 1.0,
