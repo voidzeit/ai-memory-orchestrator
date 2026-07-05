@@ -1,5 +1,11 @@
 {
-  "cycles": 1,
-  "validation_status": "green",
-  "finding_count": 0
+  "cycle": 2,
+  "findings_total": 2,
+  "by_severity": {
+    "low": 2
+  },
+  "by_layer": {
+    "graph": 1,
+    "benchmark": 1
+  }
 }
