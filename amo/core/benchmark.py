@@ -6,7 +6,7 @@ from pathlib import Path
 from amo.core.context import build_context_pack
 from amo.core.scan import scan_repo
 from amo.evidence.ledger import record_evidence
-from amo.io import write_json
+from amo.io import write_json, write_text
 
 UNSCORED = "not_scored_without_fixture_truth"
 
@@ -53,13 +53,15 @@ def run_benchmark(
     result = {"task": task, "files_indexed": scan["files_indexed"], "metrics": metrics}
     output = repo / ".ai" / "machine" / "benchmark.json"
     write_json(output, result)
+    markdown_output = repo / ".ai" / "machine" / "benchmark.md"
+    write_text(markdown_output, _render_markdown(result))
     record_evidence(
         repo,
         kind="benchmark",
         source="amo benchmark",
         result=f"token_reduction={metrics['token_reduction']}",
         authority=0.9,
-        artifacts=(".ai/machine/benchmark.json",),
+        artifacts=(".ai/machine/benchmark.json", ".ai/machine/benchmark.md"),
         limitations=(
             ("scored against truth.json fixture ground truth",)
             if truth is not None
@@ -67,6 +69,33 @@ def run_benchmark(
         ),
     )
     return output
+
+
+def _render_markdown(result: dict[str, object]) -> str:
+    metrics = result["metrics"]
+    assert isinstance(metrics, dict)
+    lines = [
+        "# AMO Benchmark",
+        "",
+        f"Task: `{result['task']}`",
+        f"Files indexed: {result['files_indexed']}",
+        "",
+        "## Metrics",
+        "",
+        "| Metric | Result |",
+        "|---|---:|",
+    ]
+    for name, value in metrics.items():
+        rendered = "unscored" if value is None or value == UNSCORED else str(value)
+        lines.append(f"| `{name}` | {rendered} |")
+    lines.extend(
+        [
+            "",
+            "Metrics marked `unscored` have no fixture ground truth; AMO does not invent values.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
 
 
 def _selected_paths(repo: Path, files: list[dict[str, object]], pack: str) -> set[str]:

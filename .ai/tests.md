@@ -48,3 +48,7 @@ ruff passed; 127 pytest tests passed; package build and twine check passed; full
 ## Validation — 2026-07-05T09:34:47.727544+00:00
 
 All 21 required release commands exited 0; package build produced 0.1.0a1 sdist and wheel; twine check passed both distributions.
+
+## Validation — 2026-07-05T09:37:03.845960+00:00
+
+ruff passed; 127 tests passed; benchmark smoke passed; package build and twine check passed.

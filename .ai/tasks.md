@@ -64,3 +64,11 @@ Summary: Completed the exact local release path on the reconciled tree: lint, 12
 
 Outcome: completed
 Changed files: .ai/manifest.yaml, .ai/state.md, .ai/tasks.md, .ai/decisions.md, .ai/tests.md, .ai/graph.md, .ai/evolution, README.md, CHANGELOG.md, docs/10-10-scorecard.md, docs/roadmap.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, docs/mcp.md, docs/adapters.md, .gitignore
+## Postflight — 2026-07-05T09:37:03.845960+00:00
+
+Task: complete executable benchmark output contract
+
+Summary: Added deterministic benchmark Markdown output beside JSON, documented it, and covered unscored rendering in tests.
+
+Outcome: completed
+Changed files: amo/core/benchmark.py, tests/test_benchmark_evolve.py, docs/benchmark.md

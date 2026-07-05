@@ -55,7 +55,7 @@ Expected context:
 amo benchmark examples/agent-debug-session --task "fix failing tests"
 ```
 
-The command writes deterministic metrics to `.ai/machine/benchmark.json`. Precision, recall, test-command accuracy, and handoff quality are explicitly marked unscored when a fixture has no ground-truth annotations; AMO does not invent evidence.
+The command writes deterministic machine-readable metrics to `.ai/machine/benchmark.json` and a reviewable companion report to `.ai/machine/benchmark.md`. Precision, recall, test-command accuracy, and handoff quality are explicitly marked unscored when a fixture has no ground-truth annotations; AMO does not invent evidence.
 
 ## Ground truth
 

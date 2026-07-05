@@ -11,6 +11,9 @@ def test_benchmark_writes_deterministic_metrics(tmp_path):
     result = json.loads(run_benchmark(tmp_path, "fix failing tests").read_text(encoding="utf-8"))
     assert "token_reduction" in result["metrics"]
     assert result["metrics"]["test_command_accuracy"] == "not_scored_without_fixture_truth"
+    report = (tmp_path / ".ai" / "machine" / "benchmark.md").read_text(encoding="utf-8")
+    assert "# AMO Benchmark" in report
+    assert "unscored" in report
 
 
 def test_evolve_is_safe_and_writes_expected_outputs(tmp_path):
