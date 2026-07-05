@@ -1,0 +1,13 @@
+version: 1
+classification: evolutionary/derived
+weights:
+  useful_context_per_token: 1.0
+  graph_truthfulness: 1.0
+  validation_confidence: 1.0
+  memory_durability: 1.0
+  interoperability: 1.0
+  token_cost: 1.0
+  stale_context: 1.0
+  duplicated_context: 1.0
+  wrong_file_selection: 1.0
+  graph_drift: 1.0

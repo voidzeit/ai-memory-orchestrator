@@ -1,0 +1,147 @@
+version: 1
+classification: evolutionary/derived
+parameters:
+  context.max_units:
+    type: int
+    default: 25
+    low: 5
+    high: 50
+    safe_to_apply: true
+    description: Maximum ranked context units included in a pack.
+  context.relevance_weight:
+    type: float
+    default: 2.0
+    low: 0.0
+    high: 5.0
+    safe_to_apply: true
+    description: Weight assigned to task-term relevance.
+  context.authority_weight:
+    type: float
+    default: 1.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: true
+    description: Weight assigned to source authority.
+  context.token_cost_weight:
+    type: float
+    default: 1.0
+    low: 0.0
+    high: 2.0
+    safe_to_apply: true
+    description: Exponent used to penalize token cost during ranking.
+  context.duplicate_penalty:
+    type: float
+    default: 0.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: true
+    description: Score penalty for repeated title and summary pairs.
+  context.stale_penalty:
+    type: float
+    default: 0.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: false
+    description: Reserved ranking penalty for stale context.
+  context.large_file_penalty:
+    type: float
+    default: 0.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: false
+    description: Reserved ranking penalty for large files.
+  graph.seed_top_k:
+    type: int
+    default: 10
+    low: 1
+    high: 50
+    safe_to_apply: false
+    description: Reserved seed count for graph traversal.
+  graph.max_hops:
+    type: int
+    default: 2
+    low: 1
+    high: 5
+    safe_to_apply: false
+    description: Reserved maximum graph traversal depth.
+  graph.distance_decay:
+    type: float
+    default: 0.75
+    low: 0.0
+    high: 1.0
+    safe_to_apply: false
+    description: Reserved graph distance score decay.
+  graph.authority_boost:
+    type: float
+    default: 1.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: false
+    description: Reserved authority multiplier for graph nodes.
+  graph.dedup_edges:
+    type: bool
+    default: true
+    safe_to_apply: false
+    description: Reserved switch for graph edge deduplication.
+  benchmark.min_token_reduction:
+    type: float
+    default: 0.5
+    low: 0.0
+    high: 1.0
+    safe_to_apply: false
+    description: Minimum acceptable benchmark token reduction.
+  benchmark.min_precision:
+    type: float
+    default: 0.7
+    low: 0.0
+    high: 1.0
+    safe_to_apply: false
+    description: Minimum precision when fixture ground truth exists.
+  benchmark.min_recall:
+    type: float
+    default: 0.7
+    low: 0.0
+    high: 1.0
+    safe_to_apply: false
+    description: Minimum recall when fixture ground truth exists.
+  benchmark.required_truth:
+    type: bool
+    default: false
+    safe_to_apply: false
+    description: Whether benchmark fixtures must provide selection truth.
+  optimizer.max_trials:
+    type: int
+    default: 20
+    low: 1
+    high: 1000
+    safe_to_apply: false
+    description: Reserved default upper bound for adapter-driven trials.
+  optimizer.seed:
+    type: int
+    default: 42
+    low: 0
+    high: 2147483647
+    safe_to_apply: false
+    description: Default deterministic random seed.
+  optimizer.min_improvement:
+    type: float
+    default: 0.0
+    low: 0.0
+    high: 1.0
+    safe_to_apply: false
+    description: Reserved minimum score improvement for promotion.
+disconnected:
+  - context.stale_penalty
+  - context.large_file_penalty
+  - graph.seed_top_k
+  - graph.max_hops
+  - graph.distance_decay
+  - graph.authority_boost
+  - graph.dedup_edges
+  - benchmark.min_token_reduction
+  - benchmark.min_precision
+  - benchmark.min_recall
+  - benchmark.required_truth
+  - optimizer.max_trials
+  - optimizer.seed
+  - optimizer.min_improvement

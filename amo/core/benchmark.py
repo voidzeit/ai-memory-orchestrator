@@ -8,10 +8,15 @@ from amo.core.scan import scan_repo
 from amo.io import write_json
 
 
-def run_benchmark(repo: Path, task: str) -> Path:
+def run_benchmark(
+    repo: Path,
+    task: str,
+    params: dict[str, object] | None = None,
+    scan_excludes: set[str] | None = None,
+) -> Path:
     repo = repo.resolve()
-    scan = scan_repo(repo)
-    pack_path = build_context_pack(repo, task=task, profile="quick")
+    scan = scan_repo(repo, extra_excludes=scan_excludes)
+    pack_path = build_context_pack(repo, task=task, profile="quick", params=params)
     files = json.loads((repo / ".ai" / "machine" / "files.json").read_text(encoding="utf-8")).get("files", [])
     pack = pack_path.read_text(encoding="utf-8")
     selected = [item for item in files if str(item["path"]) in pack]

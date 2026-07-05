@@ -27,6 +27,11 @@ indexes:
 
 context:
   default_profile: quick
+  max_units: 25
+  relevance_weight: 2.0
+  authority_weight: 1.0
+  token_cost_weight: 1.0
+  duplicate_penalty: 0.0
   profiles:
     micro: { max_tokens: 1200 }
     quick: { max_tokens: 3000 }
@@ -59,3 +64,9 @@ validators:
   broken_references: { enabled: true }
   stale_context: { enabled: true }
   unsafe_instructions: { enabled: true }
+
+optimization:
+  search_space: .amo/optimization/search_space.yaml
+  objective: .amo/optimization/objective.yaml
+  artifacts: .ai/evolution
+  classification: evolutionary/derived
