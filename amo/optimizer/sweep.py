@@ -8,6 +8,7 @@ from amo.core.benchmark import run_benchmark
 from amo.core.graph import build_graph
 from amo.core.scan import scan_repo
 from amo.core.validate import validate_repo
+from amo.evidence.ledger import record_evidence
 from amo.optimizer.objective import load_objective_weights, score_objective
 from amo.optimizer.search_space import SearchSpace
 from amo.optimizer.trials import Trial, select_best, write_trials
@@ -82,4 +83,13 @@ def run_sweep(
         trials.append(Trial(number, seed, params, metrics, result.score, all_unscored))
     write_trials(repo / ".ai" / "evolution" / "trials.jsonl", trials)
     best = select_best(trials)
+    record_evidence(
+        repo,
+        kind="optimizer_trial",
+        source="amo optimize params sweep",
+        result=f"trials={len(trials)}, best={best.trial}, score={best.objective_score}",
+        authority=0.8,
+        artifacts=(".ai/evolution/trials.jsonl",),
+        limitations=("objective scored only on observed metrics; unscored metrics excluded",),
+    )
     return trials, best

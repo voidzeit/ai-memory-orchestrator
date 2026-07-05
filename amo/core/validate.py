@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from amo.evidence.ledger import record_evidence
 from amo.io import write_json
 from amo.paths import CANONICAL_FILES, ai_path
 from amo.validators.artifacts import check_runtime_pollution
@@ -20,4 +21,13 @@ def validate_repo(repo: Path, strict: bool = False) -> dict[str, object]:
         status = "red"
     result = {"status": status, "warnings": warnings}
     write_json(ai_path(repo, "machine", "validation.json"), result)
+    record_evidence(
+        repo,
+        kind="validation",
+        source="amo validate --strict" if strict else "amo validate",
+        result=status,
+        authority=0.9,
+        artifacts=(".ai/machine/validation.json",),
+        limitations=("does not prove production readiness",),
+    )
     return result

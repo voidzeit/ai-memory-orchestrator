@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Any
 
 from amo.config import get_config_value, load_config
+from amo.evidence.ledger import record_evidence
 from amo.index.artifacts import build_artifact_index
 from amo.index.context_units import build_context_units
 from amo.index.files import build_file_index
@@ -42,4 +43,17 @@ def scan_repo(repo: Path, extra_excludes: set[str] | None = None) -> dict[str, i
     write_json(ai_path(repo, "machine", "files.json"), {"files": files})
     write_json(ai_path(repo, "machine", "artifacts.json"), {"artifacts": artifacts})
     write_json(ai_path(repo, "machine", "context_units.json"), {"units": units})
+    record_evidence(
+        repo,
+        kind="scan",
+        source="amo scan",
+        result=f"{len(files)} files indexed",
+        authority=0.9,
+        artifacts=(
+            ".ai/machine/files.json",
+            ".ai/machine/artifacts.json",
+            ".ai/machine/context_units.json",
+        ),
+        limitations=("reflects the working tree at scan time",),
+    )
     return {"files_indexed": len(files), "context_units": len(units)}

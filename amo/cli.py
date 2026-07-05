@@ -28,6 +28,7 @@ from amo.core.server import serve
 from amo.core.status import get_status
 from amo.core.validate import validate_repo
 from amo.embeddings.index import build_embedding_index, search_embedding_index
+from amo.evidence.ledger import record_evidence
 
 app = typer.Typer(help="AI Memory Orchestrator CLI")
 graph_app = typer.Typer(help="Graph commands")
@@ -158,6 +159,19 @@ def export(target: str = "agents", repo: Path = Path(".")) -> None:
         valid = ", ".join(sorted(EXPORTERS))
         raise typer.BadParameter(f"Unsupported target '{target}'. Valid targets: {valid}")
     path = EXPORTERS[target](repo)
+    try:
+        artifact = str(path.resolve().relative_to(repo.resolve()).as_posix())
+    except ValueError:
+        artifact = str(path)
+    record_evidence(
+        repo,
+        kind="adapter_export",
+        source=f"amo export --target {target}",
+        result=artifact,
+        authority=0.6,
+        artifacts=(artifact,),
+        limitations=("compiled from canonical memory; regenerate after memory changes",),
+    )
     console.print(f"[green]Exported {target}[/green]: {path}")
 
 

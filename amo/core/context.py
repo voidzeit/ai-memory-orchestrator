@@ -7,6 +7,7 @@ from amo.config import get_config_value, load_config
 from amo.context.profiles import get_budget
 from amo.context.ranking import DEFAULT_RANKING_PARAMS, rank_units
 from amo.context.render import render_context_pack
+from amo.evidence.ledger import record_evidence
 from amo.io import read_text_if_exists, write_text
 from amo.paths import ai_path, ensure_dirs
 
@@ -48,4 +49,13 @@ def build_context_pack(
     output = ai_path(repo, "packs", f"{profile}.md")
     write_text(output, content)
     write_text(ai_path(repo, "runtime", "last_context.md"), content)
+    record_evidence(
+        repo,
+        kind="context_pack",
+        source="amo context",
+        result=f"profile={profile}, units={len(selected)}",
+        authority=0.6,
+        artifacts=(f".ai/packs/{profile}.md",),
+        limitations=("compiled selection, not ground truth",),
+    )
     return output
