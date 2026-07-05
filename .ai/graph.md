@@ -93,6 +93,10 @@ Schema version: `0.2`
 - `file` — amo/embeddings/__init__.py (`file:amo/embeddings/__init__.py`)
 - `directory` — amo/embeddings (`dir:amo/embeddings`)
 - `file` — amo/embeddings/index.py (`file:amo/embeddings/index.py`)
+- `file` — amo/evidence/__init__.py (`file:amo/evidence/__init__.py`)
+- `directory` — amo/evidence (`dir:amo/evidence`)
+- `file` — amo/evidence/ledger.py (`file:amo/evidence/ledger.py`)
+- `file` — amo/evidence/schema.py (`file:amo/evidence/schema.py`)
 - `file` — amo/graph/__init__.py (`file:amo/graph/__init__.py`)
 - `directory` — amo/graph (`dir:amo/graph`)
 - `file` — amo/graph/code_structure.py (`file:amo/graph/code_structure.py`)
@@ -136,6 +140,7 @@ Schema version: `0.2`
 - `file` — docs/context-engine.md (`file:docs/context-engine.md`)
 - `file` — docs/demo.md (`file:docs/demo.md`)
 - `file` — docs/embeddings.md (`file:docs/embeddings.md`)
+- `file` — docs/evidence-ledger.md (`file:docs/evidence-ledger.md`)
 - `file` — docs/graph-interoperability.md (`file:docs/graph-interoperability.md`)
 - `file` — docs/graph-model.md (`file:docs/graph-model.md`)
 - `file` — docs/graph-ontology.md (`file:docs/graph-ontology.md`)
@@ -211,6 +216,8 @@ Schema version: `0.2`
 - `test` — tests/test_context.py (`test:tests/test_context.py`)
 - `file` — tests/test_embeddings.py (`file:tests/test_embeddings.py`)
 - `test` — tests/test_embeddings.py (`test:tests/test_embeddings.py`)
+- `file` — tests/test_evidence_ledger.py (`file:tests/test_evidence_ledger.py`)
+- `test` — tests/test_evidence_ledger.py (`test:tests/test_evidence_ledger.py`)
 - `file` — tests/test_graph_exports.py (`file:tests/test_graph_exports.py`)
 - `test` — tests/test_graph_exports.py (`test:tests/test_graph_exports.py`)
 - `file` — tests/test_graph_validation.py (`file:tests/test_graph_validation.py`)
@@ -260,6 +267,7 @@ Schema version: `0.2`
 - `module` — amo.core.graph (`module:amo.core.graph`)
 - `module` — amo.core.handoff (`module:amo.core.handoff`)
 - `module` — amo.core.init (`module:amo.core.init`)
+- `module` — amo.core.optimize (`module:amo.core.optimize`)
 - `module` — amo.core.optimize_params (`module:amo.core.optimize_params`)
 - `module` — amo.core.postflight (`module:amo.core.postflight`)
 - `module` — amo.core.scan (`module:amo.core.scan`)
@@ -267,6 +275,7 @@ Schema version: `0.2`
 - `module` — amo.core.status (`module:amo.core.status`)
 - `module` — amo.core.validate (`module:amo.core.validate`)
 - `module` — amo.embeddings.index (`module:amo.embeddings.index`)
+- `module` — amo.evidence.ledger (`module:amo.evidence.ledger`)
 - `symbol` — init (`symbol:amo.cli:init`)
 - `symbol` — scan (`symbol:amo.cli:scan`)
 - `symbol` — context (`symbol:amo.cli:context`)
@@ -279,6 +288,9 @@ Schema version: `0.2`
 - `symbol` — export (`symbol:amo.cli:export`)
 - `symbol` — benchmark (`symbol:amo.cli:benchmark`)
 - `symbol` — evolve (`symbol:amo.cli:evolve`)
+- `symbol` — optimize_suggest_cmd (`symbol:amo.cli:optimize_suggest_cmd`)
+- `symbol` — optimize_check_cmd (`symbol:amo.cli:optimize_check_cmd`)
+- `symbol` — optimize_plan_cmd (`symbol:amo.cli:optimize_plan_cmd`)
 - `symbol` — optimize_params_suggest (`symbol:amo.cli:optimize_params_suggest`)
 - `symbol` — optimize_params_sweep (`symbol:amo.cli:optimize_params_sweep`)
 - `symbol` — optimize_params_best (`symbol:amo.cli:optimize_params_best`)
@@ -307,7 +319,9 @@ Schema version: `0.2`
 - `symbol` — _first_nonempty (`symbol:amo.context.render:_first_nonempty`)
 - `module` — amo.core (`module:amo.core`)
 - `module` — json (`module:json`)
+- `symbol` — load_truth (`symbol:amo.core.benchmark:load_truth`)
 - `symbol` — run_benchmark (`symbol:amo.core.benchmark:run_benchmark`)
+- `symbol` — _score_against_truth (`symbol:amo.core.benchmark:_score_against_truth`)
 - `symbol` — build_context_pack (`symbol:amo.core.context:build_context_pack`)
 - `symbol` — evolve_safe (`symbol:amo.core.evolve:evolve_safe`)
 - `module` — amo.graph.exporters (`module:amo.graph.exporters`)
@@ -366,6 +380,14 @@ Schema version: `0.2`
 - `symbol` — cosine (`symbol:amo.embeddings.index:cosine`)
 - `symbol` — build_embedding_index (`symbol:amo.embeddings.index:build_embedding_index`)
 - `symbol` — search_embedding_index (`symbol:amo.embeddings.index:search_embedding_index`)
+- `module` — amo.evidence (`module:amo.evidence`)
+- `module` — amo.evidence.schema (`module:amo.evidence.schema`)
+- `symbol` — ledger_path (`symbol:amo.evidence.ledger:ledger_path`)
+- `symbol` — record_evidence (`symbol:amo.evidence.ledger:record_evidence`)
+- `symbol` — read_ledger (`symbol:amo.evidence.ledger:read_ledger`)
+- `symbol` — resolve_head_commit (`symbol:amo.evidence.ledger:resolve_head_commit`)
+- `module` — dataclasses (`module:dataclasses`)
+- `symbol` — EvidenceEntry (`symbol:amo.evidence.schema:EvidenceEntry`)
 - `module` — amo.graph (`module:amo.graph`)
 - `module` — ast (`module:ast`)
 - `symbol` — extract_python_structure (`symbol:amo.graph.code_structure:extract_python_structure`)
@@ -395,7 +417,6 @@ Schema version: `0.2`
 - `module` — amo.optimizer (`module:amo.optimizer`)
 - `module` — amo.optimizer.params (`module:amo.optimizer.params`)
 - `module` — amo.optimizer.objective (`module:amo.optimizer.objective`)
-- `module` — dataclasses (`module:dataclasses`)
 - `symbol` — ObjectiveResult (`symbol:amo.optimizer.objective:ObjectiveResult`)
 - `symbol` — load_objective_weights (`symbol:amo.optimizer.objective:load_objective_weights`)
 - `symbol` — score_objective (`symbol:amo.optimizer.objective:score_objective`)
@@ -455,6 +476,15 @@ Schema version: `0.2`
 - `module` — tests.test_embeddings (`module:tests.test_embeddings`)
 - `symbol` — test_vectorize_is_deterministic (`symbol:tests.test_embeddings:test_vectorize_is_deterministic`)
 - `symbol` — test_embedding_index_build_and_search (`symbol:tests.test_embeddings:test_embedding_index_build_and_search`)
+- `module` — tests.test_evidence_ledger (`module:tests.test_evidence_ledger`)
+- `module` — pytest (`module:pytest`)
+- `symbol` — test_record_evidence_appends_jsonl (`symbol:tests.test_evidence_ledger:test_record_evidence_appends_jsonl`)
+- `symbol` — test_ledger_directory_gets_readme (`symbol:tests.test_evidence_ledger:test_ledger_directory_gets_readme`)
+- `symbol` — test_unknown_kind_is_rejected (`symbol:tests.test_evidence_ledger:test_unknown_kind_is_rejected`)
+- `symbol` — test_authority_bounds_are_enforced (`symbol:tests.test_evidence_ledger:test_authority_bounds_are_enforced`)
+- `symbol` — test_scan_and_validate_write_ledger_entries (`symbol:tests.test_evidence_ledger:test_scan_and_validate_write_ledger_entries`)
+- `symbol` — test_ledger_grows_across_runs (`symbol:tests.test_evidence_ledger:test_ledger_grows_across_runs`)
+- `symbol` — test_read_ledger_empty_when_missing (`symbol:tests.test_evidence_ledger:test_read_ledger_empty_when_missing`)
 - `module` — tests.test_graph_exports (`module:tests.test_graph_exports`)
 - `symbol` — test_graph_build_has_schema_version (`symbol:tests.test_graph_exports:test_graph_build_has_schema_version`)
 - `symbol` — test_graph_build_assigns_l0_and_l1_levels (`symbol:tests.test_graph_exports:test_graph_build_assigns_l0_and_l1_levels`)
@@ -472,7 +502,6 @@ Schema version: `0.2`
 - `symbol` — test_init_repo_creates_ai_memory (`symbol:tests.test_init:test_init_repo_creates_ai_memory`)
 - `symbol` — test_python_template_inherits_generic_memory (`symbol:tests.test_init:test_python_template_inherits_generic_memory`)
 - `module` — tests.test_optimizer_params (`module:tests.test_optimizer_params`)
-- `module` — pytest (`module:pytest`)
 - `symbol` — _write_space (`symbol:tests.test_optimizer_params:_write_space`)
 - `symbol` — test_loading_search_space (`symbol:tests.test_optimizer_params:test_loading_search_space`)
 - `symbol` — test_invalid_parameter_bounds_are_reported (`symbol:tests.test_optimizer_params:test_invalid_parameter_bounds_are_reported`)
@@ -654,6 +683,13 @@ Schema version: `0.2`
 - `dir:amo/embeddings` -[contains]-> `file:amo/embeddings/__init__.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/embeddings/index.py`
 - `dir:amo/embeddings` -[contains]-> `file:amo/embeddings/index.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/evidence/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/evidence`
+- `dir:amo/evidence` -[contains]-> `file:amo/evidence/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/evidence/ledger.py`
+- `dir:amo/evidence` -[contains]-> `file:amo/evidence/ledger.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/evidence/schema.py`
+- `dir:amo/evidence` -[contains]-> `file:amo/evidence/schema.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/graph/__init__.py`
 - `dir:amo` -[contains]-> `dir:amo/graph`
 - `dir:amo/graph` -[contains]-> `file:amo/graph/__init__.py`
@@ -734,6 +770,8 @@ Schema version: `0.2`
 - `dir:docs` -[contains]-> `file:docs/demo.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/embeddings.md`
 - `dir:docs` -[contains]-> `file:docs/embeddings.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/evidence-ledger.md`
+- `dir:docs` -[contains]-> `file:docs/evidence-ledger.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-interoperability.md`
 - `dir:docs` -[contains]-> `file:docs/graph-interoperability.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-model.md`
@@ -748,13 +786,4 @@ Schema version: `0.2`
 - `dir:docs` -[contains]-> `file:docs/manifesto.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/maturity-model.md`
 - `dir:docs` -[contains]-> `file:docs/maturity-model.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/mcp.md`
-- `dir:docs` -[contains]-> `file:docs/mcp.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/memory-model.md`
-- `dir:docs` -[contains]-> `file:docs/memory-model.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/neo4j.md`
-- `dir:docs` -[contains]-> `file:docs/neo4j.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-graph-export.md`
-- `dir:docs` -[contains]-> `file:docs/obsidian-graph-export.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/obsidian-vs-amo.md`
-- ... 1097 more edges
+- ... 1188 more edges

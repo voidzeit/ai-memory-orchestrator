@@ -1,0 +1,18 @@
+{
+  "task": "fix failing auth tests",
+  "relevant_files": [
+    "app/auth.py",
+    "tests/test_auth.py"
+  ],
+  "expected_tests": [
+    "pytest tests/test_auth.py"
+  ],
+  "expected_context_sections": [
+    "Current Truth",
+    "Relevant Context Units",
+    "Postflight"
+  ],
+  "must_not_include": [
+    ".ai/runtime/last_context.md"
+  ]
+}
