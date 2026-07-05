@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMO Organism</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>AMO <span class="accent">Organism</span></h1>
+    <div id="health-badge" class="badge unknown">unknown</div>
+  </header>
+  <nav id="tabs">
+    <button data-view="health" class="active">Health</button>
+    <button data-view="graph">Graph Explorer</button>
+    <button data-view="context">Context Flow</button>
+    <button data-view="benchmark">Benchmark</button>
+    <button data-view="findings">Findings</button>
+    <button data-view="ledger">Evidence Ledger</button>
+  </nav>
+  <main>
+    <section id="view-health" class="view active"></section>
+    <section id="view-graph" class="view">
+      <input id="graph-search" type="search" placeholder="Filter nodes by id, label, type, or level…" />
+      <div id="graph-stats" class="muted"></div>
+      <table id="graph-table">
+        <thead><tr><th>Type</th><th>Label</th><th>Level</th><th>Authority</th><th>Source</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <section id="view-context" class="view">
+      <form id="context-form">
+        <input id="context-task" type="text" placeholder="Task, e.g. fix failing auth tests" required />
+        <select id="context-profile">
+          <option>quick</option><option>micro</option><option>debug</option>
+          <option>architecture</option><option>handoff</option><option>full</option>
+        </select>
+        <button type="submit">Compile context</button>
+      </form>
+      <div id="context-result"></div>
+    </section>
+    <section id="view-benchmark" class="view"></section>
+    <section id="view-findings" class="view"></section>
+    <section id="view-ledger" class="view"></section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
