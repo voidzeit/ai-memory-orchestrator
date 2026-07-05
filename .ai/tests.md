@@ -34,9 +34,9 @@
 
 ## CI
 
-CI and Release Check passed on `main` at commit `db11b3e`. CodeQL and OpenSSF
-Scorecard failed with GitHub integration-access errors while the repository was private.
-The alpha-readiness branch must obtain green runs before tagging.
+CI and Release Check passed on `main` at commit `db11b3e` and on PR #35. CodeQL
+cannot upload because code scanning is not enabled for the private repository; OpenSSF
+Scorecard fails with a GitHub integration-access error. Both need green runs before tagging.
 
 ## Validation — 2026-07-05T08:13:51.889057+00:00
 
@@ -57,3 +57,7 @@ ruff passed; 127 tests passed; benchmark smoke passed; package build and twine c
 ## Validation — 2026-07-05T09:39:59.485097+00:00
 
 ruff passed; 127 tests passed; root benchmark, optimizer suggest/check/plan, and strict validation passed.
+
+## Validation — 2026-07-05T09:43:41.370910+00:00
+
+PR #35 CI success; Release Check success; CodeQL failed during SARIF upload with code scanning not enabled.

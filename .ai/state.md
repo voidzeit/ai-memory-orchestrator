@@ -38,7 +38,7 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 
 - Repository visibility is private and must be changed for the public alpha.
 - `main` is not protected; the current private plan returns HTTP 403 for branch-protection configuration.
-- CI and Release Check passed on `main`, but CodeQL and OpenSSF Scorecard are failing with GitHub integration-access errors and need green runs after visibility/permission changes.
+- CI and Release Check passed on `main` and PR #35. CodeQL cannot upload because code scanning is not enabled for the private repository; OpenSSF Scorecard fails with a GitHub integration-access error. Both need green runs after visibility/settings changes.
 - The `v0.1.0-alpha` tag and GitHub release do not exist.
 - PyPI trusted-publisher configuration and publish timing are not verified.
 - External embedding providers and broader language extraction are future work.
@@ -93,3 +93,11 @@ Summary: Added a root self-benchmark before optimizer checks so a clean GitHub r
 
 Outcome: completed
 Changed files: .github/workflows/release-check.yml, README.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, .ai/tests.md
+## Postflight — 2026-07-05T09:43:41.370910+00:00
+
+Task: record final GitHub security gate state
+
+Summary: Recorded that CI and Release Check pass on PR #35 while CodeQL remains blocked because code scanning is disabled for the private repository and OpenSSF Scorecard remains blocked by GitHub integration access.
+
+Outcome: completed
+Changed files: .ai/state.md, .ai/tests.md
