@@ -7,7 +7,7 @@
 - [x] Protect `main`, require PRs, `test`, and `release-check`, and disable force pushes and branch deletion.
 - [x] Obtain green CodeQL and OpenSSF Scorecard runs on `main`.
 - [x] Defer PyPI for `0.1.0-alpha`; document source-install-only distribution.
-- [ ] Create `v0.1.0-alpha` only after all release gates are green.
+- [x] Create `v0.1.0-alpha` and its GitHub prerelease after all release gates are green.
 
 ## Next product work
 
@@ -112,3 +112,11 @@ Summary: Recorded merged PR 35, public protected main, required CI/Release Check
 
 Outcome: completed
 Changed files: docs/release-notes-0.1.0-alpha.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md
+## Postflight — 2026-07-05T10:20:00.377221+00:00
+
+Task: record public alpha release
+
+Summary: Recorded the verified v0.1.0-alpha tag and GitHub prerelease, green tagged main checks, successful release build and Twine metadata check, skipped PyPI job, and closure of release issue 8.
+
+Outcome: completed
+Changed files: README.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md

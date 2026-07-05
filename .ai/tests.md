@@ -34,9 +34,10 @@
 
 ## CI
 
-CI, Release Check, CodeQL, and OpenSSF Scorecard passed on public `main` at merge
-commit `bfc6902`. Branch protection requires their `test`, `release-check`, `analyze`,
-and `scorecard` contexts.
+CI, Release Check, CodeQL, and OpenSSF Scorecard passed on public `main` at tagged
+commit `f890737`. Branch protection requires their `test`, `release-check`, `analyze`,
+and `scorecard` contexts. Release workflow run `28737486577` built and Twine-checked
+`0.1.0a1`; the prerelease PyPI job was skipped.
 
 ## Validation — 2026-07-05T08:13:51.889057+00:00
 
@@ -73,3 +74,7 @@ repository public; branch protection API verified; PR CI, Release Check, and Cod
 ## Validation — 2026-07-05T10:13:06.350859+00:00
 
 main CI, Release Check, CodeQL, and OpenSSF Scorecard green at bfc6902; branch protection API verified
+
+## Validation — 2026-07-05T10:20:00.377221+00:00
+
+tag points to f890737; GitHub prerelease public; release workflow 28737486577 green; PyPI publish skipped
