@@ -85,3 +85,11 @@ Summary: Added deterministic benchmark Markdown output beside JSON, documented i
 
 Outcome: completed
 Changed files: amo/core/benchmark.py, tests/test_benchmark_evolve.py, docs/benchmark.md
+## Postflight — 2026-07-05T09:39:59.485097+00:00
+
+Task: fix clean-runner release-check benchmark scope
+
+Summary: Added a root self-benchmark before optimizer checks so a clean GitHub runner has the evidence those checks require; synchronized release documentation and canonical test commands.
+
+Outcome: completed
+Changed files: .github/workflows/release-check.yml, README.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, .ai/tests.md

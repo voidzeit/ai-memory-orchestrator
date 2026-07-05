@@ -15,6 +15,7 @@
 - amo graph export --format neo4j
 - amo embeddings build
 - amo benchmark examples/agent-debug-session --task "fix failing tests"
+- amo benchmark . --task "release readiness"
 - amo optimize suggest
 - amo optimize check
 - amo optimize plan
@@ -52,3 +53,7 @@ All 21 required release commands exited 0; package build produced 0.1.0a1 sdist 
 ## Validation — 2026-07-05T09:37:03.845960+00:00
 
 ruff passed; 127 tests passed; benchmark smoke passed; package build and twine check passed.
+
+## Validation — 2026-07-05T09:39:59.485097+00:00
+
+ruff passed; 127 tests passed; root benchmark, optimizer suggest/check/plan, and strict validation passed.

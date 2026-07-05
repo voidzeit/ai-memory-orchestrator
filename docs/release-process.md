@@ -18,6 +18,7 @@ amo graph export --format graphml
 amo graph export --format gexf
 amo embeddings build
 amo benchmark examples/agent-debug-session --task "fix failing tests"
+amo benchmark . --task "release readiness"
 amo optimize suggest
 amo optimize check
 amo optimize plan
