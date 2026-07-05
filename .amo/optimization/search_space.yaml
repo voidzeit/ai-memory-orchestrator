@@ -36,6 +36,13 @@ parameters:
     high: 3.0
     safe_to_apply: true
     description: Score penalty for repeated title and summary pairs.
+  context.graph_weight:
+    type: float
+    default: 1.0
+    low: 0.0
+    high: 3.0
+    safe_to_apply: true
+    description: Weight applied to graph-neighborhood proximity during ranking.
   context.stale_penalty:
     type: float
     default: 0.0
@@ -55,22 +62,22 @@ parameters:
     default: 10
     low: 1
     high: 50
-    safe_to_apply: false
-    description: Reserved seed count for graph traversal.
+    safe_to_apply: true
+    description: Number of lexical seed files for graph-neighborhood expansion.
   graph.max_hops:
     type: int
     default: 2
     low: 1
     high: 5
-    safe_to_apply: false
-    description: Reserved maximum graph traversal depth.
+    safe_to_apply: true
+    description: Maximum graph-neighborhood expansion hops.
   graph.distance_decay:
     type: float
     default: 0.75
     low: 0.0
     high: 1.0
-    safe_to_apply: false
-    description: Reserved graph distance score decay.
+    safe_to_apply: true
+    description: Proximity decay factor per graph hop.
   graph.authority_boost:
     type: float
     default: 1.0
@@ -133,9 +140,6 @@ parameters:
 disconnected:
   - context.stale_penalty
   - context.large_file_penalty
-  - graph.seed_top_k
-  - graph.max_hops
-  - graph.distance_decay
   - graph.authority_boost
   - graph.dedup_edges
   - benchmark.min_token_reduction

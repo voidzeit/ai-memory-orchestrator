@@ -1,7 +1,15 @@
 from amo.context.profiles import DEGRADATION_SIGNALS, PRIORITY_ORDER, get_profile
 
 
-def render_context_pack(task: str, profile: str, budget: int, canonical: dict[str, str], units: list[dict[str, object]]) -> str:
+def render_context_pack(
+    task: str,
+    profile: str,
+    budget: int,
+    canonical: dict[str, str],
+    units: list[dict[str, object]],
+    seeds: list[str] | None = None,
+    neighborhood: list[tuple[str, float]] | None = None,
+) -> str:
     profile_data = get_profile(profile)
     lines = [
         "# AMO Context Pack",
@@ -63,6 +71,21 @@ def render_context_pack(task: str, profile: str, budget: int, canonical: dict[st
         lines.append(
             f"| {unit.get('title')} | {unit.get('type')} | {unit.get('tokens', '')} | `{unit.get('expand')}` |"
         )
+    if seeds or neighborhood:
+        lines.extend(["", "## Graph Neighborhood", ""])
+        if seeds:
+            lines.append("Selection was seeded from these task-relevant files:")
+            lines.append("")
+            lines.extend(f"- `{seed}`" for seed in seeds)
+        if neighborhood:
+            lines.extend(
+                [
+                    "",
+                    "Structurally near files (expansion candidates, by graph proximity):",
+                    "",
+                ]
+            )
+            lines.extend(f"- `{path}` (proximity {score:.2f})" for path, score in neighborhood)
     lines.extend(
         [
             "",

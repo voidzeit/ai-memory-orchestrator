@@ -32,7 +32,7 @@ def run_benchmark(
     pack_path = build_context_pack(repo, task=task, profile="quick", params=params)
     files = json.loads((repo / ".ai" / "machine" / "files.json").read_text(encoding="utf-8")).get("files", [])
     pack = pack_path.read_text(encoding="utf-8")
-    selected = {str(item["path"]) for item in files if str(item["path"]) in pack}
+    selected = _selected_paths(repo, files, pack)
     total_tokens = max(1, sum(int(item.get("size", 0)) for item in files) // 4)
     pack_tokens = max(1, len(pack) // 4)
 
@@ -67,6 +67,17 @@ def run_benchmark(
         ),
     )
     return output
+
+
+def _selected_paths(repo: Path, files: list[dict[str, object]], pack: str) -> set[str]:
+    """Prefer the compiler's explained selection; fall back to pack-text matching."""
+    explain_path = repo / ".ai" / "machine" / "context_explain.json"
+    if explain_path.exists():
+        explain = json.loads(explain_path.read_text(encoding="utf-8"))
+        paths = {str(item.get("path")) for item in explain.get("selection", []) if item.get("path")}
+        if paths:
+            return paths
+    return {str(item["path"]) for item in files if str(item["path"]) in pack}
 
 
 def _score_against_truth(
