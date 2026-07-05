@@ -40,7 +40,7 @@ Consequences:
 - README marks project status as alpha.
 - CHANGELOG documents known limitations.
 - Security and contribution docs are included before public visibility.
-- Advanced graph UI and MCP remain roadmap items.
+- At decision time, advanced graph UI and MCP were roadmap items. Both were implemented before the alpha-readiness reconciliation; this historical note no longer describes current implementation status.
 
 ## DEC-0005 — Graph JSON is canonical; Neo4j and Obsidian are exports
 

@@ -1,0 +1,35 @@
+{
+  "cycle": 4,
+  "mode": "suggest",
+  "llm": false,
+  "auto_fix": false,
+  "background_work": false,
+  "findings": [
+    {
+      "id": "missing_test_edges",
+      "severity": "low",
+      "layer": "graph",
+      "message": "79 Python files have no tested_by edge.",
+      "evidence": [
+        "first: file:amo/__init__.py"
+      ],
+      "recommendation": "Add tests or map existing tests to their subjects.",
+      "impact": {
+        "validation_confidence": -0.1
+      }
+    },
+    {
+      "id": "benchmark_unscored_precision_recall",
+      "severity": "low",
+      "layer": "benchmark",
+      "message": "Benchmark precision/recall are unscored.",
+      "evidence": [
+        "file_selection_precision or file_selection_recall is not numeric"
+      ],
+      "recommendation": "Add fixture ground truth (truth.json) and rerun `amo benchmark`.",
+      "impact": {
+        "validation_confidence": -0.1
+      }
+    }
+  ]
+}

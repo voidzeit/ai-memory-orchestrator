@@ -1,62 +1,40 @@
 # Roadmap
 
-## v0.1 alpha
+## v0.1-alpha-final
 
-Goal: stable CLI-first repository memory layer.
+- synchronize docs, canonical memory, and issue state
+- verify the expanded release-check on the release PR and `main`
+- obtain green CodeQL and OpenSSF Scorecard runs
+- configure public visibility and branch protection
+- confirm or defer PyPI publishing
+- create `v0.1.0-alpha`
 
-- `.ai/` canonical memory scaffold
-- `amo init`
-- `amo scan`
-- `amo context`
-- `amo preflight`
-- `amo postflight`
-- `amo validate`
-- `amo status`
-- basic graph build
-- local server scaffold
-- AGENTS.md, Claude, Cursor, Cline, and OpenCode exports
-- Obsidian export-only sync
+## v0.2-code-intelligence
 
-## v0.2 graph UI
+- deepen module, symbol, import, and dependency extraction beyond the alpha Python pass
+- add test-source linking
+- add graph drift detection
+- define a language extractor interface
+- improve parse-error diagnostics while preserving safe fallback
 
-Goal: real web graph viewer.
+## v0.3-adoption
 
-- interactive graph canvas
-- node filters
-- search
-- side panel details
-- graph neighborhood view
-- validator warning overlay
-- context pack generation from graph focus
+- expand worked examples and benchmark fixtures
+- add MCP client-specific setup guides
+- publish to PyPI when trusted publishing is configured
+- improve onboarding and migration documentation
+- extend the sample Obsidian vault
 
-## v0.3 adapter expansion
+## v0.4-federation
 
-Goal: robust integration with agent tools.
-
-- fuller Claude Code export
-- fuller Cursor rules export
-- fuller Cline Memory Bank export/import
-- Codex-oriented AGENTS.md profile
-- OpenCode-oriented workflow and instruction profiles
-- MCP server resources and tools
-
-## v0.4 context intelligence
-
-Goal: better utility per token.
-
-- configurable budgets from `.amo.yaml`
-- better token estimation
-- graph distance ranking
-- test-aware ranking
-- optional semantic ranking
+- implement the reviewed multi-repo design only after alpha release gates are green
+- add a federated graph registry
+- add cross-repository impact analysis
+- preserve sovereign per-repository canonical memory
 
 ## v1.0
 
-Goal: stable public release.
-
-- stable schema
-- stable CLI
-- full docs
-- packaged web UI
-- integration tests
-- release automation
+- stabilize the public schema and CLI
+- demonstrate compatibility and migration guarantees
+- broaden language and integration coverage
+- publish production support and deprecation policies

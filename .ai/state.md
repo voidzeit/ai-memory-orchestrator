@@ -18,21 +18,31 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 
 ## Implemented
 
-- CLI lifecycle commands.
-- Graph schema and JSON graph contract.
-- Neo4j/Cypher graph export.
-- Obsidian graph note export.
-- Local deterministic embedding index.
-- Generic templates with Python/Node overlays.
-- Basic validators and agent adapter exports.
-- FastAPI server scaffold and CI.
+- CLI lifecycle commands: init, scan, context/preflight, handoff, robust postflight, validate, and status.
+- Hierarchical graph schema and JSON contract with graph-aware context selection.
+- Python module, symbol, import, and dependency extraction.
+- JSON, JSON-LD, GraphML, GEXF, Neo4j/Cypher, and collision-safe Obsidian graph exports.
+- Executable deterministic benchmark with optional truth fixtures and explicitly unscored metrics when truth is absent.
+- Evidence ledger integration for lifecycle, graph, benchmark, optimizer, MCP, and adapter operations.
+- Propose-only optimizer suggest/check/plan commands.
+- Typed deterministic parameter suggest/sweep/best commands and confirmed safe-only apply.
+- Locking, backup, run history, outcome, validation, changed-file, decision, and ledger support in postflight.
+- Dependency-free MCP stdio resources and tools; canonical-memory writes require explicit confirmation.
+- Interactive organism dashboard with graph inspection, search, filters, node details, warnings, and API endpoints.
+- Local deterministic embeddings and search.
+- Generated AGENTS/Codex, Claude, Cursor, Cline, and OpenCode adapter profiles.
+- Release Check, CI, CodeQL, OpenSSF Scorecard, Dependabot, and trusted-publishing workflow definitions.
+- Code of Conduct, Support, Security, Contributing, changelog, roadmap, and alpha release notes.
 
-## Known gaps
+## Remaining gaps
 
-- Interactive web graph UI is still minimal.
-- Context ranking is heuristic.
-- MCP integration is documented but not implemented.
-- Repository visibility must still be changed in GitHub settings if public release is desired.
+- Repository visibility is private and must be changed for the public alpha.
+- `main` is not protected; the current private plan returns HTTP 403 for branch-protection configuration.
+- CI and Release Check passed on `main`, but CodeQL and OpenSSF Scorecard are failing with GitHub integration-access errors and need green runs after visibility/permission changes.
+- The `v0.1.0-alpha` tag and GitHub release do not exist.
+- PyPI trusted-publisher configuration and publish timing are not verified.
+- External embedding providers and broader language extraction are future work.
+- Federation remains design-only until alpha release gates are green.
 ## Postflight — 2026-07-04T04:54:53.734060+00:00
 
 Task: make AMO the repo-native memory and graph operating layer
@@ -51,3 +61,19 @@ Summary: validated run history
 
 Outcome: completed
 Changed files: amo/core/postflight.py
+## Postflight — 2026-07-05T09:33:20.452412+00:00
+
+Task: sync project state after operating layer
+
+Summary: Updated canonical state, README, changelog, scorecard, roadmap, release process, release notes, MCP and adapter docs after verifying the implemented operating layer; completed release smoke coverage and the sample Obsidian vault.
+
+Outcome: completed
+Changed files: .ai/manifest.yaml, .ai/state.md, .ai/tasks.md, .ai/decisions.md, .ai/tests.md, README.md, CHANGELOG.md, docs/10-10-scorecard.md, docs/roadmap.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, docs/mcp.md, docs/adapters.md, .github/workflows/release-check.yml, .github/workflows/codeql.yml, pyproject.toml, amo/__init__.py, amo/mcp/server.py, tests/test_cli_smoke.py, tests/test_example_fixtures.py, examples/obsidian-graph-vault/Graph/Views/Groups.md
+## Postflight — 2026-07-05T09:34:47.727544+00:00
+
+Task: final 0.1.0-alpha release readiness validation
+
+Summary: Completed the exact local release path on the reconciled tree: lint, 127 tests, lifecycle commands, six graph outputs including native JSON, embeddings, truth-aware benchmark, optimizer suggest/check/plan, deterministic 10-trial parameter sweep, strict validation, and status all passed.
+
+Outcome: completed
+Changed files: .ai/manifest.yaml, .ai/state.md, .ai/tasks.md, .ai/decisions.md, .ai/tests.md, .ai/graph.md, .ai/evolution, README.md, CHANGELOG.md, docs/10-10-scorecard.md, docs/roadmap.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, docs/mcp.md, docs/adapters.md, .gitignore

@@ -11,21 +11,27 @@ AMO 0.1.0-alpha is the first public foundation for a Git-native repository memor
 - session handoff packs for long or degraded agent sessions
 - validation reports
 - graph schema and graph build
-- Neo4j export
-- Obsidian export
+- graph-aware context selection and hierarchical L0-L3 graph metadata
+- Python module, symbol, import, and dependency extraction
+- JSON, JSON-LD, GraphML, GEXF, Neo4j/Cypher, and Obsidian exports
 - optional local embeddings
-- agent adapter exports
-- local server scaffold
-- benchmark plan
+- AGENTS/Codex, Claude, Cursor, Cline, and OpenCode adapter exports
+- interactive local organism dashboard
+- executable truth-aware benchmark fixture flow
+- evidence ledger
+- propose-only optimizer and deterministic parameter sweeps with confirmed safe apply
+- MCP stdio resources and tools
+- robust postflight locking, backups, run history, outcomes, validation, changed files, and decisions
 - manifesto and context rot positioning
 
 ## What is not stable yet
 
-- interactive graph UI
-- MCP server implementation
-- advanced adapter profiles
-- automated benchmark command
+- public repository visibility and protected-branch settings
+- green CodeQL and OpenSSF Scorecard runs on the public repository
+- the `v0.1.0-alpha` tag and GitHub release
+- PyPI trusted-publisher configuration and publish timing
 - external embedding providers
+- federation runtime (design only)
 
 ## Recommended validation
 
@@ -36,8 +42,19 @@ amo scan
 amo preflight --task "release readiness" --profile quick
 amo handoff --task "release readiness" --summary "release validation"
 amo graph build
+amo graph export --format json
+amo graph export --format jsonld
+amo graph export --format graphml
+amo graph export --format gexf
 amo graph export --format neo4j
 amo embeddings build
+amo benchmark examples/agent-debug-session --task "fix failing tests"
+amo optimize suggest
+amo optimize check
+amo optimize plan
+amo optimize params suggest
+amo optimize params sweep --trials 10 --seed 42
+amo optimize params best
 amo validate --strict
 amo status
 ```

@@ -1,6 +1,6 @@
 # Evolution Findings
 
-Cycle 3. Deterministic signals only — no LLM, no autofix.
+Cycle 5. Deterministic signals only — no LLM, no autofix.
 
 ## Low
 

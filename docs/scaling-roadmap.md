@@ -32,16 +32,23 @@ evolve      detect memory quality issues
 benchmark   measure context quality
 ```
 
-## Near-term phases
+## Alpha foundation completed
 
-1. Validate graph JSON against schema.
-2. Add graph fixtures and CLI smoke tests.
-3. Add collision-safe Obsidian export.
-4. Implement JSON-LD, GraphML, and GEXF exports.
-5. Add module, symbol, import, and dependency extraction.
-6. Strengthen real agent adapters.
-7. Add MCP resources and tools.
-8. Add benchmark and evolve workflows.
+1. Graph contract validation in strict validation and release-check.
+2. Graph fixtures and CLI smoke tests.
+3. Collision-safe Obsidian export and sample vault.
+4. JSON-LD, GraphML, and GEXF exports.
+5. Initial Python module, symbol, import, and dependency extraction.
+6. Generated agent adapter profiles.
+7. MCP resources and tools.
+8. Benchmark, evidence, evolve, and propose-only optimizer workflows.
+
+## Next scaling work
+
+1. Broaden language extractors and dependency semantics.
+2. Add test-source linking and graph drift detection.
+3. Expand truth fixtures and adoption examples.
+4. Implement federation only after the alpha release gates are green.
 
 ## Enterprise gate
 

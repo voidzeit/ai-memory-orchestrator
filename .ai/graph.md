@@ -15,35 +15,12 @@ Schema version: `0.2`
 - `directory` — .ai (`dir:.ai`)
 - `file` — .ai/evidence/README.md (`file:.ai/evidence/README.md`)
 - `directory` — .ai/evidence (`dir:.ai/evidence`)
-- `file` — .ai/evolution/best_params.yaml (`file:.ai/evolution/best_params.yaml`)
-- `directory` — .ai/evolution (`dir:.ai/evolution`)
-- `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
-- `file` — .ai/evolution/cycle-0002.json (`file:.ai/evolution/cycle-0002.json`)
-- `file` — .ai/evolution/findings.md (`file:.ai/evolution/findings.md`)
-- `file` — .ai/evolution/metrics.json (`file:.ai/evolution/metrics.json`)
-- `file` — .ai/evolution/parameter-report.md (`file:.ai/evolution/parameter-report.md`)
-- `file` — .ai/evolution/plan.md (`file:.ai/evolution/plan.md`)
 - `file` — .ai/graph.md (`file:.ai/graph.md`)
-- `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
-- `directory` — .ai/machine (`dir:.ai/machine`)
-- `file` — .ai/machine/benchmark.json (`file:.ai/machine/benchmark.json`)
-- `file` — .ai/machine/context_explain.json (`file:.ai/machine/context_explain.json`)
-- `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
-- `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
-- `file` — .ai/machine/graph.export.json (`file:.ai/machine/graph.export.json`)
-- `file` — .ai/machine/graph.json (`file:.ai/machine/graph.json`)
-- `file` — .ai/machine/run_history/20260705T081351-test-postflight.json (`file:.ai/machine/run_history/20260705T081351-test-postflight.json`)
-- `directory` — .ai/machine/run_history (`dir:.ai/machine/run_history`)
-- `file` — .ai/machine/validation.json (`file:.ai/machine/validation.json`)
 - `file` — .ai/manifest.yaml (`file:.ai/manifest.yaml`)
-- `file` — .ai/packs/handoff.md (`file:.ai/packs/handoff.md`)
-- `directory` — .ai/packs (`dir:.ai/packs`)
-- `context_pack` — .ai/packs/handoff.md (`pack:.ai/packs/handoff.md`)
-- `file` — .ai/packs/quick.md (`file:.ai/packs/quick.md`)
-- `context_pack` — .ai/packs/quick.md (`pack:.ai/packs/quick.md`)
 - `file` — .ai/runs/2026-07-05/081351-test-postflight.md (`file:.ai/runs/2026-07-05/081351-test-postflight.md`)
 - `directory` — .ai/runs (`dir:.ai/runs`)
 - `directory` — .ai/runs/2026-07-05 (`dir:.ai/runs/2026-07-05`)
+- `file` — .ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md (`file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`)
 - `file` — .ai/state.md (`file:.ai/state.md`)
 - `file` — .ai/tasks.md (`file:.ai/tasks.md`)
 - `file` — .ai/tests.md (`file:.ai/tests.md`)
@@ -242,6 +219,8 @@ Schema version: `0.2`
 - `directory` — examples/obsidian-graph-vault/Graph (`dir:examples/obsidian-graph-vault/Graph`)
 - `directory` — examples/obsidian-graph-vault/Graph/Nodes (`dir:examples/obsidian-graph-vault/Graph/Nodes`)
 - `file` — examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md (`file:examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md`)
+- `file` — examples/obsidian-graph-vault/Graph/Views/Groups.md (`file:examples/obsidian-graph-vault/Graph/Views/Groups.md`)
+- `directory` — examples/obsidian-graph-vault/Graph/Views (`dir:examples/obsidian-graph-vault/Graph/Views`)
 - `file` — examples/obsidian-graph-vault/Graph/index.md (`file:examples/obsidian-graph-vault/Graph/index.md`)
 - `file` — opencode.json (`file:opencode.json`)
 - `file` — pyproject.toml (`file:pyproject.toml`)
@@ -270,6 +249,8 @@ Schema version: `0.2`
 - `test` — tests/test_benchmark_evolve.py (`test:tests/test_benchmark_evolve.py`)
 - `file` — tests/test_benchmark_truth.py (`file:tests/test_benchmark_truth.py`)
 - `test` — tests/test_benchmark_truth.py (`test:tests/test_benchmark_truth.py`)
+- `file` — tests/test_cli_smoke.py (`file:tests/test_cli_smoke.py`)
+- `test` — tests/test_cli_smoke.py (`test:tests/test_cli_smoke.py`)
 - `file` — tests/test_code_structure_graph.py (`file:tests/test_code_structure_graph.py`)
 - `test` — tests/test_code_structure_graph.py (`test:tests/test_code_structure_graph.py`)
 - `file` — tests/test_config.py (`file:tests/test_config.py`)
@@ -280,6 +261,8 @@ Schema version: `0.2`
 - `test` — tests/test_embeddings.py (`test:tests/test_embeddings.py`)
 - `file` — tests/test_evidence_ledger.py (`file:tests/test_evidence_ledger.py`)
 - `test` — tests/test_evidence_ledger.py (`test:tests/test_evidence_ledger.py`)
+- `file` — tests/test_example_fixtures.py (`file:tests/test_example_fixtures.py`)
+- `test` — tests/test_example_fixtures.py (`test:tests/test_example_fixtures.py`)
 - `file` — tests/test_graph_exports.py (`file:tests/test_graph_exports.py`)
 - `test` — tests/test_graph_exports.py (`test:tests/test_graph_exports.py`)
 - `file` — tests/test_graph_neighborhood_context.py (`file:tests/test_graph_neighborhood_context.py`)
@@ -620,6 +603,12 @@ Schema version: `0.2`
 - `symbol` — test_recall_is_full_when_all_relevant_files_selected (`symbol:tests.test_benchmark_truth:test_recall_is_full_when_all_relevant_files_selected`)
 - `symbol` — test_must_not_include_detects_violations (`symbol:tests.test_benchmark_truth:test_must_not_include_detects_violations`)
 - `symbol` — test_expected_sections_scored (`symbol:tests.test_benchmark_truth:test_expected_sections_scored`)
+- `module` — tests.test_cli_smoke (`module:tests.test_cli_smoke`)
+- `module` — pytest (`module:pytest`)
+- `module` — typer.testing (`module:typer.testing`)
+- `symbol` — test_top_level_cli_commands_are_registered (`symbol:tests.test_cli_smoke:test_top_level_cli_commands_are_registered`)
+- `symbol` — test_nested_cli_commands_are_registered (`symbol:tests.test_cli_smoke:test_nested_cli_commands_are_registered`)
+- `symbol` — test_each_cli_adapter_target_exports (`symbol:tests.test_cli_smoke:test_each_cli_adapter_target_exports`)
 - `module` — tests.test_code_structure_graph (`module:tests.test_code_structure_graph`)
 - `symbol` — test_python_modules_symbols_and_imports_are_added (`symbol:tests.test_code_structure_graph:test_python_modules_symbols_and_imports_are_added`)
 - `symbol` — test_python_parse_failure_does_not_break_graph_build (`symbol:tests.test_code_structure_graph:test_python_parse_failure_does_not_break_graph_build`)
@@ -647,7 +636,6 @@ Schema version: `0.2`
 - `symbol` — test_vectorize_is_deterministic (`symbol:tests.test_embeddings:test_vectorize_is_deterministic`)
 - `symbol` — test_embedding_index_build_and_search (`symbol:tests.test_embeddings:test_embedding_index_build_and_search`)
 - `module` — tests.test_evidence_ledger (`module:tests.test_evidence_ledger`)
-- `module` — pytest (`module:pytest`)
 - `symbol` — test_record_evidence_appends_jsonl (`symbol:tests.test_evidence_ledger:test_record_evidence_appends_jsonl`)
 - `symbol` — test_ledger_directory_gets_readme (`symbol:tests.test_evidence_ledger:test_ledger_directory_gets_readme`)
 - `symbol` — test_unknown_kind_is_rejected (`symbol:tests.test_evidence_ledger:test_unknown_kind_is_rejected`)
@@ -655,6 +643,8 @@ Schema version: `0.2`
 - `symbol` — test_scan_and_validate_write_ledger_entries (`symbol:tests.test_evidence_ledger:test_scan_and_validate_write_ledger_entries`)
 - `symbol` — test_ledger_grows_across_runs (`symbol:tests.test_evidence_ledger:test_ledger_grows_across_runs`)
 - `symbol` — test_read_ledger_empty_when_missing (`symbol:tests.test_evidence_ledger:test_read_ledger_empty_when_missing`)
+- `module` — tests.test_example_fixtures (`module:tests.test_example_fixtures`)
+- `symbol` — test_obsidian_graph_fixture_has_reviewable_vault_structure (`symbol:tests.test_example_fixtures:test_obsidian_graph_fixture_has_reviewable_vault_structure`)
 - `module` — tests.test_graph_exports (`module:tests.test_graph_exports`)
 - `symbol` — test_graph_build_has_schema_version (`symbol:tests.test_graph_exports:test_graph_build_has_schema_version`)
 - `symbol` — test_graph_build_assigns_l0_and_l1_levels (`symbol:tests.test_graph_exports:test_graph_build_assigns_l0_and_l1_levels`)
@@ -774,56 +764,16 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evidence/README.md`
 - `dir:.ai` -[contains]-> `dir:.ai/evidence`
 - `dir:.ai/evidence` -[contains]-> `file:.ai/evidence/README.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/best_params.yaml`
-- `dir:.ai` -[contains]-> `dir:.ai/evolution`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/best_params.yaml`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0001.json`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0001.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0002.json`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0002.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/findings.md`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/findings.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/metrics.json`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/metrics.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/parameter-report.md`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/parameter-report.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/plan.md`
-- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/plan.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/graph.md`
 - `dir:.ai` -[contains]-> `file:.ai/graph.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/artifacts.json`
-- `dir:.ai` -[contains]-> `dir:.ai/machine`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/benchmark.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_explain.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_explain.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_units.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/files.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/files.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.export.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.export.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/graph.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
-- `dir:.ai/machine` -[contains]-> `dir:.ai/machine/run_history`
-- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/validation.json`
-- `dir:.ai/machine` -[contains]-> `file:.ai/machine/validation.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/manifest.yaml`
 - `dir:.ai` -[contains]-> `file:.ai/manifest.yaml`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/packs/handoff.md`
-- `dir:.ai` -[contains]-> `dir:.ai/packs`
-- `dir:.ai/packs` -[contains]-> `file:.ai/packs/handoff.md`
-- `pack:.ai/packs/handoff.md` -[derived_from]-> `file:.ai/packs/handoff.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/packs/quick.md`
-- `dir:.ai/packs` -[contains]-> `file:.ai/packs/quick.md`
-- `pack:.ai/packs/quick.md` -[derived_from]-> `file:.ai/packs/quick.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/081351-test-postflight.md`
 - `dir:.ai` -[contains]-> `dir:.ai/runs`
 - `dir:.ai/runs` -[contains]-> `dir:.ai/runs/2026-07-05`
 - `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/081351-test-postflight.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/state.md`
 - `dir:.ai` -[contains]-> `file:.ai/state.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tasks.md`
@@ -1012,4 +962,44 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/lock.py`
 - `dir:amo/runtime` -[contains]-> `file:amo/runtime/lock.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/run_history.py`
-- ... 1799 more edges
+- `dir:amo/runtime` -[contains]-> `file:amo/runtime/run_history.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/server/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/server`
+- `dir:amo/server` -[contains]-> `file:amo/server/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/server/app.py`
+- `dir:amo/server` -[contains]-> `file:amo/server/app.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/server/organism.py`
+- `dir:amo/server` -[contains]-> `file:amo/server/organism.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/server/static/app.js`
+- `dir:amo/server` -[contains]-> `dir:amo/server/static`
+- `dir:amo/server/static` -[contains]-> `file:amo/server/static/app.js`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/__init__.py`
+- `dir:amo` -[contains]-> `dir:amo/validators`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/artifacts.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/artifacts.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/graph.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/graph.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/instructions.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/instructions.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/validators/references.py`
+- `dir:amo/validators` -[contains]-> `file:amo/validators/references.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:benchmarks/README.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:benchmarks`
+- `dir:benchmarks` -[contains]-> `file:benchmarks/README.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/10-10-scorecard.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `dir:docs`
+- `dir:docs` -[contains]-> `file:docs/10-10-scorecard.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adapters.md`
+- `dir:docs` -[contains]-> `file:docs/adapters.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/adoption.md`
+- `dir:docs` -[contains]-> `file:docs/adoption.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/agent-context-discipline.md`
+- `dir:docs` -[contains]-> `file:docs/agent-context-discipline.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/architecture.md`
+- `dir:docs` -[contains]-> `file:docs/architecture.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/benchmark.md`
+- `dir:docs` -[contains]-> `file:docs/benchmark.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/comparison.md`
+- `dir:docs` -[contains]-> `file:docs/comparison.md`
+- ... 1770 more edges
