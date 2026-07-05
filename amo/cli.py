@@ -16,6 +16,7 @@ from amo.core.evolve import evolve_safe
 from amo.core.graph import build_graph, export_graph
 from amo.core.handoff import build_handoff
 from amo.core.init import init_repo
+from amo.core.optimize import optimize_check, optimize_plan, optimize_suggest
 from amo.core.optimize_params import (
     apply_safe_params,
     load_best_params,
@@ -190,6 +191,33 @@ def evolve(repo: Path = Path(".")) -> None:
     """Record a deterministic, no-LLM memory-quality evolution cycle."""
     result = evolve_safe(repo)
     console.print(f"[green]Safe evolution cycle complete[/green]: {result}")
+
+
+@optimize_app.command("suggest")
+def optimize_suggest_cmd(repo: Path = Path(".")) -> None:
+    """Collect deterministic findings and write an evolution cycle. Propose only."""
+    output = optimize_suggest(repo)
+    console.print(f"[green]Optimization cycle written[/green]: {output}")
+
+
+@optimize_app.command("check")
+def optimize_check_cmd(repo: Path = Path(".")) -> None:
+    """Exit 1 when high or medium findings require action."""
+    action_required, findings = optimize_check(repo)
+    for finding in findings:
+        color = "red" if finding["severity"] == "high" else "yellow"
+        console.print(f"[{color}]{finding['severity']}[/{color}] {finding['id']}: {finding['message']}")
+    if action_required:
+        console.print("[red]Findings require action.[/red]")
+        raise typer.Exit(code=1)
+    console.print("[green]No high or medium findings.[/green]")
+
+
+@optimize_app.command("plan")
+def optimize_plan_cmd(repo: Path = Path(".")) -> None:
+    """Write a propose-only remediation plan to .ai/evolution/plan.md."""
+    output = optimize_plan(repo)
+    console.print(f"[green]Plan written[/green]: {output}")
 
 
 @optimize_params_app.command("suggest")
