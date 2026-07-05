@@ -26,11 +26,9 @@ AMO 0.1.0-alpha is the first public foundation for a Git-native repository memor
 
 ## What is not stable yet
 
-- public repository visibility and protected-branch settings
-- green CodeQL and OpenSSF Scorecard runs on the public repository
-- the `v0.1.0-alpha` tag and GitHub release
 - PyPI distribution; this alpha is source-install only
 - external embedding providers
+- broader language extraction beyond the initial Python pass
 - federation runtime (design only)
 
 ## Recommended validation
@@ -64,6 +62,17 @@ amo status
 
 Install this alpha from source. PyPI publishing is explicitly deferred until a trusted
 publisher is configured and verified; no local artifact will be uploaded manually.
+
+## Safety model
+
+Canonical memory is reviewed Git content. Machine indexes, packs, evolution output, and
+runtime state have lower authority. The optimizer is propose-only; safe parameter apply
+requires explicit confirmation and cannot edit source code. MCP canonical-memory writes
+require confirmation and a non-empty summary.
+
+## Feedback
+
+Report bugs and documentation gaps through the repository's GitHub Issues page.
 
 ## Release intent
 

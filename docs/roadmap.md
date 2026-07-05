@@ -2,12 +2,11 @@
 
 ## v0.1-alpha-final
 
-- synchronize docs, canonical memory, and issue state
-- verify the expanded release-check on the release PR and `main`
-- obtain green CodeQL and OpenSSF Scorecard runs
-- configure public visibility and branch protection
-- ship the alpha as source-install only; PyPI is deferred
-- create `v0.1.0-alpha`
+- [x] synchronize docs, canonical memory, and issue state
+- [x] verify CI, Release Check, CodeQL, and OpenSSF Scorecard on `main`
+- [x] configure public visibility and branch protection
+- [x] ship the alpha as source-install only; PyPI is deferred
+- [ ] create `v0.1.0-alpha` and its GitHub release
 
 ## v0.2-code-intelligence
 

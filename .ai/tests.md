@@ -34,9 +34,9 @@
 
 ## CI
 
-CI and Release Check passed on `main` at commit `db11b3e` and on PR #35. CodeQL
-cannot upload because code scanning is not enabled for the private repository; OpenSSF
-Scorecard fails with a GitHub integration-access error. Both need green runs before tagging.
+CI, Release Check, CodeQL, and OpenSSF Scorecard passed on public `main` at merge
+commit `bfc6902`. Branch protection requires their `test`, `release-check`, `analyze`,
+and `scorecard` contexts.
 
 ## Validation — 2026-07-05T08:13:51.889057+00:00
 
@@ -69,3 +69,7 @@ ruff green; 131 tests passed; all release commands exited 0; strict validation g
 ## Validation — 2026-07-05T10:09:15.526111+00:00
 
 repository public; branch protection API verified; PR CI, Release Check, and CodeQL green; Scorecard permission fix pending main run
+
+## Validation — 2026-07-05T10:13:06.350859+00:00
+
+main CI, Release Check, CodeQL, and OpenSSF Scorecard green at bfc6902; branch protection API verified

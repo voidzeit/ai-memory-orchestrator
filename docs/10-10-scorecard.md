@@ -21,19 +21,18 @@ The remaining work is not more vision. The remaining work is confidence.
 | Obsidian | Real graph-view notes, tags, aliases, links, sample fixture | Done |
 | Neo4j | Cypher export and docs | Done |
 | Embeddings | Local optional deterministic index | Done for alpha; external providers remain future work |
-| Testing | Unit, integration, command registration, release smoke path | Done locally; needs CI confirmation for this branch |
-| CI/release | Release workflow runs and required checks pass | Release Check and CI passed on `main`; CodeQL and Scorecard are still blocked/failing |
-| Security posture | CodeQL, Scorecard, dependency updates, branch protection | Implemented, needs GitHub visibility/settings and green security runs |
+| Testing | Unit, integration, command registration, release smoke path | Done locally and in CI; 131 tests passed |
+| CI/release | Release workflow runs and required checks pass | CI, Release Check, CodeQL, and Scorecard are green on `main` |
+| Security posture | CodeQL, Scorecard, dependency updates, branch protection | Done; public protected `main` requires all four release checks |
 | Community | Issues, PR template, contributing, conduct, support | Done |
-| Packaging | Build/check workflow and trusted publishing | Workflow done; publisher configuration and publish timing remain manual |
+| Packaging | Build/check path and explicit distribution decision | Done; build/Twine checks pass and PyPI is deferred |
 | Evidence | Truth-aware benchmark and durable ledger | Done |
 
 ## Release blocker checklist
 
 - **Done:** executable benchmark, evidence ledger, optimizer, parameter sweep, graph hierarchy and validation, standard exporters, organism UI, MCP, adapter profiles, hardened postflight, command smoke tests, and sample Obsidian vault.
-- **Implemented, needs CI confirmation:** expanded `release-check` command path and CodeQL `actions: read` permission.
-- **Manual GitHub setting:** make the repository public; protect `main`; require PRs and `release-check`; disable force pushes and branch deletion.
-- **Still open:** obtain green CodeQL and OpenSSF Scorecard runs after visibility/settings changes.
+- **Done:** repository public; protected `main`; PRs and four release checks required; force pushes and deletion disabled.
+- **Done:** CI, Release Check, CodeQL, and OpenSSF Scorecard are green on `main`.
 - **Done:** PyPI is explicitly deferred; `0.1.0-alpha` is source-install only.
 - **Still open:** create `v0.1.0-alpha` only after every release gate is green.
 

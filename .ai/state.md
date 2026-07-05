@@ -34,15 +34,20 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 - Release Check, CI, CodeQL, OpenSSF Scorecard, Dependabot, and trusted-publishing workflow definitions.
 - Code of Conduct, Support, Security, Contributing, changelog, roadmap, and alpha release notes.
 
-## Remaining gaps
+## Release readiness
 
-- The repository is public.
-- `main` is protected: pull requests, `test`, and `release-check` are required; force pushes and branch deletion are disabled.
-- CI, Release Check, and CodeQL passed on PR #35. OpenSSF Scorecard exposed an invalid workflow-level write permission; the job-scoped fix is in PR #35 and still needs a green run on `main`.
+- PR #35 is merged at `bfc6902`.
+- The repository is public and `main` is protected.
+- Pull requests and `test`, `release-check`, `analyze`, and `scorecard` are required; force pushes and branch deletion are disabled.
+- CI, Release Check, CodeQL, and OpenSSF Scorecard are green on `main`.
+- Direct checked-in JSON Schema artifact validation and benchmark precision/recall gates are covered by the 131-test suite.
 - The `v0.1.0-alpha` tag and GitHub release do not exist.
 - PyPI is explicitly deferred for `0.1.0-alpha`; this alpha is source-install only.
+
+## Future work
+
 - External embedding providers and broader language extraction are future work.
-- Federation remains design-only until alpha release gates are green.
+- Federation remains design-only until the single-repository alpha has user evidence.
 ## Postflight — 2026-07-04T04:54:53.734060+00:00
 
 Task: make AMO the repo-native memory and graph operating layer
@@ -117,3 +122,11 @@ Summary: Verified public visibility and protected main with PR, test, and releas
 
 Outcome: completed
 Changed files: .github/workflows/scorecard.yml, README.md, CHANGELOG.md, docs/release-notes-0.1.0-alpha.md, docs/release-process.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md
+## Postflight — 2026-07-05T10:13:06.350859+00:00
+
+Task: pre-tag truth sync
+
+Summary: Recorded merged PR 35, public protected main, required CI/Release Check/CodeQL/Scorecard contexts, green main security runs, completed schema issue, and source-only PyPI decision; removed stale release-note blockers before tagging.
+
+Outcome: completed
+Changed files: docs/release-notes-0.1.0-alpha.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md
