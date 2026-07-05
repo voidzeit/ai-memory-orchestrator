@@ -4,12 +4,20 @@ import json
 from pathlib import Path
 
 from amo.config import get_config_value, load_config
+from amo.context.explain import explain_selection
+from amo.context.graph_neighborhood import compute_neighborhood
 from amo.context.profiles import get_budget
 from amo.context.ranking import DEFAULT_RANKING_PARAMS, rank_units
 from amo.context.render import render_context_pack
 from amo.evidence.ledger import record_evidence
-from amo.io import read_text_if_exists, write_text
+from amo.io import read_text_if_exists, write_json, write_text
 from amo.paths import ai_path, ensure_dirs
+
+DEFAULT_GRAPH_PARAMS: dict[str, int | float] = {
+    "graph.seed_top_k": 10,
+    "graph.max_hops": 2,
+    "graph.distance_decay": 0.75,
+}
 
 
 def build_context_pack(
@@ -44,8 +52,40 @@ def build_context_pack(
         for key, default in DEFAULT_RANKING_PARAMS.items()
     }
     ranking_params.update(params or {})
-    selected = rank_units(units, task=task, budget=budget, params=ranking_params)
-    content = render_context_pack(task=task, profile=profile, budget=budget, canonical=canonical, units=selected)
+    graph_params = {
+        key: get_config_value(config, key, default)
+        for key, default in DEFAULT_GRAPH_PARAMS.items()
+    }
+    graph_params.update({key: value for key, value in (params or {}).items() if key in DEFAULT_GRAPH_PARAMS})
+    proximity, seeds = compute_neighborhood(
+        repo,
+        units,
+        task,
+        seed_top_k=int(graph_params["graph.seed_top_k"]),
+        max_hops=int(graph_params["graph.max_hops"]),
+        distance_decay=float(graph_params["graph.distance_decay"]),
+    )
+    selected = rank_units(units, task=task, budget=budget, params=ranking_params, proximity=proximity)
+    explanations = explain_selection(selected, task=task, proximity=proximity, seeds=seeds)
+    write_json(
+        ai_path(repo, "machine", "context_explain.json"),
+        {"task": task, "profile": profile, "seeds": seeds, "selection": explanations},
+    )
+    selected_paths = {str(unit.get("expand") or unit.get("title") or "") for unit in selected}
+    neighborhood = [
+        (path, score)
+        for path, score in sorted(proximity.items(), key=lambda item: (-item[1], item[0]))
+        if path not in seeds and path not in selected_paths
+    ][:8]
+    content = render_context_pack(
+        task=task,
+        profile=profile,
+        budget=budget,
+        canonical=canonical,
+        units=selected,
+        seeds=seeds,
+        neighborhood=neighborhood,
+    )
     output = ai_path(repo, "packs", f"{profile}.md")
     write_text(output, content)
     write_text(ai_path(repo, "runtime", "last_context.md"), content)

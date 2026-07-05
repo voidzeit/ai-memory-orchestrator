@@ -39,8 +39,10 @@ a best artifact, confirmation, and non-red strict validation. It writes only par
 `safe_to_apply: true`, writes only `.amo.yaml`, lists exact changed keys, and never edits source.
 
 The ranking engine currently consumes `context.max_units`, `context.relevance_weight`,
-`context.authority_weight`, `context.token_cost_weight`, and `context.duplicate_penalty`. Other
-declarations are visible as disconnected heuristics so their staged integration is explicit.
+`context.authority_weight`, `context.token_cost_weight`, `context.duplicate_penalty`, and
+`context.graph_weight`. The graph-neighborhood expander consumes `graph.seed_top_k`,
+`graph.max_hops`, and `graph.distance_decay`. Other declarations are visible as disconnected
+heuristics so their staged integration is explicit.
 
 ## Future adapters
 

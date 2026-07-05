@@ -13,12 +13,16 @@ Schema version: `0.2`
 - `memory` — .ai/graph.md (`memory:graph`)
 - `file` — .ai/decisions.md (`file:.ai/decisions.md`)
 - `directory` — .ai (`dir:.ai`)
+- `file` — .ai/evidence/README.md (`file:.ai/evidence/README.md`)
+- `directory` — .ai/evidence (`dir:.ai/evidence`)
 - `file` — .ai/evolution/best_params.yaml (`file:.ai/evolution/best_params.yaml`)
 - `directory` — .ai/evolution (`dir:.ai/evolution`)
 - `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
+- `file` — .ai/evolution/cycle-0002.json (`file:.ai/evolution/cycle-0002.json`)
 - `file` — .ai/evolution/findings.md (`file:.ai/evolution/findings.md`)
 - `file` — .ai/evolution/metrics.json (`file:.ai/evolution/metrics.json`)
 - `file` — .ai/evolution/parameter-report.md (`file:.ai/evolution/parameter-report.md`)
+- `file` — .ai/evolution/plan.md (`file:.ai/evolution/plan.md`)
 - `file` — .ai/graph.md (`file:.ai/graph.md`)
 - `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
 - `directory` — .ai/machine (`dir:.ai/machine`)
@@ -73,6 +77,8 @@ Schema version: `0.2`
 - `file` — amo/config.py (`file:amo/config.py`)
 - `file` — amo/context/__init__.py (`file:amo/context/__init__.py`)
 - `directory` — amo/context (`dir:amo/context`)
+- `file` — amo/context/explain.py (`file:amo/context/explain.py`)
+- `file` — amo/context/graph_neighborhood.py (`file:amo/context/graph_neighborhood.py`)
 - `file` — amo/context/profiles.py (`file:amo/context/profiles.py`)
 - `file` — amo/context/ranking.py (`file:amo/context/ranking.py`)
 - `file` — amo/context/render.py (`file:amo/context/render.py`)
@@ -84,6 +90,7 @@ Schema version: `0.2`
 - `file` — amo/core/graph.py (`file:amo/core/graph.py`)
 - `file` — amo/core/handoff.py (`file:amo/core/handoff.py`)
 - `file` — amo/core/init.py (`file:amo/core/init.py`)
+- `file` — amo/core/optimize.py (`file:amo/core/optimize.py`)
 - `file` — amo/core/optimize_params.py (`file:amo/core/optimize_params.py`)
 - `file` — amo/core/postflight.py (`file:amo/core/postflight.py`)
 - `file` — amo/core/scan.py (`file:amo/core/scan.py`)
@@ -114,10 +121,13 @@ Schema version: `0.2`
 - `file` — amo/io.py (`file:amo/io.py`)
 - `file` — amo/optimizer/__init__.py (`file:amo/optimizer/__init__.py`)
 - `directory` — amo/optimizer (`dir:amo/optimizer`)
+- `file` — amo/optimizer/loop.py (`file:amo/optimizer/loop.py`)
 - `file` — amo/optimizer/objective.py (`file:amo/optimizer/objective.py`)
 - `file` — amo/optimizer/params.py (`file:amo/optimizer/params.py`)
+- `file` — amo/optimizer/planner.py (`file:amo/optimizer/planner.py`)
 - `file` — amo/optimizer/report.py (`file:amo/optimizer/report.py`)
 - `file` — amo/optimizer/search_space.py (`file:amo/optimizer/search_space.py`)
+- `file` — amo/optimizer/signals.py (`file:amo/optimizer/signals.py`)
 - `file` — amo/optimizer/sweep.py (`file:amo/optimizer/sweep.py`)
 - `file` — amo/optimizer/trials.py (`file:amo/optimizer/trials.py`)
 - `file` — amo/paths.py (`file:amo/paths.py`)
@@ -157,6 +167,7 @@ Schema version: `0.2`
 - `file` — docs/optimizable-parameters.md (`file:docs/optimizable-parameters.md`)
 - `file` — docs/problem.md (`file:docs/problem.md`)
 - `file` — docs/quickstart.md (`file:docs/quickstart.md`)
+- `file` — docs/recursive-optimization.md (`file:docs/recursive-optimization.md`)
 - `file` — docs/release-hardening.md (`file:docs/release-hardening.md`)
 - `file` — docs/release-notes-0.1.0-alpha.md (`file:docs/release-notes-0.1.0-alpha.md`)
 - `file` — docs/roadmap.md (`file:docs/roadmap.md`)
@@ -164,19 +175,35 @@ Schema version: `0.2`
 - `file` — docs/schema-contract.md (`file:docs/schema-contract.md`)
 - `file` — docs/server.md (`file:docs/server.md`)
 - `file` — docs/validators.md (`file:docs/validators.md`)
-- `file` — examples/agent-debug-session/.ai/machine/artifacts.json (`file:examples/agent-debug-session/.ai/machine/artifacts.json`)
+- `file` — examples/agent-debug-session/.ai/decisions.md (`file:examples/agent-debug-session/.ai/decisions.md`)
 - `directory` — examples (`dir:examples`)
 - `directory` — examples/agent-debug-session (`dir:examples/agent-debug-session`)
 - `directory` — examples/agent-debug-session/.ai (`dir:examples/agent-debug-session/.ai`)
+- `file` — examples/agent-debug-session/.ai/graph.md (`file:examples/agent-debug-session/.ai/graph.md`)
+- `file` — examples/agent-debug-session/.ai/machine/artifacts.json (`file:examples/agent-debug-session/.ai/machine/artifacts.json`)
 - `directory` — examples/agent-debug-session/.ai/machine (`dir:examples/agent-debug-session/.ai/machine`)
 - `file` — examples/agent-debug-session/.ai/machine/benchmark.json (`file:examples/agent-debug-session/.ai/machine/benchmark.json`)
 - `file` — examples/agent-debug-session/.ai/machine/context_units.json (`file:examples/agent-debug-session/.ai/machine/context_units.json`)
 - `file` — examples/agent-debug-session/.ai/machine/files.json (`file:examples/agent-debug-session/.ai/machine/files.json`)
+- `file` — examples/agent-debug-session/.ai/manifest.yaml (`file:examples/agent-debug-session/.ai/manifest.yaml`)
 - `file` — examples/agent-debug-session/.ai/packs/quick.md (`file:examples/agent-debug-session/.ai/packs/quick.md`)
 - `directory` — examples/agent-debug-session/.ai/packs (`dir:examples/agent-debug-session/.ai/packs`)
 - `file` — examples/agent-debug-session/.ai/runtime/last_context.md (`file:examples/agent-debug-session/.ai/runtime/last_context.md`)
 - `directory` — examples/agent-debug-session/.ai/runtime (`dir:examples/agent-debug-session/.ai/runtime`)
+- `file` — examples/agent-debug-session/.ai/state.md (`file:examples/agent-debug-session/.ai/state.md`)
+- `file` — examples/agent-debug-session/.ai/tasks.md (`file:examples/agent-debug-session/.ai/tasks.md`)
+- `file` — examples/agent-debug-session/.ai/tests.md (`file:examples/agent-debug-session/.ai/tests.md`)
 - `file` — examples/agent-debug-session/README.md (`file:examples/agent-debug-session/README.md`)
+- `file` — examples/agent-debug-session/app/auth.py (`file:examples/agent-debug-session/app/auth.py`)
+- `directory` — examples/agent-debug-session/app (`dir:examples/agent-debug-session/app`)
+- `file` — examples/agent-debug-session/app/notifications.py (`file:examples/agent-debug-session/app/notifications.py`)
+- `file` — examples/agent-debug-session/app/payments.py (`file:examples/agent-debug-session/app/payments.py`)
+- `file` — examples/agent-debug-session/docs/changelog.md (`file:examples/agent-debug-session/docs/changelog.md`)
+- `directory` — examples/agent-debug-session/docs (`dir:examples/agent-debug-session/docs`)
+- `file` — examples/agent-debug-session/tests/test_auth.py (`file:examples/agent-debug-session/tests/test_auth.py`)
+- `directory` — examples/agent-debug-session/tests (`dir:examples/agent-debug-session/tests`)
+- `test` — examples/agent-debug-session/tests/test_auth.py (`test:examples/agent-debug-session/tests/test_auth.py`)
+- `file` — examples/agent-debug-session/truth.json (`file:examples/agent-debug-session/truth.json`)
 - `file` — examples/obsidian-graph-vault/Graph/Nodes/file-a-b--a607eb07f4.md (`file:examples/obsidian-graph-vault/Graph/Nodes/file-a-b--a607eb07f4.md`)
 - `directory` — examples/obsidian-graph-vault (`dir:examples/obsidian-graph-vault`)
 - `directory` — examples/obsidian-graph-vault/Graph (`dir:examples/obsidian-graph-vault/Graph`)
@@ -208,6 +235,8 @@ Schema version: `0.2`
 - `test` — tests/test_adapters.py (`test:tests/test_adapters.py`)
 - `file` — tests/test_benchmark_evolve.py (`file:tests/test_benchmark_evolve.py`)
 - `test` — tests/test_benchmark_evolve.py (`test:tests/test_benchmark_evolve.py`)
+- `file` — tests/test_benchmark_truth.py (`file:tests/test_benchmark_truth.py`)
+- `test` — tests/test_benchmark_truth.py (`test:tests/test_benchmark_truth.py`)
 - `file` — tests/test_code_structure_graph.py (`file:tests/test_code_structure_graph.py`)
 - `test` — tests/test_code_structure_graph.py (`test:tests/test_code_structure_graph.py`)
 - `file` — tests/test_config.py (`file:tests/test_config.py`)
@@ -220,10 +249,14 @@ Schema version: `0.2`
 - `test` — tests/test_evidence_ledger.py (`test:tests/test_evidence_ledger.py`)
 - `file` — tests/test_graph_exports.py (`file:tests/test_graph_exports.py`)
 - `test` — tests/test_graph_exports.py (`test:tests/test_graph_exports.py`)
+- `file` — tests/test_graph_neighborhood_context.py (`file:tests/test_graph_neighborhood_context.py`)
+- `test` — tests/test_graph_neighborhood_context.py (`test:tests/test_graph_neighborhood_context.py`)
 - `file` — tests/test_graph_validation.py (`file:tests/test_graph_validation.py`)
 - `test` — tests/test_graph_validation.py (`test:tests/test_graph_validation.py`)
 - `file` — tests/test_init.py (`file:tests/test_init.py`)
 - `test` — tests/test_init.py (`test:tests/test_init.py`)
+- `file` — tests/test_optimizer.py (`file:tests/test_optimizer.py`)
+- `test` — tests/test_optimizer.py (`test:tests/test_optimizer.py`)
 - `file` — tests/test_optimizer_params.py (`file:tests/test_optimizer_params.py`)
 - `test` — tests/test_optimizer_params.py (`test:tests/test_optimizer_params.py`)
 - `file` — tests/test_runtime_validation.py (`file:tests/test_runtime_validation.py`)
@@ -307,8 +340,18 @@ Schema version: `0.2`
 - `symbol` — get_config_value (`symbol:amo.config:get_config_value`)
 - `symbol` — write_yaml (`symbol:amo.config:write_yaml`)
 - `module` — amo.context (`module:amo.context`)
-- `module` — amo.context.profiles (`module:amo.context.profiles`)
+- `module` — amo.context.explain (`module:amo.context.explain`)
 - `module` — __future__ (`module:__future__`)
+- `module` — amo.context.graph_neighborhood (`module:amo.context.graph_neighborhood`)
+- `symbol` — explain_selection (`symbol:amo.context.explain:explain_selection`)
+- `module` — json (`module:json`)
+- `module` — collections (`module:collections`)
+- `symbol` — task_terms (`symbol:amo.context.graph_neighborhood:task_terms`)
+- `symbol` — lexical_seed_paths (`symbol:amo.context.graph_neighborhood:lexical_seed_paths`)
+- `symbol` — load_graph (`symbol:amo.context.graph_neighborhood:load_graph`)
+- `symbol` — graph_proximity (`symbol:amo.context.graph_neighborhood:graph_proximity`)
+- `symbol` — compute_neighborhood (`symbol:amo.context.graph_neighborhood:compute_neighborhood`)
+- `module` — amo.context.profiles (`module:amo.context.profiles`)
 - `symbol` — get_context_profiles (`symbol:amo.context.profiles:get_context_profiles`)
 - `symbol` — get_profile (`symbol:amo.context.profiles:get_profile`)
 - `symbol` — get_budget (`symbol:amo.context.profiles:get_budget`)
@@ -318,9 +361,9 @@ Schema version: `0.2`
 - `symbol` — render_context_pack (`symbol:amo.context.render:render_context_pack`)
 - `symbol` — _first_nonempty (`symbol:amo.context.render:_first_nonempty`)
 - `module` — amo.core (`module:amo.core`)
-- `module` — json (`module:json`)
 - `symbol` — load_truth (`symbol:amo.core.benchmark:load_truth`)
 - `symbol` — run_benchmark (`symbol:amo.core.benchmark:run_benchmark`)
+- `symbol` — _selected_paths (`symbol:amo.core.benchmark:_selected_paths`)
 - `symbol` — _score_against_truth (`symbol:amo.core.benchmark:_score_against_truth`)
 - `symbol` — build_context_pack (`symbol:amo.core.context:build_context_pack`)
 - `symbol` — evolve_safe (`symbol:amo.core.evolve:evolve_safe`)
@@ -341,6 +384,12 @@ Schema version: `0.2`
 - `symbol` — init_repo (`symbol:amo.core.init:init_repo`)
 - `symbol` — _copy_template (`symbol:amo.core.init:_copy_template`)
 - `symbol` — _write_embedded_default (`symbol:amo.core.init:_write_embedded_default`)
+- `module` — amo.optimizer.loop (`module:amo.optimizer.loop`)
+- `module` — amo.optimizer.planner (`module:amo.optimizer.planner`)
+- `module` — amo.optimizer.signals (`module:amo.optimizer.signals`)
+- `symbol` — optimize_suggest (`symbol:amo.core.optimize:optimize_suggest`)
+- `symbol` — optimize_check (`symbol:amo.core.optimize:optimize_check`)
+- `symbol` — optimize_plan (`symbol:amo.core.optimize:optimize_plan`)
 - `module` — amo.optimizer.report (`module:amo.optimizer.report`)
 - `module` — amo.optimizer.search_space (`module:amo.optimizer.search_space`)
 - `module` — amo.optimizer.sweep (`module:amo.optimizer.sweep`)
@@ -416,15 +465,28 @@ Schema version: `0.2`
 - `symbol` — write_text (`symbol:amo.io:write_text`)
 - `module` — amo.optimizer (`module:amo.optimizer`)
 - `module` — amo.optimizer.params (`module:amo.optimizer.params`)
+- `symbol` — run_suggest (`symbol:amo.optimizer.loop:run_suggest`)
+- `symbol` — findings_require_action (`symbol:amo.optimizer.loop:findings_require_action`)
+- `symbol` — render_findings (`symbol:amo.optimizer.loop:render_findings`)
 - `module` — amo.optimizer.objective (`module:amo.optimizer.objective`)
 - `symbol` — ObjectiveResult (`symbol:amo.optimizer.objective:ObjectiveResult`)
 - `symbol` — load_objective_weights (`symbol:amo.optimizer.objective:load_objective_weights`)
 - `symbol` — score_objective (`symbol:amo.optimizer.objective:score_objective`)
 - `symbol` — ParameterDefinition (`symbol:amo.optimizer.params:ParameterDefinition`)
+- `symbol` — write_plan (`symbol:amo.optimizer.planner:write_plan`)
+- `symbol` — render_plan (`symbol:amo.optimizer.planner:render_plan`)
 - `symbol` — render_parameter_report (`symbol:amo.optimizer.report:render_parameter_report`)
 - `module` — random (`module:random`)
 - `symbol` — SearchSpace (`symbol:amo.optimizer.search_space:SearchSpace`)
 - `symbol` — load_search_space (`symbol:amo.optimizer.search_space:load_search_space`)
+- `symbol` — _finding (`symbol:amo.optimizer.signals:_finding`)
+- `symbol` — collect_signals (`symbol:amo.optimizer.signals:collect_signals`)
+- `symbol` — _graph_signals (`symbol:amo.optimizer.signals:_graph_signals`)
+- `symbol` — _context_signals (`symbol:amo.optimizer.signals:_context_signals`)
+- `symbol` — _memory_signals (`symbol:amo.optimizer.signals:_memory_signals`)
+- `symbol` — _benchmark_signals (`symbol:amo.optimizer.signals:_benchmark_signals`)
+- `symbol` — _runtime_signals (`symbol:amo.optimizer.signals:_runtime_signals`)
+- `symbol` — _adapter_signals (`symbol:amo.optimizer.signals:_adapter_signals`)
 - `symbol` — _graph_metrics (`symbol:amo.optimizer.sweep:_graph_metrics`)
 - `symbol` — evaluate_params (`symbol:amo.optimizer.sweep:evaluate_params`)
 - `symbol` — run_sweep (`symbol:amo.optimizer.sweep:run_sweep`)
@@ -444,12 +506,30 @@ Schema version: `0.2`
 - `symbol` — _require_fields (`symbol:amo.validators.graph:_require_fields`)
 - `symbol` — check_unsafe_instructions (`symbol:amo.validators.instructions:check_unsafe_instructions`)
 - `symbol` — check_missing_canonical_files (`symbol:amo.validators.references:check_missing_canonical_files`)
+- `module` — examples.agent-debug-session.app.auth (`module:examples.agent-debug-session.app.auth`)
+- `symbol` — authenticate (`symbol:examples.agent-debug-session.app.auth:authenticate`)
+- `module` — examples.agent-debug-session.app.notifications (`module:examples.agent-debug-session.app.notifications`)
+- `symbol` — notify (`symbol:examples.agent-debug-session.app.notifications:notify`)
+- `module` — examples.agent-debug-session.app.payments (`module:examples.agent-debug-session.app.payments`)
+- `symbol` — charge (`symbol:examples.agent-debug-session.app.payments:charge`)
+- `module` — examples.agent-debug-session.tests.test_auth (`module:examples.agent-debug-session.tests.test_auth`)
+- `module` — app.auth (`module:app.auth`)
+- `symbol` — test_rejects_unknown_user (`symbol:examples.agent-debug-session.tests.test_auth:test_rejects_unknown_user`)
+- `symbol` — test_accepts_known_user (`symbol:examples.agent-debug-session.tests.test_auth:test_accepts_known_user`)
 - `module` — tests.test_adapters (`module:tests.test_adapters`)
 - `symbol` — test_agent_exporters_write_expected_files (`symbol:tests.test_adapters:test_agent_exporters_write_expected_files`)
 - `symbol` — test_adapters_include_lifecycle_and_runtime_policy (`symbol:tests.test_adapters:test_adapters_include_lifecycle_and_runtime_policy`)
 - `module` — tests.test_benchmark_evolve (`module:tests.test_benchmark_evolve`)
 - `symbol` — test_benchmark_writes_deterministic_metrics (`symbol:tests.test_benchmark_evolve:test_benchmark_writes_deterministic_metrics`)
 - `symbol` — test_evolve_is_safe_and_writes_expected_outputs (`symbol:tests.test_benchmark_evolve:test_evolve_is_safe_and_writes_expected_outputs`)
+- `module` — tests.test_benchmark_truth (`module:tests.test_benchmark_truth`)
+- `symbol` — _fixture_repo (`symbol:tests.test_benchmark_truth:_fixture_repo`)
+- `symbol` — _metrics (`symbol:tests.test_benchmark_truth:_metrics`)
+- `symbol` — test_without_truth_precision_recall_stay_unscored (`symbol:tests.test_benchmark_truth:test_without_truth_precision_recall_stay_unscored`)
+- `symbol` — test_with_truth_scores_precision_and_recall (`symbol:tests.test_benchmark_truth:test_with_truth_scores_precision_and_recall`)
+- `symbol` — test_recall_is_full_when_all_relevant_files_selected (`symbol:tests.test_benchmark_truth:test_recall_is_full_when_all_relevant_files_selected`)
+- `symbol` — test_must_not_include_detects_violations (`symbol:tests.test_benchmark_truth:test_must_not_include_detects_violations`)
+- `symbol` — test_expected_sections_scored (`symbol:tests.test_benchmark_truth:test_expected_sections_scored`)
 - `module` — tests.test_code_structure_graph (`module:tests.test_code_structure_graph`)
 - `symbol` — test_python_modules_symbols_and_imports_are_added (`symbol:tests.test_code_structure_graph:test_python_modules_symbols_and_imports_are_added`)
 - `symbol` — test_python_parse_failure_does_not_break_graph_build (`symbol:tests.test_code_structure_graph:test_python_parse_failure_does_not_break_graph_build`)
@@ -492,6 +572,14 @@ Schema version: `0.2`
 - `symbol` — test_graph_export_obsidian (`symbol:tests.test_graph_exports:test_graph_export_obsidian`)
 - `symbol` — test_standard_graph_exports (`symbol:tests.test_graph_exports:test_standard_graph_exports`)
 - `symbol` — test_obsidian_note_names_are_collision_safe (`symbol:tests.test_graph_exports:test_obsidian_note_names_are_collision_safe`)
+- `module` — tests.test_graph_neighborhood_context (`module:tests.test_graph_neighborhood_context`)
+- `symbol` — test_proximity_decays_per_hop (`symbol:tests.test_graph_neighborhood_context:test_proximity_decays_per_hop`)
+- `symbol` — test_max_hops_bounds_expansion (`symbol:tests.test_graph_neighborhood_context:test_max_hops_bounds_expansion`)
+- `symbol` — test_lexical_seeds_rank_by_relevance (`symbol:tests.test_graph_neighborhood_context:test_lexical_seeds_rank_by_relevance`)
+- `symbol` — test_proximity_boosts_ranking (`symbol:tests.test_graph_neighborhood_context:test_proximity_boosts_ranking`)
+- `symbol` — test_explanations_include_reasons_and_proximity (`symbol:tests.test_graph_neighborhood_context:test_explanations_include_reasons_and_proximity`)
+- `symbol` — test_pack_includes_neighborhood_and_explain_artifact (`symbol:tests.test_graph_neighborhood_context:test_pack_includes_neighborhood_and_explain_artifact`)
+- `symbol` — test_pack_still_builds_without_graph (`symbol:tests.test_graph_neighborhood_context:test_pack_still_builds_without_graph`)
 - `module` — tests.test_graph_validation (`module:tests.test_graph_validation`)
 - `symbol` — _write_graph (`symbol:tests.test_graph_validation:_write_graph`)
 - `symbol` — test_valid_graph_passes (`symbol:tests.test_graph_validation:test_valid_graph_passes`)
@@ -501,6 +589,15 @@ Schema version: `0.2`
 - `module` — tests.test_init (`module:tests.test_init`)
 - `symbol` — test_init_repo_creates_ai_memory (`symbol:tests.test_init:test_init_repo_creates_ai_memory`)
 - `symbol` — test_python_template_inherits_generic_memory (`symbol:tests.test_init:test_python_template_inherits_generic_memory`)
+- `module` — tests.test_optimizer (`module:tests.test_optimizer`)
+- `symbol` — _prepared_repo (`symbol:tests.test_optimizer:_prepared_repo`)
+- `symbol` — test_suggest_writes_cycle_findings_and_metrics (`symbol:tests.test_optimizer:test_suggest_writes_cycle_findings_and_metrics`)
+- `symbol` — test_suggest_increments_cycle_number (`symbol:tests.test_optimizer:test_suggest_increments_cycle_number`)
+- `symbol` — test_benchmark_missing_finding (`symbol:tests.test_optimizer:test_benchmark_missing_finding`)
+- `symbol` — test_edge_references_missing_node_is_high (`symbol:tests.test_optimizer:test_edge_references_missing_node_is_high`)
+- `symbol` — test_check_reports_action_required (`symbol:tests.test_optimizer:test_check_reports_action_required`)
+- `symbol` — test_plan_lists_recommendations_by_priority (`symbol:tests.test_optimizer:test_plan_lists_recommendations_by_priority`)
+- `symbol` — test_findings_follow_contract (`symbol:tests.test_optimizer:test_findings_follow_contract`)
 - `module` — tests.test_optimizer_params (`module:tests.test_optimizer_params`)
 - `symbol` — _write_space (`symbol:tests.test_optimizer_params:_write_space`)
 - `symbol` — test_loading_search_space (`symbol:tests.test_optimizer_params:test_loading_search_space`)
@@ -545,17 +642,24 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/decisions.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `dir:.ai`
 - `dir:.ai` -[contains]-> `file:.ai/decisions.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evidence/README.md`
+- `dir:.ai` -[contains]-> `dir:.ai/evidence`
+- `dir:.ai/evidence` -[contains]-> `file:.ai/evidence/README.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/best_params.yaml`
 - `dir:.ai` -[contains]-> `dir:.ai/evolution`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/best_params.yaml`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0001.json`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0001.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0002.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0002.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/findings.md`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/findings.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/metrics.json`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/metrics.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/parameter-report.md`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/parameter-report.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/plan.md`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/plan.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/graph.md`
 - `dir:.ai` -[contains]-> `file:.ai/graph.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/artifacts.json`
@@ -645,6 +749,10 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/__init__.py`
 - `dir:amo` -[contains]-> `dir:amo/context`
 - `dir:amo/context` -[contains]-> `file:amo/context/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/explain.py`
+- `dir:amo/context` -[contains]-> `file:amo/context/explain.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/graph_neighborhood.py`
+- `dir:amo/context` -[contains]-> `file:amo/context/graph_neighborhood.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/profiles.py`
 - `dir:amo/context` -[contains]-> `file:amo/context/profiles.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/context/ranking.py`
@@ -666,6 +774,8 @@ Schema version: `0.2`
 - `dir:amo/core` -[contains]-> `file:amo/core/handoff.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/init.py`
 - `dir:amo/core` -[contains]-> `file:amo/core/init.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/optimize.py`
+- `dir:amo/core` -[contains]-> `file:amo/core/optimize.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/optimize_params.py`
 - `dir:amo/core` -[contains]-> `file:amo/core/optimize_params.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/core/postflight.py`
@@ -721,14 +831,20 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/__init__.py`
 - `dir:amo` -[contains]-> `dir:amo/optimizer`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/__init__.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/loop.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/loop.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/objective.py`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/objective.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/params.py`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/params.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/planner.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/planner.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/report.py`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/report.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/search_space.py`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/search_space.py`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/signals.py`
+- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/signals.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/sweep.py`
 - `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/sweep.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/trials.py`
@@ -767,23 +883,4 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/context-engine.md`
 - `dir:docs` -[contains]-> `file:docs/context-engine.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:docs/demo.md`
-- `dir:docs` -[contains]-> `file:docs/demo.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/embeddings.md`
-- `dir:docs` -[contains]-> `file:docs/embeddings.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/evidence-ledger.md`
-- `dir:docs` -[contains]-> `file:docs/evidence-ledger.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-interoperability.md`
-- `dir:docs` -[contains]-> `file:docs/graph-interoperability.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-model.md`
-- `dir:docs` -[contains]-> `file:docs/graph-model.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/graph-ontology.md`
-- `dir:docs` -[contains]-> `file:docs/graph-ontology.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/industry-graph-foundation.md`
-- `dir:docs` -[contains]-> `file:docs/industry-graph-foundation.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/interop-status.md`
-- `dir:docs` -[contains]-> `file:docs/interop-status.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/manifesto.md`
-- `dir:docs` -[contains]-> `file:docs/manifesto.md`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:docs/maturity-model.md`
-- `dir:docs` -[contains]-> `file:docs/maturity-model.md`
-- ... 1188 more edges
+- ... 1440 more edges

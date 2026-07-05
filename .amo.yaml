@@ -32,6 +32,7 @@ context:
   authority_weight: 1.0
   token_cost_weight: 1.0
   duplicate_penalty: 0.0
+  graph_weight: 1.0
   profiles:
     micro: { max_tokens: 1200 }
     quick: { max_tokens: 3000 }
@@ -39,6 +40,11 @@ context:
     architecture: { max_tokens: 12000 }
     handoff: { max_tokens: 2500 }
     full: { max_tokens: 20000 }
+
+graph:
+  seed_top_k: 10
+  max_hops: 2
+  distance_decay: 0.75
 
 scan:
   excludes:

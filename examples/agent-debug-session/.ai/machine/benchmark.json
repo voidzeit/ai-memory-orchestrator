@@ -1,14 +1,14 @@
 {
   "task": "fix failing auth tests",
-  "files_indexed": 18,
+  "files_indexed": 20,
   "metrics": {
-    "token_reduction": 0.6583,
-    "file_selection_precision": 0.1111,
+    "token_reduction": 0.8551,
+    "file_selection_precision": 0.1053,
     "file_selection_recall": 1.0,
     "test_command_accuracy": 1.0,
     "handoff_quality": "not_scored_without_fixture_truth",
     "context_section_coverage": 1.0,
     "must_not_include_violations": 0,
-    "selected_files": 18
+    "selected_files": 19
   }
 }

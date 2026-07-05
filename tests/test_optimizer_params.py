@@ -18,7 +18,7 @@ def test_loading_search_space():
     space = load_search_space(Path(".amo/optimization/search_space.yaml"))
     assert space.parameters["context.max_units"].default == 25
     assert space.parameters["context.max_units"].safe_to_apply is True
-    assert len(space.parameters) == 19
+    assert len(space.parameters) == 20
 
 
 def test_invalid_parameter_bounds_are_reported(tmp_path):
