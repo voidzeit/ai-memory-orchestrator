@@ -6,7 +6,7 @@
 - [x] verify CI, Release Check, CodeQL, and OpenSSF Scorecard on `main`
 - [x] configure public visibility and branch protection
 - [x] ship the alpha as source-install only; PyPI is deferred
-- [ ] create `v0.1.0-alpha` and its GitHub release
+- [x] create `v0.1.0-alpha` and its GitHub prerelease
 
 ## v0.2-code-intelligence
 

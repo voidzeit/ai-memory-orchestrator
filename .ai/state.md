@@ -41,7 +41,8 @@ AI Memory Orchestrator is a Git-native memory compiler for AI coding agents.
 - Pull requests and `test`, `release-check`, `analyze`, and `scorecard` are required; force pushes and branch deletion are disabled.
 - CI, Release Check, CodeQL, and OpenSSF Scorecard are green on `main`.
 - Direct checked-in JSON Schema artifact validation and benchmark precision/recall gates are covered by the 131-test suite.
-- The `v0.1.0-alpha` tag and GitHub release do not exist.
+- The `v0.1.0-alpha` tag points to green `main` commit `f890737`; the GitHub prerelease is public.
+- The release workflow built and Twine-checked both distributions; its PyPI publish job was skipped as designed.
 - PyPI is explicitly deferred for `0.1.0-alpha`; this alpha is source-install only.
 
 ## Future work
@@ -130,3 +131,11 @@ Summary: Recorded merged PR 35, public protected main, required CI/Release Check
 
 Outcome: completed
 Changed files: docs/release-notes-0.1.0-alpha.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md
+## Postflight — 2026-07-05T10:20:00.377221+00:00
+
+Task: record public alpha release
+
+Summary: Recorded the verified v0.1.0-alpha tag and GitHub prerelease, green tagged main checks, successful release build and Twine metadata check, skipped PyPI job, and closure of release issue 8.
+
+Outcome: completed
+Changed files: README.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md

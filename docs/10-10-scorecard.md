@@ -34,7 +34,7 @@ The remaining work is not more vision. The remaining work is confidence.
 - **Done:** repository public; protected `main`; PRs and four release checks required; force pushes and deletion disabled.
 - **Done:** CI, Release Check, CodeQL, and OpenSSF Scorecard are green on `main`.
 - **Done:** PyPI is explicitly deferred; `0.1.0-alpha` is source-install only.
-- **Still open:** create `v0.1.0-alpha` only after every release gate is green.
+- **Done:** `v0.1.0-alpha` and its GitHub prerelease were created only after every gate was green.
 
 ## 10/10 principle
 

@@ -6,7 +6,7 @@ AMO is a Git-native memory layer for AI coding agents. It gives a repository can
 
 Every coding agent starts by guessing repository context. AMO lets the agent start with verified project memory instead.
 
-> Status: **0.1.0 alpha**. The CLI memory layer, graph exports, benchmark fixture flow, evidence ledger, propose-only optimizer, optimizable parameters, MCP stdio server, and organism dashboard are usable. The repository is public and protected; the release tag still depends on green security workflows on `main`. This alpha is source-install only; PyPI is explicitly deferred.
+> Status: **0.1.0 alpha released**. The CLI memory layer, graph exports, benchmark fixture flow, evidence ledger, propose-only optimizer, optimizable parameters, MCP stdio server, and organism dashboard are usable. The repository is public and protected, and the four required checks are green. This alpha is source-install only; PyPI is explicitly deferred. See the [`v0.1.0-alpha` release](https://github.com/voidzeit/ai-memory-orchestrator/releases/tag/v0.1.0-alpha).
 
 ## Context rot
 
