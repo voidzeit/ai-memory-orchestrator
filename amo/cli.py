@@ -37,10 +37,12 @@ obsidian_app = typer.Typer(help="Obsidian adapter commands")
 embeddings_app = typer.Typer(help="Embedding index commands")
 optimize_app = typer.Typer(help="Staged optimization commands")
 optimize_params_app = typer.Typer(help="Deterministic parameter optimization commands")
+mcp_app = typer.Typer(help="MCP server commands")
 app.add_typer(graph_app, name="graph")
 app.add_typer(obsidian_app, name="obsidian")
 app.add_typer(embeddings_app, name="embeddings")
 app.add_typer(optimize_app, name="optimize")
+app.add_typer(mcp_app, name="mcp")
 optimize_app.add_typer(optimize_params_app, name="params")
 console = Console()
 
@@ -310,6 +312,14 @@ def optimize_params_apply_safe(
     console.print("[green]Applied safe parameters to .amo.yaml[/green]")
     for name, value in changed.items():
         console.print(f"- {name}: {value}")
+
+
+@mcp_app.command("serve")
+def mcp_serve(repo: Path = Path(".")) -> None:
+    """Serve AMO memory over MCP (newline-delimited JSON-RPC on stdio)."""
+    from amo.mcp.server import serve_stdio
+
+    serve_stdio(repo.resolve())
 
 
 @graph_app.command("build")
