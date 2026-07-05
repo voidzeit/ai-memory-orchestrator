@@ -14,7 +14,10 @@ node_modules/
 dist/
 build/
 
-# AMO runtime
+# AMO generated/session state
+.ai/evidence/ledger.jsonl
+.ai/machine/
+.ai/packs/
 .ai/runtime/
 
 # Local agent/tool overrides

@@ -9,7 +9,7 @@ from amo.mcp.resources import list_resources, read_resource
 from amo.mcp.tools import ToolError, call_tool, list_tools
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_INFO = {"name": "amo", "version": "0.1.0"}
+SERVER_INFO = {"name": "amo", "version": "0.1.0a1"}
 
 PARSE_ERROR = -32700
 METHOD_NOT_FOUND = -32601

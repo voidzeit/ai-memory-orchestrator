@@ -2,17 +2,20 @@
 
 ## Immediate
 
-- [ ] Review and merge release hardening PR.
-- [ ] Confirm CI passes on `main` after merge.
-- [ ] Decide whether to make the repository public in GitHub settings.
+- [ ] Review and merge the alpha-readiness reconciliation PR with green CI and Release Check.
+- [x] Make the repository public.
+- [x] Protect `main`, require PRs, `test`, and `release-check`, and disable force pushes and branch deletion.
+- [ ] Obtain green CodeQL and OpenSSF Scorecard runs on `main`.
+- [x] Defer PyPI for `0.1.0-alpha`; document source-install-only distribution.
+- [ ] Create `v0.1.0-alpha` only after all release gates are green.
 
 ## Next product work
 
-- [ ] Replace minimal web graph JSON view with interactive graph UI.
-- [ ] Improve graph edge extraction.
-- [ ] Add full MCP server resources and tools.
-- [ ] Improve context ranking and token estimation.
-- [ ] Add semantic ranking as optional enhancement.
+- [ ] Deepen Python dependency extraction and define a language extractor interface.
+- [ ] Add test-source linking and graph drift detection.
+- [ ] Expand benchmark, MCP-client, onboarding, and Obsidian examples.
+- [ ] Add semantic ranking as an optional derived enhancement.
+- [ ] Keep federation design-only until alpha release gates are green.
 
 ## Done
 
@@ -20,6 +23,13 @@
 - [x] Add CLI commands for init, scan, context, preflight, postflight, validate, status, graph, server, export, and Obsidian sync.
 - [x] Add basic adapters for AGENTS.md, Claude, Cursor, Cline, and OpenCode.
 - [x] Add release hardening changes for public readiness.
+- [x] Add hierarchical graph levels, Python structure extraction, and standard graph exports.
+- [x] Add executable truth-aware benchmarks and evidence ledger integration.
+- [x] Add propose-only optimization and deterministic optimizable parameter sweeps.
+- [x] Add robust postflight locking, backups, run history, and structured outcomes.
+- [x] Add MCP stdio resources/tools and the organism dashboard.
+- [x] Add full adapter profiles, graph validation, release workflows, and community documents.
+- [x] Add a reviewable sample Obsidian graph vault.
 ## Postflight — 2026-07-04T04:54:53.734060+00:00
 
 Task: make AMO the repo-native memory and graph operating layer
@@ -38,3 +48,59 @@ Summary: validated run history
 
 Outcome: completed
 Changed files: amo/core/postflight.py
+## Postflight — 2026-07-05T09:33:20.452412+00:00
+
+Task: sync project state after operating layer
+
+Summary: Updated canonical state, README, changelog, scorecard, roadmap, release process, release notes, MCP and adapter docs after verifying the implemented operating layer; completed release smoke coverage and the sample Obsidian vault.
+
+Outcome: completed
+Changed files: .ai/manifest.yaml, .ai/state.md, .ai/tasks.md, .ai/decisions.md, .ai/tests.md, README.md, CHANGELOG.md, docs/10-10-scorecard.md, docs/roadmap.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, docs/mcp.md, docs/adapters.md, .github/workflows/release-check.yml, .github/workflows/codeql.yml, pyproject.toml, amo/__init__.py, amo/mcp/server.py, tests/test_cli_smoke.py, tests/test_example_fixtures.py, examples/obsidian-graph-vault/Graph/Views/Groups.md
+## Postflight — 2026-07-05T09:34:47.727544+00:00
+
+Task: final 0.1.0-alpha release readiness validation
+
+Summary: Completed the exact local release path on the reconciled tree: lint, 127 tests, lifecycle commands, six graph outputs including native JSON, embeddings, truth-aware benchmark, optimizer suggest/check/plan, deterministic 10-trial parameter sweep, strict validation, and status all passed.
+
+Outcome: completed
+Changed files: .ai/manifest.yaml, .ai/state.md, .ai/tasks.md, .ai/decisions.md, .ai/tests.md, .ai/graph.md, .ai/evolution, README.md, CHANGELOG.md, docs/10-10-scorecard.md, docs/roadmap.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, docs/mcp.md, docs/adapters.md, .gitignore
+## Postflight — 2026-07-05T09:37:03.845960+00:00
+
+Task: complete executable benchmark output contract
+
+Summary: Added deterministic benchmark Markdown output beside JSON, documented it, and covered unscored rendering in tests.
+
+Outcome: completed
+Changed files: amo/core/benchmark.py, tests/test_benchmark_evolve.py, docs/benchmark.md
+## Postflight — 2026-07-05T09:39:59.485097+00:00
+
+Task: fix clean-runner release-check benchmark scope
+
+Summary: Added a root self-benchmark before optimizer checks so a clean GitHub runner has the evidence those checks require; synchronized release documentation and canonical test commands.
+
+Outcome: completed
+Changed files: .github/workflows/release-check.yml, README.md, docs/release-process.md, docs/release-notes-0.1.0-alpha.md, .ai/tests.md
+## Postflight — 2026-07-05T09:43:41.370910+00:00
+
+Task: record final GitHub security gate state
+
+Summary: Recorded that CI and Release Check pass on PR #35 while CodeQL remains blocked because code scanning is disabled for the private repository and OpenSSF Scorecard remains blocked by GitHub integration access.
+
+Outcome: completed
+Changed files: .ai/state.md, .ai/tests.md
+## Postflight — 2026-07-05T10:05:51.670235+00:00
+
+Task: release readiness
+
+Summary: Added direct checked-in JSON Schema artifact validation with valid and invalid fixtures; removed graph-neighborhood pollution from filesystem and generated-graph hubs; made benchmark selection evidence scoped and reproducibly achieved precision 1.0, recall 1.0, and zero prohibited inclusions; completed 131 tests and the full release and package path.
+
+Outcome: completed
+Changed files: amo/validators/json_schema.py, amo/core/validate.py, amo/core/graph.py, amo/core/benchmark.py, amo/context/graph_neighborhood.py, amo/context/ranking.py, tests/test_schema_artifact.py, tests/test_benchmark_evolve.py, docs/schema-contract.md, docs/benchmark.md
+## Postflight — 2026-07-05T10:09:15.526111+00:00
+
+Task: public alpha GitHub gates
+
+Summary: Verified public visibility and protected main with PR, test, and release-check requirements; disabled force pushes and deletion; obtained green CodeQL on PR 35; fixed Scorecard workflow permission scope; explicitly deferred PyPI and documented source-install-only alpha distribution.
+
+Outcome: completed
+Changed files: .github/workflows/scorecard.yml, README.md, CHANGELOG.md, docs/release-notes-0.1.0-alpha.md, docs/release-process.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md

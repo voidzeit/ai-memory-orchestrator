@@ -1,5 +1,5 @@
 {
-  "task": "fix failing auth tests",
+  "task": "fix failing tests",
   "relevant_files": [
     "app/auth.py",
     "tests/test_auth.py"

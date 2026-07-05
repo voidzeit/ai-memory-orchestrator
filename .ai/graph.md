@@ -19,6 +19,11 @@ Schema version: `0.2`
 - `directory` — .ai/evolution (`dir:.ai/evolution`)
 - `file` — .ai/evolution/cycle-0001.json (`file:.ai/evolution/cycle-0001.json`)
 - `file` — .ai/evolution/cycle-0002.json (`file:.ai/evolution/cycle-0002.json`)
+- `file` — .ai/evolution/cycle-0003.json (`file:.ai/evolution/cycle-0003.json`)
+- `file` — .ai/evolution/cycle-0004.json (`file:.ai/evolution/cycle-0004.json`)
+- `file` — .ai/evolution/cycle-0005.json (`file:.ai/evolution/cycle-0005.json`)
+- `file` — .ai/evolution/cycle-0006.json (`file:.ai/evolution/cycle-0006.json`)
+- `file` — .ai/evolution/cycle-0007.json (`file:.ai/evolution/cycle-0007.json`)
 - `file` — .ai/evolution/findings.md (`file:.ai/evolution/findings.md`)
 - `file` — .ai/evolution/metrics.json (`file:.ai/evolution/metrics.json`)
 - `file` — .ai/evolution/parameter-report.md (`file:.ai/evolution/parameter-report.md`)
@@ -27,13 +32,21 @@ Schema version: `0.2`
 - `file` — .ai/machine/artifacts.json (`file:.ai/machine/artifacts.json`)
 - `directory` — .ai/machine (`dir:.ai/machine`)
 - `file` — .ai/machine/benchmark.json (`file:.ai/machine/benchmark.json`)
+- `file` — .ai/machine/benchmark.md (`file:.ai/machine/benchmark.md`)
 - `file` — .ai/machine/context_explain.json (`file:.ai/machine/context_explain.json`)
 - `file` — .ai/machine/context_units.json (`file:.ai/machine/context_units.json`)
+- `file` — .ai/machine/embedding_index.json (`file:.ai/machine/embedding_index.json`)
 - `file` — .ai/machine/files.json (`file:.ai/machine/files.json`)
 - `file` — .ai/machine/graph.export.json (`file:.ai/machine/graph.export.json`)
 - `file` — .ai/machine/graph.json (`file:.ai/machine/graph.json`)
 - `file` — .ai/machine/run_history/20260705T081351-test-postflight.json (`file:.ai/machine/run_history/20260705T081351-test-postflight.json`)
 - `directory` — .ai/machine/run_history (`dir:.ai/machine/run_history`)
+- `file` — .ai/machine/run_history/20260705T093320-sync-project-state-after-operating-layer.json (`file:.ai/machine/run_history/20260705T093320-sync-project-state-after-operating-layer.json`)
+- `file` — .ai/machine/run_history/20260705T093447-final-0-1-0-alpha-release-readiness-vali.json (`file:.ai/machine/run_history/20260705T093447-final-0-1-0-alpha-release-readiness-vali.json`)
+- `file` — .ai/machine/run_history/20260705T093703-complete-executable-benchmark-output-con.json (`file:.ai/machine/run_history/20260705T093703-complete-executable-benchmark-output-con.json`)
+- `file` — .ai/machine/run_history/20260705T093959-fix-clean-runner-release-check-benchmark.json (`file:.ai/machine/run_history/20260705T093959-fix-clean-runner-release-check-benchmark.json`)
+- `file` — .ai/machine/run_history/20260705T094341-record-final-github-security-gate-state.json (`file:.ai/machine/run_history/20260705T094341-record-final-github-security-gate-state.json`)
+- `file` — .ai/machine/run_history/20260705T100551-release-readiness.json (`file:.ai/machine/run_history/20260705T100551-release-readiness.json`)
 - `file` — .ai/machine/validation.json (`file:.ai/machine/validation.json`)
 - `file` — .ai/manifest.yaml (`file:.ai/manifest.yaml`)
 - `file` — .ai/packs/handoff.md (`file:.ai/packs/handoff.md`)
@@ -44,6 +57,12 @@ Schema version: `0.2`
 - `file` — .ai/runs/2026-07-05/081351-test-postflight.md (`file:.ai/runs/2026-07-05/081351-test-postflight.md`)
 - `directory` — .ai/runs (`dir:.ai/runs`)
 - `directory` — .ai/runs/2026-07-05 (`dir:.ai/runs/2026-07-05`)
+- `file` — .ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md (`file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`)
+- `file` — .ai/runs/2026-07-05/093447-final-0-1-0-alpha-release-readiness-vali.md (`file:.ai/runs/2026-07-05/093447-final-0-1-0-alpha-release-readiness-vali.md`)
+- `file` — .ai/runs/2026-07-05/093703-complete-executable-benchmark-output-con.md (`file:.ai/runs/2026-07-05/093703-complete-executable-benchmark-output-con.md`)
+- `file` — .ai/runs/2026-07-05/093959-fix-clean-runner-release-check-benchmark.md (`file:.ai/runs/2026-07-05/093959-fix-clean-runner-release-check-benchmark.md`)
+- `file` — .ai/runs/2026-07-05/094341-record-final-github-security-gate-state.md (`file:.ai/runs/2026-07-05/094341-record-final-github-security-gate-state.md`)
+- `file` — .ai/runs/2026-07-05/100551-release-readiness.md (`file:.ai/runs/2026-07-05/100551-release-readiness.md`)
 - `file` — .ai/state.md (`file:.ai/state.md`)
 - `file` — .ai/tasks.md (`file:.ai/tasks.md`)
 - `file` — .ai/tests.md (`file:.ai/tests.md`)
@@ -162,6 +181,7 @@ Schema version: `0.2`
 - `file` — amo/validators/artifacts.py (`file:amo/validators/artifacts.py`)
 - `file` — amo/validators/graph.py (`file:amo/validators/graph.py`)
 - `file` — amo/validators/instructions.py (`file:amo/validators/instructions.py`)
+- `file` — amo/validators/json_schema.py (`file:amo/validators/json_schema.py`)
 - `file` — amo/validators/references.py (`file:amo/validators/references.py`)
 - `file` — benchmarks/README.md (`file:benchmarks/README.md`)
 - `directory` — benchmarks (`dir:benchmarks`)
@@ -215,9 +235,11 @@ Schema version: `0.2`
 - `file` — examples/agent-debug-session/.ai/machine/artifacts.json (`file:examples/agent-debug-session/.ai/machine/artifacts.json`)
 - `directory` — examples/agent-debug-session/.ai/machine (`dir:examples/agent-debug-session/.ai/machine`)
 - `file` — examples/agent-debug-session/.ai/machine/benchmark.json (`file:examples/agent-debug-session/.ai/machine/benchmark.json`)
+- `file` — examples/agent-debug-session/.ai/machine/benchmark.md (`file:examples/agent-debug-session/.ai/machine/benchmark.md`)
 - `file` — examples/agent-debug-session/.ai/machine/context_explain.json (`file:examples/agent-debug-session/.ai/machine/context_explain.json`)
 - `file` — examples/agent-debug-session/.ai/machine/context_units.json (`file:examples/agent-debug-session/.ai/machine/context_units.json`)
 - `file` — examples/agent-debug-session/.ai/machine/files.json (`file:examples/agent-debug-session/.ai/machine/files.json`)
+- `file` — examples/agent-debug-session/.ai/machine/graph.json (`file:examples/agent-debug-session/.ai/machine/graph.json`)
 - `file` — examples/agent-debug-session/.ai/manifest.yaml (`file:examples/agent-debug-session/.ai/manifest.yaml`)
 - `file` — examples/agent-debug-session/.ai/packs/quick.md (`file:examples/agent-debug-session/.ai/packs/quick.md`)
 - `directory` — examples/agent-debug-session/.ai/packs (`dir:examples/agent-debug-session/.ai/packs`)
@@ -242,6 +264,8 @@ Schema version: `0.2`
 - `directory` — examples/obsidian-graph-vault/Graph (`dir:examples/obsidian-graph-vault/Graph`)
 - `directory` — examples/obsidian-graph-vault/Graph/Nodes (`dir:examples/obsidian-graph-vault/Graph/Nodes`)
 - `file` — examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md (`file:examples/obsidian-graph-vault/Graph/Nodes/file-a-b--d7d864aaf8.md`)
+- `file` — examples/obsidian-graph-vault/Graph/Views/Groups.md (`file:examples/obsidian-graph-vault/Graph/Views/Groups.md`)
+- `directory` — examples/obsidian-graph-vault/Graph/Views (`dir:examples/obsidian-graph-vault/Graph/Views`)
 - `file` — examples/obsidian-graph-vault/Graph/index.md (`file:examples/obsidian-graph-vault/Graph/index.md`)
 - `file` — opencode.json (`file:opencode.json`)
 - `file` — pyproject.toml (`file:pyproject.toml`)
@@ -263,13 +287,20 @@ Schema version: `0.2`
 - `file` — templates/python/.ai/manifest.yaml (`file:templates/python/.ai/manifest.yaml`)
 - `directory` — templates/python (`dir:templates/python`)
 - `directory` — templates/python/.ai (`dir:templates/python/.ai`)
-- `file` — tests/test_adapters.py (`file:tests/test_adapters.py`)
+- `file` — tests/fixtures/graph_invalid_missing_id.json (`file:tests/fixtures/graph_invalid_missing_id.json`)
 - `directory` — tests (`dir:tests`)
+- `directory` — tests/fixtures (`dir:tests/fixtures`)
+- `test` — tests/fixtures/graph_invalid_missing_id.json (`test:tests/fixtures/graph_invalid_missing_id.json`)
+- `file` — tests/fixtures/graph_valid.json (`file:tests/fixtures/graph_valid.json`)
+- `test` — tests/fixtures/graph_valid.json (`test:tests/fixtures/graph_valid.json`)
+- `file` — tests/test_adapters.py (`file:tests/test_adapters.py`)
 - `test` — tests/test_adapters.py (`test:tests/test_adapters.py`)
 - `file` — tests/test_benchmark_evolve.py (`file:tests/test_benchmark_evolve.py`)
 - `test` — tests/test_benchmark_evolve.py (`test:tests/test_benchmark_evolve.py`)
 - `file` — tests/test_benchmark_truth.py (`file:tests/test_benchmark_truth.py`)
 - `test` — tests/test_benchmark_truth.py (`test:tests/test_benchmark_truth.py`)
+- `file` — tests/test_cli_smoke.py (`file:tests/test_cli_smoke.py`)
+- `test` — tests/test_cli_smoke.py (`test:tests/test_cli_smoke.py`)
 - `file` — tests/test_code_structure_graph.py (`file:tests/test_code_structure_graph.py`)
 - `test` — tests/test_code_structure_graph.py (`test:tests/test_code_structure_graph.py`)
 - `file` — tests/test_config.py (`file:tests/test_config.py`)
@@ -280,6 +311,8 @@ Schema version: `0.2`
 - `test` — tests/test_embeddings.py (`test:tests/test_embeddings.py`)
 - `file` — tests/test_evidence_ledger.py (`file:tests/test_evidence_ledger.py`)
 - `test` — tests/test_evidence_ledger.py (`test:tests/test_evidence_ledger.py`)
+- `file` — tests/test_example_fixtures.py (`file:tests/test_example_fixtures.py`)
+- `test` — tests/test_example_fixtures.py (`test:tests/test_example_fixtures.py`)
 - `file` — tests/test_graph_exports.py (`file:tests/test_graph_exports.py`)
 - `test` — tests/test_graph_exports.py (`test:tests/test_graph_exports.py`)
 - `file` — tests/test_graph_neighborhood_context.py (`file:tests/test_graph_neighborhood_context.py`)
@@ -302,6 +335,8 @@ Schema version: `0.2`
 - `test` — tests/test_scan.py (`test:tests/test_scan.py`)
 - `file` — tests/test_scan_config.py (`file:tests/test_scan_config.py`)
 - `test` — tests/test_scan_config.py (`test:tests/test_scan_config.py`)
+- `file` — tests/test_schema_artifact.py (`file:tests/test_schema_artifact.py`)
+- `test` — tests/test_schema_artifact.py (`test:tests/test_schema_artifact.py`)
 - `file` — tests/test_server_ui.py (`file:tests/test_server_ui.py`)
 - `test` — tests/test_server_ui.py (`test:tests/test_server_ui.py`)
 - `file` — tests/test_session_pack.py (`file:tests/test_session_pack.py`)
@@ -403,6 +438,7 @@ Schema version: `0.2`
 - `module` — amo.core (`module:amo.core`)
 - `symbol` — load_truth (`symbol:amo.core.benchmark:load_truth`)
 - `symbol` — run_benchmark (`symbol:amo.core.benchmark:run_benchmark`)
+- `symbol` — _render_markdown (`symbol:amo.core.benchmark:_render_markdown`)
 - `symbol` — _selected_paths (`symbol:amo.core.benchmark:_selected_paths`)
 - `symbol` — _score_against_truth (`symbol:amo.core.benchmark:_score_against_truth`)
 - `symbol` — build_context_pack (`symbol:amo.core.context:build_context_pack`)
@@ -458,6 +494,7 @@ Schema version: `0.2`
 - `module` — amo.validators.artifacts (`module:amo.validators.artifacts`)
 - `module` — amo.validators.graph (`module:amo.validators.graph`)
 - `module` — amo.validators.instructions (`module:amo.validators.instructions`)
+- `module` — amo.validators.json_schema (`module:amo.validators.json_schema`)
 - `module` — amo.validators.references (`module:amo.validators.references`)
 - `symbol` — validate_repo (`symbol:amo.core.validate:validate_repo`)
 - `module` — amo.embeddings (`module:amo.embeddings`)
@@ -595,6 +632,11 @@ Schema version: `0.2`
 - `symbol` — check_graph_contract (`symbol:amo.validators.graph:check_graph_contract`)
 - `symbol` — _require_fields (`symbol:amo.validators.graph:_require_fields`)
 - `symbol` — check_unsafe_instructions (`symbol:amo.validators.instructions:check_unsafe_instructions`)
+- `module` — jsonschema (`module:jsonschema`)
+- `module` — jsonschema.exceptions (`module:jsonschema.exceptions`)
+- `symbol` — check_graph_schema (`symbol:amo.validators.json_schema:check_graph_schema`)
+- `symbol` — _schema_path (`symbol:amo.validators.json_schema:_schema_path`)
+- `symbol` — _error_path (`symbol:amo.validators.json_schema:_error_path`)
 - `symbol` — check_missing_canonical_files (`symbol:amo.validators.references:check_missing_canonical_files`)
 - `module` — examples.agent-debug-session.app.auth (`module:examples.agent-debug-session.app.auth`)
 - `symbol` — authenticate (`symbol:examples.agent-debug-session.app.auth:authenticate`)
@@ -611,6 +653,7 @@ Schema version: `0.2`
 - `symbol` — test_adapters_include_lifecycle_and_runtime_policy (`symbol:tests.test_adapters:test_adapters_include_lifecycle_and_runtime_policy`)
 - `module` — tests.test_benchmark_evolve (`module:tests.test_benchmark_evolve`)
 - `symbol` — test_benchmark_writes_deterministic_metrics (`symbol:tests.test_benchmark_evolve:test_benchmark_writes_deterministic_metrics`)
+- `symbol` — test_truth_benchmark_scores_task_files_without_counting_required_ai_memory (`symbol:tests.test_benchmark_evolve:test_truth_benchmark_scores_task_files_without_counting_required_ai_memory`)
 - `symbol` — test_evolve_is_safe_and_writes_expected_outputs (`symbol:tests.test_benchmark_evolve:test_evolve_is_safe_and_writes_expected_outputs`)
 - `module` — tests.test_benchmark_truth (`module:tests.test_benchmark_truth`)
 - `symbol` — _fixture_repo (`symbol:tests.test_benchmark_truth:_fixture_repo`)
@@ -620,6 +663,12 @@ Schema version: `0.2`
 - `symbol` — test_recall_is_full_when_all_relevant_files_selected (`symbol:tests.test_benchmark_truth:test_recall_is_full_when_all_relevant_files_selected`)
 - `symbol` — test_must_not_include_detects_violations (`symbol:tests.test_benchmark_truth:test_must_not_include_detects_violations`)
 - `symbol` — test_expected_sections_scored (`symbol:tests.test_benchmark_truth:test_expected_sections_scored`)
+- `module` — tests.test_cli_smoke (`module:tests.test_cli_smoke`)
+- `module` — pytest (`module:pytest`)
+- `module` — typer.testing (`module:typer.testing`)
+- `symbol` — test_top_level_cli_commands_are_registered (`symbol:tests.test_cli_smoke:test_top_level_cli_commands_are_registered`)
+- `symbol` — test_nested_cli_commands_are_registered (`symbol:tests.test_cli_smoke:test_nested_cli_commands_are_registered`)
+- `symbol` — test_each_cli_adapter_target_exports (`symbol:tests.test_cli_smoke:test_each_cli_adapter_target_exports`)
 - `module` — tests.test_code_structure_graph (`module:tests.test_code_structure_graph`)
 - `symbol` — test_python_modules_symbols_and_imports_are_added (`symbol:tests.test_code_structure_graph:test_python_modules_symbols_and_imports_are_added`)
 - `symbol` — test_python_parse_failure_does_not_break_graph_build (`symbol:tests.test_code_structure_graph:test_python_parse_failure_does_not_break_graph_build`)
@@ -647,7 +696,6 @@ Schema version: `0.2`
 - `symbol` — test_vectorize_is_deterministic (`symbol:tests.test_embeddings:test_vectorize_is_deterministic`)
 - `symbol` — test_embedding_index_build_and_search (`symbol:tests.test_embeddings:test_embedding_index_build_and_search`)
 - `module` — tests.test_evidence_ledger (`module:tests.test_evidence_ledger`)
-- `module` — pytest (`module:pytest`)
 - `symbol` — test_record_evidence_appends_jsonl (`symbol:tests.test_evidence_ledger:test_record_evidence_appends_jsonl`)
 - `symbol` — test_ledger_directory_gets_readme (`symbol:tests.test_evidence_ledger:test_ledger_directory_gets_readme`)
 - `symbol` — test_unknown_kind_is_rejected (`symbol:tests.test_evidence_ledger:test_unknown_kind_is_rejected`)
@@ -655,6 +703,8 @@ Schema version: `0.2`
 - `symbol` — test_scan_and_validate_write_ledger_entries (`symbol:tests.test_evidence_ledger:test_scan_and_validate_write_ledger_entries`)
 - `symbol` — test_ledger_grows_across_runs (`symbol:tests.test_evidence_ledger:test_ledger_grows_across_runs`)
 - `symbol` — test_read_ledger_empty_when_missing (`symbol:tests.test_evidence_ledger:test_read_ledger_empty_when_missing`)
+- `module` — tests.test_example_fixtures (`module:tests.test_example_fixtures`)
+- `symbol` — test_obsidian_graph_fixture_has_reviewable_vault_structure (`symbol:tests.test_example_fixtures:test_obsidian_graph_fixture_has_reviewable_vault_structure`)
 - `module` — tests.test_graph_exports (`module:tests.test_graph_exports`)
 - `symbol` — test_graph_build_has_schema_version (`symbol:tests.test_graph_exports:test_graph_build_has_schema_version`)
 - `symbol` — test_graph_build_assigns_l0_and_l1_levels (`symbol:tests.test_graph_exports:test_graph_build_assigns_l0_and_l1_levels`)
@@ -664,6 +714,7 @@ Schema version: `0.2`
 - `symbol` — test_obsidian_note_names_are_collision_safe (`symbol:tests.test_graph_exports:test_obsidian_note_names_are_collision_safe`)
 - `module` — tests.test_graph_neighborhood_context (`module:tests.test_graph_neighborhood_context`)
 - `symbol` — test_proximity_decays_per_hop (`symbol:tests.test_graph_neighborhood_context:test_proximity_decays_per_hop`)
+- `symbol` — test_task_neighborhood_does_not_treat_filesystem_siblings_as_semantic_neighbors (`symbol:tests.test_graph_neighborhood_context:test_task_neighborhood_does_not_treat_filesystem_siblings_as_semantic_neighbors`)
 - `symbol` — test_max_hops_bounds_expansion (`symbol:tests.test_graph_neighborhood_context:test_max_hops_bounds_expansion`)
 - `symbol` — test_lexical_seeds_rank_by_relevance (`symbol:tests.test_graph_neighborhood_context:test_lexical_seeds_rank_by_relevance`)
 - `symbol` — test_proximity_boosts_ranking (`symbol:tests.test_graph_neighborhood_context:test_proximity_boosts_ranking`)
@@ -741,6 +792,10 @@ Schema version: `0.2`
 - `symbol` — test_normalize_excludes_handles_string (`symbol:tests.test_scan_config:test_normalize_excludes_handles_string`)
 - `symbol` — test_normalize_excludes_handles_list (`symbol:tests.test_scan_config:test_normalize_excludes_handles_list`)
 - `symbol` — test_normalize_excludes_rejects_invalid_type (`symbol:tests.test_scan_config:test_normalize_excludes_rejects_invalid_type`)
+- `module` — tests.test_schema_artifact (`module:tests.test_schema_artifact`)
+- `symbol` — _schema_repo (`symbol:tests.test_schema_artifact:_schema_repo`)
+- `symbol` — test_checked_in_schema_accepts_valid_graph_fixture (`symbol:tests.test_schema_artifact:test_checked_in_schema_accepts_valid_graph_fixture`)
+- `symbol` — test_checked_in_schema_rejects_graph_missing_node_id (`symbol:tests.test_schema_artifact:test_checked_in_schema_rejects_graph_missing_node_id`)
 - `module` — tests.test_server_ui (`module:tests.test_server_ui`)
 - `module` — fastapi.testclient (`module:fastapi.testclient`)
 - `symbol` — client (`symbol:tests.test_server_ui:client`)
@@ -781,6 +836,16 @@ Schema version: `0.2`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0001.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0002.json`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0002.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0003.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0003.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0004.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0004.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0005.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0005.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0006.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0006.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/cycle-0007.json`
+- `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/cycle-0007.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/findings.md`
 - `dir:.ai/evolution` -[contains]-> `file:.ai/evolution/findings.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/evolution/metrics.json`
@@ -796,10 +861,14 @@ Schema version: `0.2`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/artifacts.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/benchmark.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/benchmark.md`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/benchmark.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_explain.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_explain.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/context_units.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/context_units.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/embedding_index.json`
+- `dir:.ai/machine` -[contains]-> `file:.ai/machine/embedding_index.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/files.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/files.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/graph.export.json`
@@ -809,6 +878,18 @@ Schema version: `0.2`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
 - `dir:.ai/machine` -[contains]-> `dir:.ai/machine/run_history`
 - `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T081351-test-postflight.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T093320-sync-project-state-after-operating-layer.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T093320-sync-project-state-after-operating-layer.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T093447-final-0-1-0-alpha-release-readiness-vali.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T093447-final-0-1-0-alpha-release-readiness-vali.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T093703-complete-executable-benchmark-output-con.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T093703-complete-executable-benchmark-output-con.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T093959-fix-clean-runner-release-check-benchmark.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T093959-fix-clean-runner-release-check-benchmark.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T094341-record-final-github-security-gate-state.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T094341-record-final-github-security-gate-state.json`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/run_history/20260705T100551-release-readiness.json`
+- `dir:.ai/machine/run_history` -[contains]-> `file:.ai/machine/run_history/20260705T100551-release-readiness.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/machine/validation.json`
 - `dir:.ai/machine` -[contains]-> `file:.ai/machine/validation.json`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/manifest.yaml`
@@ -824,6 +905,18 @@ Schema version: `0.2`
 - `dir:.ai` -[contains]-> `dir:.ai/runs`
 - `dir:.ai/runs` -[contains]-> `dir:.ai/runs/2026-07-05`
 - `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/081351-test-postflight.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/093320-sync-project-state-after-operating-layer.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/093447-final-0-1-0-alpha-release-readiness-vali.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/093447-final-0-1-0-alpha-release-readiness-vali.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/093703-complete-executable-benchmark-output-con.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/093703-complete-executable-benchmark-output-con.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/093959-fix-clean-runner-release-check-benchmark.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/093959-fix-clean-runner-release-check-benchmark.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/094341-record-final-github-security-gate-state.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/094341-record-final-github-security-gate-state.md`
+- `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/runs/2026-07-05/100551-release-readiness.md`
+- `dir:.ai/runs/2026-07-05` -[contains]-> `file:.ai/runs/2026-07-05/100551-release-readiness.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/state.md`
 - `dir:.ai` -[contains]-> `file:.ai/state.md`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:.ai/tasks.md`
@@ -974,42 +1067,4 @@ Schema version: `0.2`
 - `dir:amo` -[contains]-> `file:amo/io.py`
 - `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/__init__.py`
 - `dir:amo` -[contains]-> `dir:amo/mcp`
-- `dir:amo/mcp` -[contains]-> `file:amo/mcp/__init__.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/resources.py`
-- `dir:amo/mcp` -[contains]-> `file:amo/mcp/resources.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/server.py`
-- `dir:amo/mcp` -[contains]-> `file:amo/mcp/server.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/mcp/tools.py`
-- `dir:amo/mcp` -[contains]-> `file:amo/mcp/tools.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/__init__.py`
-- `dir:amo` -[contains]-> `dir:amo/optimizer`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/__init__.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/loop.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/loop.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/objective.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/objective.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/params.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/params.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/planner.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/planner.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/report.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/report.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/search_space.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/search_space.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/signals.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/signals.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/sweep.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/sweep.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/optimizer/trials.py`
-- `dir:amo/optimizer` -[contains]-> `file:amo/optimizer/trials.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/paths.py`
-- `dir:amo` -[contains]-> `file:amo/paths.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/__init__.py`
-- `dir:amo` -[contains]-> `dir:amo/runtime`
-- `dir:amo/runtime` -[contains]-> `file:amo/runtime/__init__.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/backups.py`
-- `dir:amo/runtime` -[contains]-> `file:amo/runtime/backups.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/lock.py`
-- `dir:amo/runtime` -[contains]-> `file:amo/runtime/lock.py`
-- `repo:ai-memory-orchestrator` -[contains]-> `file:amo/runtime/run_history.py`
-- ... 1799 more edges
+- ... 1774 more edges

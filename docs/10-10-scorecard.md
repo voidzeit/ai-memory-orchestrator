@@ -4,44 +4,38 @@ This scorecard defines what AMO needs to reach a public, industry-grade 10/10 re
 
 ## Current position
 
-AMO already has a strong product thesis, CLI, context packs, handoff workflow, graph model, Obsidian export, Neo4j export, optional embeddings, release docs, and a release-check workflow.
+AMO has a verified CLI operating layer, context and handoff packs, hierarchical graph, standard exports, truth-aware benchmark, evidence ledger, propose-only optimizer, deterministic parameter sweeps, MCP stdio server, organism dashboard, optional embeddings, adapter profiles, release docs, and release workflows.
 
 The remaining work is not more vision. The remaining work is confidence.
 
 ## 10/10 criteria
 
-| Area | 10/10 requirement | Current gap |
+| Area | 10/10 requirement | Status |
 |---|---|---|
-| Public narrative | Clear category and problem | Mostly done |
-| README | First-screen value, quickstart, architecture, commands | Mostly done |
-| Architecture | Stable source-of-truth model and schemas | Needs schema validation in CI |
-| CLI | Lifecycle commands are coherent and tested | Needs more command-level tests |
-| Context discipline | Profiles, budgets, handoff, degradation rules | Mostly done |
-| Graph model | Validated graph contract and standard exports | Needs JSON-LD, GraphML, GEXF |
-| Obsidian | Real graph-view notes, tags, aliases, links | Needs example fixture |
-| Neo4j | Cypher export and docs | Needs sample import docs/test fixture |
-| Embeddings | Local optional index, provider abstraction later | Needs provider interface roadmap |
-| Testing | Unit + integration + command smoke tests | Needs broader CLI smoke tests |
-| CI/release | Release workflow runs and required checks pass | Needs confirmed Actions runs |
-| Security posture | Scorecard, dependency updates, branch protection | Needs enforcement/settings |
-| Community | Issues, PR template, contributing docs | Needs code of conduct/support docs |
-| Packaging | PyPI-ready release path | Needs trusted publishing workflow |
-| Evidence | Benchmark proves value | Needs executable benchmark |
+| Public narrative | Clear category and problem | Done |
+| README | First-screen value, quickstart, architecture, commands | Done |
+| Architecture | Stable source-of-truth model and schemas | Done; strict validation executes the checked-in JSON Schema artifact in release-check |
+| CLI | Lifecycle commands are coherent and tested | Done; command registration and release smoke paths are tested |
+| Context discipline | Profiles, budgets, handoff, degradation rules | Done |
+| Graph model | Validated graph contract, hierarchy, code structure, standard exports | Done |
+| Obsidian | Real graph-view notes, tags, aliases, links, sample fixture | Done |
+| Neo4j | Cypher export and docs | Done |
+| Embeddings | Local optional deterministic index | Done for alpha; external providers remain future work |
+| Testing | Unit, integration, command registration, release smoke path | Done locally; needs CI confirmation for this branch |
+| CI/release | Release workflow runs and required checks pass | Release Check and CI passed on `main`; CodeQL and Scorecard are still blocked/failing |
+| Security posture | CodeQL, Scorecard, dependency updates, branch protection | Implemented, needs GitHub visibility/settings and green security runs |
+| Community | Issues, PR template, contributing, conduct, support | Done |
+| Packaging | Build/check workflow and trusted publishing | Workflow done; publisher configuration and publish timing remain manual |
+| Evidence | Truth-aware benchmark and durable ledger | Done |
 
 ## Release blocker checklist
 
-- [ ] Make repository public.
-- [ ] Confirm GitHub Actions run on `main`.
-- [ ] Protect `main` with required checks.
-- [ ] Validate `.ai/machine/graph.json` against `schemas/amo-graph.schema.json`.
-- [ ] Add command smoke tests for the CLI.
-- [ ] Add sample Obsidian graph fixture.
-- [ ] Implement executable benchmark command.
-- [ ] Add JSON-LD, GraphML, and GEXF exporters.
-- [ ] Add real adapter profile outputs.
-- [ ] Add MCP resources/tools.
-- [ ] Add PyPI Trusted Publishing release workflow.
-- [ ] Create `v0.1.0-alpha` release tag.
+- **Done:** executable benchmark, evidence ledger, optimizer, parameter sweep, graph hierarchy and validation, standard exporters, organism UI, MCP, adapter profiles, hardened postflight, command smoke tests, and sample Obsidian vault.
+- **Implemented, needs CI confirmation:** expanded `release-check` command path and CodeQL `actions: read` permission.
+- **Manual GitHub setting:** make the repository public; protect `main`; require PRs and `release-check`; disable force pushes and branch deletion.
+- **Still open:** obtain green CodeQL and OpenSSF Scorecard runs after visibility/settings changes.
+- **Done:** PyPI is explicitly deferred; `0.1.0-alpha` is source-install only.
+- **Still open:** create `v0.1.0-alpha` only after every release gate is green.
 
 ## 10/10 principle
 

@@ -4,9 +4,10 @@ import json
 from pathlib import Path
 
 from amo.core.context import build_context_pack
+from amo.core.graph import build_graph
 from amo.core.scan import scan_repo
 from amo.evidence.ledger import record_evidence
-from amo.io import write_json
+from amo.io import write_json, write_text
 
 UNSCORED = "not_scored_without_fixture_truth"
 
@@ -29,6 +30,7 @@ def run_benchmark(
 ) -> Path:
     repo = repo.resolve()
     scan = scan_repo(repo, extra_excludes=scan_excludes)
+    build_graph(repo)
     pack_path = build_context_pack(repo, task=task, profile="quick", params=params)
     files = json.loads((repo / ".ai" / "machine" / "files.json").read_text(encoding="utf-8")).get("files", [])
     pack = pack_path.read_text(encoding="utf-8")
@@ -53,13 +55,15 @@ def run_benchmark(
     result = {"task": task, "files_indexed": scan["files_indexed"], "metrics": metrics}
     output = repo / ".ai" / "machine" / "benchmark.json"
     write_json(output, result)
+    markdown_output = repo / ".ai" / "machine" / "benchmark.md"
+    write_text(markdown_output, _render_markdown(result))
     record_evidence(
         repo,
         kind="benchmark",
         source="amo benchmark",
         result=f"token_reduction={metrics['token_reduction']}",
         authority=0.9,
-        artifacts=(".ai/machine/benchmark.json",),
+        artifacts=(".ai/machine/benchmark.json", ".ai/machine/benchmark.md"),
         limitations=(
             ("scored against truth.json fixture ground truth",)
             if truth is not None
@@ -67,6 +71,33 @@ def run_benchmark(
         ),
     )
     return output
+
+
+def _render_markdown(result: dict[str, object]) -> str:
+    metrics = result["metrics"]
+    assert isinstance(metrics, dict)
+    lines = [
+        "# AMO Benchmark",
+        "",
+        f"Task: `{result['task']}`",
+        f"Files indexed: {result['files_indexed']}",
+        "",
+        "## Metrics",
+        "",
+        "| Metric | Result |",
+        "|---|---:|",
+    ]
+    for name, value in metrics.items():
+        rendered = "unscored" if value is None or value == UNSCORED else str(value)
+        lines.append(f"| `{name}` | {rendered} |")
+    lines.extend(
+        [
+            "",
+            "Metrics marked `unscored` have no fixture ground truth; AMO does not invent values.",
+            "",
+        ]
+    )
+    return "\n".join(lines)
 
 
 def _selected_paths(repo: Path, files: list[dict[str, object]], pack: str) -> set[str]:
@@ -88,9 +119,16 @@ def _score_against_truth(
     scored: dict[str, object] = {}
     relevant = {str(path) for path in truth.get("relevant_files", []) if path}
     if relevant:
-        relevant_selected = len(selected & relevant)
-        scored["file_selection_precision"] = round(relevant_selected / len(selected), 4) if selected else 0.0
+        # Canonical `.ai/` memory is rendered into every pack by contract. Measure
+        # retrieval precision over task files so that required memory does not
+        # become a false positive, while unrelated source/docs still do.
+        evaluated = {path for path in selected if not path.startswith(".ai/")}
+        relevant_selected = len(evaluated & relevant)
+        scored["file_selection_precision"] = (
+            round(relevant_selected / len(evaluated), 4) if evaluated else 0.0
+        )
         scored["file_selection_recall"] = round(relevant_selected / len(relevant), 4)
+        scored["evaluated_selected_files"] = len(evaluated)
     expected_tests = [str(command) for command in truth.get("expected_tests", []) if command]
     if expected_tests:
         scored["test_command_accuracy"] = round(

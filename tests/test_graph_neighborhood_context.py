@@ -1,7 +1,7 @@
 import json
 
 from amo.context.explain import explain_selection
-from amo.context.graph_neighborhood import graph_proximity, lexical_seed_paths
+from amo.context.graph_neighborhood import compute_neighborhood, graph_proximity, lexical_seed_paths
 from amo.context.ranking import rank_units
 from amo.core.context import build_context_pack
 from amo.core.graph import build_graph
@@ -29,6 +29,20 @@ def test_proximity_decays_per_hop():
     proximity = graph_proximity(GRAPH, ["app/auth.py"], max_hops=2, distance_decay=0.5)
     assert proximity["app/auth.py"] == 1.0
     assert proximity["app/session.py"] == 0.25  # two hops via dir:app
+
+
+def test_task_neighborhood_does_not_treat_filesystem_siblings_as_semantic_neighbors(tmp_path):
+    graph_path = tmp_path / ".ai" / "machine" / "graph.json"
+    graph_path.parent.mkdir(parents=True)
+    graph_path.write_text(json.dumps(GRAPH), encoding="utf-8")
+    units = [
+        {"title": "auth tests", "summary": "failing tests", "expand": "app/auth.py"},
+        {"title": "session", "summary": "unrelated", "expand": "app/session.py"},
+    ]
+
+    proximity, _ = compute_neighborhood(tmp_path, units, "failing tests")
+
+    assert "app/session.py" not in proximity
     assert "docs/far.md" not in proximity  # three hops away
 
 

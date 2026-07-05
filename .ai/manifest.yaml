@@ -2,7 +2,7 @@ project:
   name: ai-memory-orchestrator
   description: Git-native memory compiler and context optimizer for AI coding agents.
   type: python-cli
-  status: bootstrap
+  status: 0.1.0-alpha release candidate
 commands:
   install:
     - pip install -e .[dev]

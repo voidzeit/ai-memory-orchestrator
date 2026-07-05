@@ -1,0 +1,7 @@
+{
+  "schema_version": "0.2",
+  "nodes": [
+    {"id": "file:README.md", "type": "file", "label": "README.md"}
+  ],
+  "edges": []
+}

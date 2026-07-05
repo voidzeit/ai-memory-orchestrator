@@ -49,6 +49,7 @@ def graph_proximity(
     seed_paths: list[str],
     max_hops: int = DEFAULT_MAX_HOPS,
     distance_decay: float = DEFAULT_DISTANCE_DECAY,
+    include_filesystem: bool = True,
 ) -> dict[str, float]:
     """Expand seed file nodes through the graph; return path -> decayed proximity.
 
@@ -66,6 +67,15 @@ def graph_proximity(
     adjacency: dict[str, set[str]] = {}
     for edge in edges:
         source, target = str(edge.get("source")), str(edge.get("target"))
+        if (
+            not include_filesystem
+            and edge.get("type") == "contains"
+            and source.startswith(("repo:", "dir:"))
+        ):
+            # Repository/directory containment makes every sibling appear related
+            # within two hops. Keep semantic and code-structure edges for task
+            # neighborhoods, but do not use broad filesystem ancestry.
+            continue
         adjacency.setdefault(source, set()).add(target)
         adjacency.setdefault(target, set()).add(source)
 
@@ -105,4 +115,13 @@ def compute_neighborhood(
     seeds = lexical_seed_paths(units, task, seed_top_k)
     if not seeds:
         return {}, []
-    return graph_proximity(graph, seeds, max_hops=max_hops, distance_decay=distance_decay), seeds
+    return (
+        graph_proximity(
+            graph,
+            seeds,
+            max_hops=max_hops,
+            distance_decay=distance_decay,
+            include_filesystem=False,
+        ),
+        seeds,
+    )

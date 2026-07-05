@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ai-memory-orchestrator"
-version = "0.1.0"
+version = "0.1.0a1"
 description = "Git-native memory compiler and context optimizer for AI coding agents."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -30,6 +30,7 @@ dependencies = [
   "pyyaml>=6.0.1",
   "rich>=13.7.0",
   "fastapi>=0.111.0",
+  "jsonschema>=4.23.0",
   "uvicorn>=0.30.0"
 ]
 

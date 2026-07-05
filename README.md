@@ -6,7 +6,7 @@ AMO is a Git-native memory layer for AI coding agents. It gives a repository can
 
 Every coding agent starts by guessing repository context. AMO lets the agent start with verified project memory instead.
 
-> Status: **0.1.0 alpha**. The CLI and file-based memory layer are usable. Graph intelligence, benchmarks, Neo4j export, Obsidian export, optional embeddings, and agent handoff workflows are evolving in public.
+> Status: **0.1.0 alpha**. The CLI memory layer, graph exports, benchmark fixture flow, evidence ledger, propose-only optimizer, optimizable parameters, MCP stdio server, and organism dashboard are usable. The repository is public and protected; the release tag still depends on green security workflows on `main`. This alpha is source-install only; PyPI is explicitly deferred.
 
 ## Context rot
 
@@ -61,6 +61,9 @@ From that graph, AMO can export:
 
 ```bash
 amo graph export --format json
+amo graph export --format jsonld
+amo graph export --format graphml
+amo graph export --format gexf
 amo graph export --format neo4j
 amo graph export --format obsidian
 ```
@@ -128,18 +131,43 @@ amo context --task "..."
 amo preflight --task "..."
 amo handoff --task "..." --summary "..."
 amo postflight --task "..." --summary "..."
-amo validate
+amo validate --strict
 amo status
+
+amo benchmark examples/agent-debug-session --task "fix failing tests"
+
+amo evolve
+
+amo optimize suggest
+amo optimize check
+amo optimize plan
+amo optimize params suggest
+amo optimize params sweep --trials 10 --seed 42
+amo optimize params best
+amo optimize params apply-safe --confirm
+
 amo graph build
+amo graph export --format json
+amo graph export --format jsonld
+amo graph export --format graphml
+amo graph export --format gexf
 amo graph export --format neo4j
+amo graph export --format obsidian
+
 amo embeddings build
 amo embeddings search "..."
+
 amo server --host 127.0.0.1 --port 8787
+
+amo mcp serve
+
 amo export --target agents
+amo export --target codex
 amo export --target claude
 amo export --target cursor
 amo export --target cline
 amo export --target opencode
+
 amo obsidian sync
 ```
 
@@ -191,6 +219,7 @@ A 10/10 release must be understandable in 30 seconds, installable in 60 seconds,
 - [Adoption guide](docs/adoption.md)
 - [Maturity model](docs/maturity-model.md)
 - [Schema contract](docs/schema-contract.md)
+- [Agent adapters](docs/adapters.md)
 - [Architecture](docs/architecture.md)
 - [Graph model](docs/graph-model.md)
 - [Graph interoperability](docs/graph-interoperability.md)
@@ -200,6 +229,7 @@ A 10/10 release must be understandable in 30 seconds, installable in 60 seconds,
 - [Embeddings strategy](docs/embeddings.md)
 - [Context engine](docs/context-engine.md)
 - [Benchmark plan](docs/benchmark.md)
+- [MCP server](docs/mcp-server.md)
 - [Comparison](docs/comparison.md)
 - [Release notes](docs/release-notes-0.1.0-alpha.md)
 - [Roadmap](docs/roadmap.md)
@@ -213,8 +243,20 @@ amo scan
 amo preflight --task "release readiness" --profile quick
 amo handoff --task "release readiness" --summary "release validation"
 amo graph build
+amo graph export --format json
+amo graph export --format jsonld
+amo graph export --format graphml
+amo graph export --format gexf
 amo graph export --format neo4j
 amo embeddings build
+amo benchmark examples/agent-debug-session --task "fix failing tests"
+amo benchmark . --task "release readiness"
+amo optimize suggest
+amo optimize check
+amo optimize plan
+amo optimize params suggest
+amo optimize params sweep --trials 10 --seed 42
+amo optimize params best
 amo validate --strict
 amo status
 ```
