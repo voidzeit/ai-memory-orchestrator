@@ -2,10 +2,10 @@
 
 ## Immediate
 
-- [ ] Review and merge the alpha-readiness reconciliation PR with green CI and Release Check.
+- [x] Review and merge PR #35 with green CI, Release Check, and CodeQL.
 - [x] Make the repository public.
 - [x] Protect `main`, require PRs, `test`, and `release-check`, and disable force pushes and branch deletion.
-- [ ] Obtain green CodeQL and OpenSSF Scorecard runs on `main`.
+- [x] Obtain green CodeQL and OpenSSF Scorecard runs on `main`.
 - [x] Defer PyPI for `0.1.0-alpha`; document source-install-only distribution.
 - [ ] Create `v0.1.0-alpha` only after all release gates are green.
 
@@ -104,3 +104,11 @@ Summary: Verified public visibility and protected main with PR, test, and releas
 
 Outcome: completed
 Changed files: .github/workflows/scorecard.yml, README.md, CHANGELOG.md, docs/release-notes-0.1.0-alpha.md, docs/release-process.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md
+## Postflight — 2026-07-05T10:13:06.350859+00:00
+
+Task: pre-tag truth sync
+
+Summary: Recorded merged PR 35, public protected main, required CI/Release Check/CodeQL/Scorecard contexts, green main security runs, completed schema issue, and source-only PyPI decision; removed stale release-note blockers before tagging.
+
+Outcome: completed
+Changed files: docs/release-notes-0.1.0-alpha.md, docs/10-10-scorecard.md, docs/roadmap.md, .ai/state.md, .ai/tasks.md, .ai/tests.md
