@@ -30,3 +30,11 @@ Summary: Stabilized runtime validation and config, integrated foundation branche
 Task: implement staged deterministic optimizable parameters
 
 Summary: Added typed parameter search spaces, deterministic seeded sweeps, normalized evidence-aware objectives, evolutionary trial reports, safe-only promotion, and parameter-driven context ranking.
+## Postflight — 2026-07-05T08:13:51.889057+00:00
+
+Task: test postflight
+
+Summary: validated run history
+
+Outcome: completed
+Changed files: amo/core/postflight.py

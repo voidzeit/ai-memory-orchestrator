@@ -106,10 +106,27 @@ def handoff(
 def postflight(
     task: str = typer.Option(..., "--task", "-t"),
     summary: str = typer.Option(..., "--summary", "-s"),
+    outcome: str = typer.Option("completed", "--outcome"),
+    validation: str = typer.Option("", "--validation"),
+    changed_files: str = typer.Option("", "--changed-files", help="Comma-separated changed paths."),
+    decision: str = typer.Option("", "--decision", help="Explicit decision to append to decisions.md."),
     repo: Path = Path("."),
 ) -> None:
     """Update memory after a work session."""
-    result = apply_postflight(repo=repo, task=task, summary=summary)
+    changed = [item.strip() for item in changed_files.split(",") if item.strip()]
+    try:
+        result = apply_postflight(
+            repo=repo,
+            task=task,
+            summary=summary,
+            outcome=outcome,
+            validation=validation,
+            changed_files=changed,
+            decision=decision,
+        )
+    except RuntimeError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(code=1) from exc
     console.print(f"[green]Postflight applied[/green]: {result}")
 
 
